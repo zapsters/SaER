@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>SaER Entity Data Bank</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+/* Header/logo Title */
+.header {
+    padding: 80px;
+    text-align: center;
+    background: #ff0000;
+    color: white;
+}
+
+/* Increase the font size of the heading */
+.header h1 {
+    font-size: 40px;
+}
+
+/* Sticky navbar - toggles between relative and fixed, depending on the scroll position. It is positioned relative until a given offset position is met in the viewport - then it "sticks" in place (like position:fixed). The sticky value is not supported in IE or Edge 15 and earlier versions. However, for these versions the navbar will inherit default position */
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+    float: left;
+    display: block;
+    color: #ff0000;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+
+/* Right-aligned link */
+.navbar a.right {
+    float: right;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Active/current link */
+.navbar a.active {
+    background-color: #666;
+    color: #ff5000;
+}
+
+/* Column container */
+.row {  
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+    -ms-flex: 30%; /* IE10 */
+    flex: 30%;
+    background-color: #f1f1f1;
+    padding: 20px;
+}
+
+/* Main column */
+.main {   
+    -ms-flex: 70%; /* IE10 */
+    flex: 70%;
+    background-color: white;
+    padding: 20px;
+}
+
+/* Fake image, just for this example */
+.fakeimg2 {
+    background-color: #aaa;
+    width: 100%;
+    
+}
+.fakeimg {
+    background-color: #aaa;
+    width: 100%;
+    padding: 5px;
+}
+
+/* Footer */
+.footer {
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+    .row {   
+        flex-direction: column;
+    }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+    .navbar a {
+        float: none;
+        width: 100%;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>SaER Classified Data Bank</h1>
+  <p>Protecting the whole <b>WORLD</b> since 1967 from anomalies.</p>
+</div>
+
+<div class="navbar">
+  <a href="#" class="active">Classified Files</a>
+  <a href="#">Your Admin Dashboard</a>
+  <a href="#">Remote Site Connection</a>
+  <a href="#" class="right">Hello, John</a>
+</div>
+
+<div class="row">
+  <div class="side">
+      <h2>Your Project <br><i>SCP-173</i></h2>
+      <h5>SCP-173.png</h5>
+      <div class="fakeimg2" style="height:200px;">
+      <img src="https://zapstergames.github.io/SaER/SCP-173.png" alt="Lamp" width=120% height=110%></div>
+      <p>SCP 173 is of the class Euclid and to be kept in a locked container at all times. SCP-173 is animate and extremely hostile. The object cannot move while within a direct line of sight. Line of sight must not be broken at any time with SCP-173. Object is reported to attack by snapping the neck at the base of the skull, or by strangulation. In the event of an attack, personnel are to observe Class 4 hazardous object containment procedures.</p>
+      <h3>To Do List:</h3>
+      <p>You updated this list 2 day(s) ago</p>
+      <div class="fakeimg" style="height:60px;">Gather Old Information over 173</div><br>
+      <div class="fakeimg" style="height:60px;">Go over proper protocal with Personell.</div><br>
+      <div class="fakeimg" style="height:60px;">Preform testing on 173</div>
+  </div>
+  <div class="main">
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Dec 7, 2017</h5>
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <br>
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Sep 2, 2017</h5>
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+  </div>
+</div>
+
+<div class="footer">
+  <h2>Footer</h2>
+</div>
+
+</body>
+</html>
