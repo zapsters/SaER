@@ -16,6 +16,12 @@ function handle(e){
         	document.getElementById("temp123").style.display='block';
             statePass = 1;
         
+        } else if(document.getElementById('input').value == "Run Natalie.exe") {
+        	document.getElementById("sub2b").innerHTML="PLEASE USE YOUR 4 DIGIT AUTHENTICATION PIN ";
+            document.getElementById("sub2c").innerHTML="ERROR, CANT FIND NATALIE.EXE";
+        	document.getElementById("temp123").style.display='block';
+            statePass = 2;
+        
         } else {
             document.getElementById("sub2b").innerHTML="-NO-";
             document.getElementById("sub2c").innerHTML="-RESPONSE-";
@@ -41,8 +47,8 @@ function clear() {
 function handle2(e){
 	if(e.keyCode === 13){
     	if(statePass == 1 && document.getElementById('inputPass').value == "4658") {
-            document.getElementById("sub2b").innerHTML="";
-            document.getElementById("sub2c").innerHTML="";
+            document.getElementById("sub2b").innerHTML="I love you";
+            document.getElementById("sub2c").innerHTML=".. Nerd";
             document.getElementById("input").value="";
         	document.getElementById("temp123").style.display='none';
         } else if (statePass == 2 && document.getElementById('inputPass').value == "") {
