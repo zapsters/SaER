@@ -1,8 +1,33 @@
-
 `
 
 <!DOCTYPE html>
 <html>
+<script>
+var statePass = 0;
+var stateSecret = 0;
+function handle(e){
+	if(e.keyCode === 13){
+    document.getElementById("inputPass").value="";
+		if(document.getElementById('input').value == "Help") {
+        	document.getElementById("sub2b").innerHTML="Wish I could help you";
+            document.getElementById("sub2c").innerHTML="";
+            document.getElementById("input").value="";
+            clear();
+        } else if(document.getElementById('input').value == "Run Example") {
+        	document.getElementById("sub2b").innerHTML="Top";
+            document.getElementById("sub2c").innerHTML="Bottom"; 
+            document.getElementById("input").value="";
+        } else {
+            document.getElementById("sub2b").innerHTML="-NO-";
+            document.getElementById("sub2c").innerHTML="-RESPONSE-";
+            document.getElementById("input").value="";
+        	document.getElementById("temp123").style.display='none';
+            document.getElementById("inputPass").value="";
+            statePass = 0;
+        }
+	}
+}
+</script>
 <head>
 
 <style>
@@ -202,8 +227,14 @@ cursor: default
 </div>
 <div id="mydiv" class=poz3>
 <div id="mydivheader">*Click and Hold to drag*</div>
-<p id="sub2b" style="font-size:20;">-CONNECTION-</p>
-<p id="sub2c" style="font-size:20;">-TERMINATED-</p>
+<p id="sub2b" style="font-size:20;">-NO-</p>
+<p id="sub2c" style="font-size:20;">-RESPONSE-</p>
+<div class ="temp123" id="temp123" style="display:none">
+<input type="text" id="inputPass" class="pozb" onkeypress="handle2(event)" autocomplete="off" spellcheck="false"/>
+</div>
+</div>
+<div>
+<input type="text" id="input" autocomplete="off" class="poz" placeholder="Awaiting Command..."onkeypress="handle(event)" spellcheck="false">
 </div>
 
 
