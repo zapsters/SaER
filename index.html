@@ -18,11 +18,16 @@ function handle(e){
             document.getElementById("sub2c").innerHTML="Please Enter your Identification Number"; 
             document.getElementById("input").value="";
 			document.getElementById("temp123").style.display='block';
-            statePass = 1;
+            statePass = 0;
         } else if(document.getElementById('input').value == "Run Adam Bisesi") {
         	document.getElementById("sub2b").innerHTML="This project is dedicated to Adam Bisesi. The person who helped me learn how to make everything you see infront of you. This project wouldnt be posible without you.";
             document.getElementById("sub2c").innerHTML=""; 
             document.getElementById("input").value="";
+        } else if(document.getElementById('input').value == "Run Marissa.exe") {
+        	document.getElementById("sub2b").innerHTML="Successfully connected to SaER Admin Servers - Password:(Blank)";
+            document.getElementById("sub2c").innerHTML="Please Enter your Identification"; 
+            document.getElementById("input").value="";
+			document.getElementById("temp123").style.display='block';
             statePass = 1;
         } else {
             document.getElementById("sub2b").innerHTML="-NO-";
@@ -31,16 +36,15 @@ function handle(e){
         	document.getElementById("temp123").style.display='none';
             document.getElementById("inputPass").value="";
             statePass = 0;
-            
         }
         document.getElementById("mydivheader").innerHTML="━━━━━━━━";
 	}
 }
 function handle2(e){
 	if(e.keyCode === 13){
-    	if(statePass == 1 && document.getElementById('inputPass').value == "2") {
-            document.getElementById("sub2b").innerHTML="top";
-            document.getElementById("sub2c").innerHTML="- Aaron B Ballin";
+    	if(statePass == 1 && document.getElementById('inputPass').value == "Big Chungoose") {
+            document.getElementById("sub2b").innerHTML="I make one of these almost every month and I love it. It brings back so many memories, like Big Chungoose! :) Thank you so much, for everything you do.";
+            document.getElementById("sub2c").innerHTML="- Baron Trump (Aaron Ballinger)";
             document.getElementById("input").value="";
         	document.getElementById("temp123").style.display='none';
         } else {
