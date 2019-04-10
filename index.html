@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html>
+	<!-- This code was ment to be viewable... Plus, I hate you for doing this -->
 <script>
 var statePass = 0;
 var stateSecret = 0;
@@ -24,11 +25,17 @@ function handle(e){
             document.getElementById("sub2c").innerHTML=""; 
             document.getElementById("input").value="";
         } else if(document.getElementById('input').value == "Run Marissa.exe") {
-        	document.getElementById("sub2b").innerHTML="Successfully connected to SaER Admin Servers - Password:(Blank)";
+        	document.getElementById("sub2b").innerHTML="Insufficient Access to Marissa.exe";
             document.getElementById("sub2c").innerHTML="Please Enter your Identification"; 
             document.getElementById("input").value="";
 			document.getElementById("temp123").style.display='block';
             statePass = 1;
+        } else if(document.getElementById('input').value == "Run Natalie.exe") {
+        	document.getElementById("sub2b").innerHTML="Insufficient Access to Natalie.exe";
+            document.getElementById("sub2c").innerHTML="Please Enter your Identification"; 
+            document.getElementById("input").value="";
+			document.getElementById("temp123").style.display='block';
+            statePass = 2;
         } else {
             document.getElementById("sub2b").innerHTML="-NO-";
             document.getElementById("sub2c").innerHTML="-RESPONSE-";
@@ -44,7 +51,12 @@ function handle2(e){
 	if(e.keyCode === 13){
     	if(statePass == 1 && document.getElementById('inputPass').value == "Big Chungoose") {
             document.getElementById("sub2b").innerHTML="I make one of these almost every month and I love it. It brings back so many memories, like Big Chungoose! :) Thank you so much, for everything you do.";
-            document.getElementById("sub2c").innerHTML="- Baron Trump (Aaron Ballinger)";
+            document.getElementById("sub2c").innerHTML="- Baron Trump";
+            document.getElementById("input").value="";
+        	document.getElementById("temp123").style.display='none';
+        } if(statePass == 2 && document.getElementById('inputPass').value == "") {
+            document.getElementById("sub2b").innerHTML="To think of hiding such information, under an empty password, might be the smartest thing I have done... ";
+            document.getElementById("sub2c").innerHTML="- Aaron Ballinger";
             document.getElementById("input").value="";
         	document.getElementById("temp123").style.display='none';
         } else {
@@ -52,6 +64,7 @@ function handle2(e){
             document.getElementById("sub2c").innerHTML="-Activating Memetic Kill Agent-";
             document.getElementById("input").value="";
         	document.getElementById("temp123").style.display='none';
+            statePass = 0;
         }
         
     }
