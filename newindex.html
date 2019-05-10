@@ -1,96 +1,97 @@
+
+
 <!DOCTYPE html>
 <html>
+<head>
+<link href="https://zapstergames.github.io/Home/fonts/stylesheet.css" rel="stylesheet">
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("May 21, 2019 1:00:00").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get todays date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("timer").innerHTML = "</br>" + days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("timer").innerHTML = "WELCOME TO THE RIFT S";
+  }
+}, 1000);
+</script>
+<title>ZapsterGames</title>
+<link rel="shortcut icon" type="image/png" href="https://zapstergames.github.io/Home/images/ZapsterGames.png"/>
+</head>
 <style>
-@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300);
+@import url(https://fonts.googleapis.com/css?family=Squada+One);
 body {
-	margin: 0;
-	background: #24292E;
-	font-family: 'Work Sans', sans-serif;
+  padding: 20px 80px;
+  background-color: #001101;
 }
-
-.container {
-	font-weight: 800;
-	width: 80%;
-	margin: 0 auto;
-    height: 80px;
-}
-
-header {
-  background: #55d6aa;
-}
-
-
-
-.logo {
-  height: 60px;
-  float: left;
-  padding: 10px 0px;
-}
-
-nav {
-  padding: 10px 0px;
-  float: right;
-}
-
-nav ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-nav li {
-  display: inline-block;
-  margin-left: 70px;
-  padding-top: 23px;
-
+.sub {
+  font-family: 'bauhausc_demi', sans-serif;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 1;
   position: relative;
 }
 
-nav a {
-  color: #444;
+
+.subbottom {
+opacity: 0.2;
+  ont-family: 'bauhausc_demi', sans-serif;
+  color: #000;
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 1;
+  position: relative;
 }
 
-nav a:hover {
-  color: #000;
+.bannerlogo {
+  filter: invert(0%);
+  width: 80%;
 }
 
-nav a::before {
-  content: '';
-  display: block;
-  height: 5px;
-  background-color: #444;
-
-  position: absolute;
-  top: 0;
-  width: 0%;
-
-  transition: all ease-in-out 250ms;
+.displaybox {
+  filter: invert(0%);
+  width: 500px;
 }
-
-nav a:hover::before {
-  width: 100%;
-}
-
 </style>
-<body>
-<header>
-    <div class="container">
-    <img src="https://zapstergames.github.io/SaER/images/NavBarLogoSimple.png" alt="" class="logo">
-      <h1 class="logo"></h1>
+<body >
+<center>
+<div id="header">
+  <a href="/Home/" class="slidetop_1"><img class="bannerlogo" src="https://raw.githubusercontent.com/ZapsterGames/Home/master/images/ZapsterGames_Logo_Banner_Neon.png" alt="ZAPSTERGAMES"></a>
+	<a id="timer" class="sub slidebottom_1" href="/Timer/RiftS"><p id="timer" class="slidebottom_1"></p></b></a>
+</div>
+	</br>
+    <img class="displaybox" src="https://zapstergames.github.io/SaER/images/s/Image_1_Job+Offer.png" alt="ZAPSTERGAMES">
+    
+        <p class="subbottom">Site made by Aaron Ballinger. Hello Luke. Yeah its ScottGames.com</p>
+  </center>
 
-      <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Locations</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+
 </body>
-
 </html>
