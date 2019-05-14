@@ -1,154 +1,218 @@
 
 
+
 <!DOCTYPE html>
 <html>
 <head>
-<title>ERROR 404 / SaER</title>
-  <link rel="shortcut icon" type="image/png" href="https://zapstergames.github.io/Home/images/ZapsterGames.png"/>
+<link href="https://zapstergames.github.io/Home/fonts/stylesheet.css" rel="stylesheet">
+
+<title>ZapsterGames</title>
+<link rel="shortcut icon" type="image/png" href="https://zapstergames.github.io/Home/images/ZapsterGames.png"/>
+</head>
 <style>
-html, body {margin: 0; height: 100%; overflow: hidden}
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300);
 @import url(https://fonts.googleapis.com/css?family=Squada+One);
-#sub {
-  font-family: 'Open Sans', sans-serif;
-  color: #555;
+body {
+  padding: 20px 80px;
+  background-color: #24292E;
+  background: #eee url(https://subtlepatterns.com/patterns/extra_clean_paper.png);
+}
+.sub {
+  font-family: 'bauhausc_demi', sans-serif;
+  color: #000;
   text-decoration: none;
   text-transform: uppercase;
   font-size: 30px;
   font-weight: 500;
-  letter-spacing: -3px;
+  letter-spacing: 0px;
   line-height: 1;
-  text-shadow: #000 3px 2px 0;
-  color: #555;
   position: relative;
-}
-#sub2 {
-  font-family: 'Open Sans', sans-serif;
-  color: #555;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 3px;
-  line-height: 1;
-  text-shadow: #000000 3px 2px 0;
-  color: #555;
-  position: relative;
-  bottom: 5px;
-}
-#sub2v2 {
-  font-family: 'Open Sans', sans-serif;
-  color: #555;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 3px;
-  line-height: 1;
-  text-shadow: #000000 3px 2px 0;
-  color: #555;
-  position: relative;
-  bottom: 5px;
-}
-#sub2b {
-  font-family: 'Open Sans', sans-serif;
-  color: #555;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: 3px;
-  line-height: 1;
-  text-shadow: #000000 3px 2px 0;
-  color: #555;
-  position: relative;
-  bottom: -200px;
-}
-#sub2c {
-  font-family: 'Open Sans', sans-serif;
-  color: #555;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: 3px;
-  line-height: 1;
-  text-shadow: #000000 3px 2px 0;
-  color: #555;
-  position: relative;
-  bottom: -200px;
-}
-.poz{
-font-family: 'Open Sans', sans-serif;
-text-shadow: #000000 3px 2px 0;
-font-size: 30px;
-  position: absolute;
-  background-color: #555;
-  bottom: 5px;
-  left: 5px;
-  color: white;
-    width: 100%;
-  border: 3px solid #555;"
-}
-.pozb{
-font-family: 'Open Sans', sans-serif;
-text-shadow: #000000 3px 2px 0;
-font-size: 30px;
-  background-color: #555;
-  bottom: -40px;
-  
-  color: white;
-    width: 15%;
-  border: 3px solid #555;"
 }
 
-.poz2{
-font-family: 'Open Sans', sans-serif;
-  position: absolute;
-  bottom: 0px;
-  left: 5px;
-  color: white;
-    width: 100%;
-}
-.poz3{
-font-family: 'Open Sans', sans-serif;
-font-size: 30px;
-  position: absolute;
-  bottom: 330px;
-  left: 5px;
-  color: white;
-    width: 100%;
-}
-.temp123{
-  text-align:center;
-  
+.sublink {
+  font-family: 'bauhausc_demi', sans-serif;
+  color: #000;
+  text-decoration: underline;
+  text-transform: uppercase;
   font-size: 30px;
-    text-shadow: #000000 3px 2px 0;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 1;
+  position: relative;
 }
-.temp123 > input{
-  text-align:left;
+
+
+.subbottom {
+opacity: 0.2;
+  ont-family: 'bauhausc_demi', sans-serif;
+  color: #000;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  line-height: 1;
+  text-shadow: #EDEDED 3px 2px 0;
+  position: relative;
+}
+
+#menu {
+  width: 1030px;
+  height: 150px;
+  list-style: none;
+  margin: 10px 0 0 0; padding: 25px 10px;
+  border-top: 4px double #AAA;
+  border-bottom: 4px double #AAA;
+  position: relative;
+  text-align: center;
+}
+#menu li {
+  display: inline-block;
+  width: 213px;
+  margin: 0 10px;
+  position: relative;
+  -webkit-transform: skewy(-3deg);
+  -webkit-backface-visibility: hidden;
+  -webkit-transition: 200ms all;
+}
+#menu li a {
+  text-transform: uppercase;
+  font-family: 'Squada One', cursive;
+  font-weight: 800;
+  display: block;
+  background: #FFF;
+  padding: 2px 10px;
+  color: #000;
+  font-size: 35px;
+  text-align: center;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+  text-shadow: 
+		1px 1px 0px #FFF, 
+		2px 2px 0px #999,
+		3px 3px 0px #FFF;
+	background-image: -webkit-linear-gradient(top, transparent 0%, rgba(0,0,0,.05) 100%);
+	-webkit-transition: 1s all;
+	background-image: -webkit-linear-gradient(left top, 
+		transparent 0%, transparent 25%, 
+		rgba(0,0,0,.15) 25%, rgba(0,0,0,.15) 50%, 
+		transparent 50%, transparent 75%, 
+		rgba(0,0,0,.15) 75%);
+  background-size: 4px 4px;
+	box-shadow: 
+		0 0 0 1px rgba(0,0,0,.4) inset, 
+		0 0 20px -5px rgba(0,0,0,.4),
+		0 0 0px 3px #FFF inset;
+}
+#menu li:hover {
+	width: 243px;
+	margin: 0 -5px;
+}
+#menu a:hover {
+  color: #d90075;
+}
+#menu li:after {
+	background-image: -webkit-linear-gradient(left, transparent 0%, rgba(0,0,0,.4) 100%);
+  right: 0;
+  top: -4px; 
+}
+#menu li:before {
+  left: 0;
+  bottom: -4px;
+	background-image: -webkit-linear-gradient(right, transparent 0%, rgba(0,0,0,.4) 100%);
+}
+.slideleft_1 {
+  position: relative;
+  -webkit-animation-name: slideleft; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+  animation-name: slideleft;
+  animation-duration: 4s;
+}
+@keyframes slideleft {
+  0%   {background-color:red; left:-700px; top:0px;}
+  40% {background-color:red; left:0px; top:0px;}
+}
+.slideright_1 {
+  position: relative;
+  -webkit-animation-name: slideright; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+  animation-name: slideright;
+  animation-duration: 4s;
+}
+@keyframes slideright {
+  0%   {background-color:red; left:700px; top:0px;}
+  40% {background-color:red; left:0px; top:0px;}
+}
+.slidetop_1 {
+  position: relative;
+  -webkit-animation-name: slidetop; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+  animation-name: slidetop;
+  animation-duration: 4s;
+}
+@keyframes slidetop {
+  0%   {opacity: 0; left:0px; top:-200px;}
+  20% {opacity: 1; left:0px; top:0px;}
+}
+.slidebottom_1 {
+  position: relative;
+  -webkit-animation-name: slidebottom; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+  animation-name: slidebottom;
+  animation-duration: 4s;
+  
+}
+@keyframes slidebottom {
+  0%   {left:0px; top:1500px;}
+  70% {left:0px; top:0px;}
+}
+.slideimage_1 {
+  position: relative;
+  -webkit-animation-name: slideimage; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+  animation-name: slideimage;
+  animation-duration: 4s;
+  
+}
+@keyframes slideimage {
+  0%   {left:0px; top:-450px;}
+  20% {left:0px; top:0px;}
+}
+.bannerlogo {
+   width: 80%;
 }
 </style>
-</head>
-<body style="background-color:black;">
-
+<body>
 <center>
-<p id="sub" >SAER INTERNET STATUS</p>
-<img id="logo" src="https://zapstergames.github.io/Home/images/V4ZapsterLogoGlitch.gif" width="400px" id="i1">
-</br></br></br></br></br></br></br></br></br>
-<div class=poz2>
-<p id="sub2" style="font-size:3;">SaER  Copyright  2019</p>
-<p id="sub2v2" style="font-size:3;">SaER logo above, Websites, and other media are owned and claimed by Science and Entity Research</p>
+<div id="header">
+  <img class="bannerlogo" id="logo" src="https://zapstergames.github.io/Home/images/ZapsterGames_Logo_Banner_Neon.png" alt="logo">
+  
+  <ul id="menu">
+
+    <p class="sub slidebottom_1" ><b>ERROR - 404</br>This Page does not Exist or is under maintenance</br><a href="https://zapstergames.github.io/Home/" class="sublink">Return to Home</a></p>
+	<a id="timer" class="sublink slidebottom_1" href="/Timer/RiftS"><p id="timer" class="slidebottom_1"></p></a>
+
+  </ul>
 </div>
+	</br></br></br></br></br></br></br></br></br></br></br></br>
+	<img src="https://zapstergames.github.io/Home/images/V4ZapsterLogoGlitch.gif" width="400px" id="i1" class="slideimage_1">
+        <p class="subbottom">Im too lazy to put an easter egg here. I might add a game here later.</p>
+  </center>
 
-<div class=poz3>
-<br><br><br><br><br><br><br><br><br>
-<p id="sub2b" style="font-size:20;">-ERROR: 404-</p>
-<p id="sub2c" style="font-size:20;">-THIS PAGE IS REDACTED AND IS CURRENTLY DOWN/UNDERMAINTENCE, IT MAY BE DELETED OR DOESNT EVEN EXIST YET-</p>
-</div>
+<script>
 
+document.getElementById("logo").onclick = function() {myFunction()};
+var logo = document.getElementById('logo');
 
-
-</center>
+function myFunction() {
+  if (logo.src.match("https://zapstergames.github.io/Home/images/ZapsterGames_Logo_Banner_Neon.png")) {
+          logo.src = "https://zapstergames.github.io/Home/images/ZapsterGames_Logo_Banner.png";
+     }
+     else {
+          logo.src = "https://zapstergames.github.io/Home/images/ZapsterGames_Logo_Banner_Neon.png";
+     }
+}
+</script>
 </body>
 </html>
