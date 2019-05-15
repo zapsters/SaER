@@ -37,6 +37,26 @@ p {
     padding : 0;
     margin : 0;
 }
+h1 {
+    padding : 0;
+    margin : 0;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    color: #fff;
+    font-size: 16px;
+    margin: 0px 0 0 0; 
+    padding: 0px 0px;
+    color: #42d4f4;
+}
+h2 {
+    padding : 0;
+    margin : 0;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    color: #fff;
+    font-size: 16px;
+    margin: 0px 0 0 0; 
+    padding: 0px 0px;
+    color: #fff;
+}
 .title {
   font-family: 'bauhausc_demi', sans-serif;
   color: #42f4a4;
@@ -137,11 +157,27 @@ p {
 <script>
 document.getElementById("input").onkeypress = function(event){
    if (event.keyCode == 13 || event.which == 13){
+       var today = new Date();
+       var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
        var commandinput = document.getElementById('input').value;
-       var para = document.createElement("P");
-       para.innerHTML = ">" + commandinput;
-       document.getElementById("commands").appendChild(para);
-       updateScroll()
+       if (commandinput != "") {
+       		var para = document.createElement("P");
+       		para.innerHTML = "[" + time + "] < " + commandinput;
+       		document.getElementById("commands").appendChild(para);
+       		updateScroll()
+       		document.getElementById("input").value="";
+       		if (commandinput == "help") {
+         		var para = document.createElement("H1");
+         		para.innerHTML = "[" + time + "] < I wish I could help you...";
+         		document.getElementById("commands").appendChild(para);
+         		updateScroll()
+            } else {
+                var para = document.createElement("H2");
+         		para.innerHTML = "[" + time + "] < Error - '" + commandinput + "' is an unknown command.";
+         		document.getElementById("commands").appendChild(para);
+         		updateScroll()
+            }
+       }
    }
 };
 
