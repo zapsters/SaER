@@ -192,6 +192,11 @@ document.getElementById("input").onkeypress = function(event){
          		para.innerHTML = "[" + time + "] < Contact a Network Administrator for help";
          		document.getElementById("commands").appendChild(para);
          		updateScroll()
+            } else if (commandinput == "get currentVersion") {
+         		var para = document.createElement("H1");
+         		para.innerHTML = "[" + time + "] < " + currentVersion;
+         		document.getElementById("commands").appendChild(para);
+         		updateScroll()
             } else {
 //Display No Command error
                 var para = document.createElement("H2");
