@@ -160,6 +160,7 @@ h2 {
 <script>
 // DEFAULT VARIABLES
 var currentVersion = "Beta: 5-15-19: 0.01"
+var login = "Name: John Hawthorn / Username: JohnH-Site#13 / Password: ***** / Email: John.Hawthorn@SAER.com"
 
 
 
@@ -189,17 +190,30 @@ document.getElementById("input").onkeypress = function(event){
        		document.getElementById("commands").appendChild(para);
        		updateScroll()
        		document.getElementById("input").value="";
-//Run if Commandinput == command--
+///Run if Commandinput == command--
+//Basic Commands
        		if (commandinput == "help") {
          		var para = document.createElement("H1");
          		para.innerHTML = "[" + time + "] < Help Page</br>'Help [command]'&nbsp&nbsp&nbsp - Displays a help page for a certain command<br>'get [function]'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - Get data from secure server.<br>'clear'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - Clear console";
          		document.getElementById("commands").appendChild(para);
          		updateScroll()
+            } else if (commandinput == "help get") {
+         		var para = document.createElement("H1");
+         		para.innerHTML = "[" + time + "] < Get Commands</br>'get currentVersion'&nbsp&nbsp&nbsp- Gets the website's currentVersion<br>'get login'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp- Displays current users information.<br>";
+         		document.getElementById("commands").appendChild(para);
+         		updateScroll()
             } else if (commandinput == "clear") {
 				document.getElementById("commands").innerHTML = "<b>Connecting to SaER servers...<br>Connected using username, 'JohnH'<br>>Waiting Command...</b><br>";
+                
+//ALL "GET" COMMANDS
             } else  if (commandinput == "get currentVersion") {
          		var para = document.createElement("H1");
          		para.innerHTML = "[" + time + "] < " + currentVersion;
+         		document.getElementById("commands").appendChild(para);
+         		updateScroll()
+            } else  if (commandinput == "get login") {
+         		var para = document.createElement("H1");
+         		para.innerHTML = "[" + time + "] < " + login;
          		document.getElementById("commands").appendChild(para);
          		updateScroll()
             } else {
