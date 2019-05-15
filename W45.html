@@ -1,3 +1,9 @@
+
+
+
+
+
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -186,7 +192,7 @@ document.getElementById("input").onkeypress = function(event){
 //Run if Commandinput == command--
        		if (commandinput == "help") {
          		var para = document.createElement("H1");
-         		para.innerHTML = "[" + time + "] < Help Page</br>'Help [command]'&nbsp&nbsp&nbsp - Displays a help page for a certain command<br>'get [function]'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - Get data from secure server.<br>'command'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - command";
+         		para.innerHTML = "[" + time + "] < Help Page</br>'Help [command]'&nbsp&nbsp&nbsp - Displays a help page for a certain command<br>'get [function]'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - Get data from secure server.<br>'clear'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - Clear console";
          		document.getElementById("commands").appendChild(para);
          		updateScroll()
             } else if (commandinput == "clear") {
