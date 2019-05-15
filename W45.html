@@ -2,6 +2,7 @@
 
 
 
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -147,7 +148,7 @@ h2 {
    <ul class="menu"></ul>
 </div>
 <div class="commanddiv" id="commands">
-   <h1 class="usersub">Connecting to SaER servers...<br>Connected using username, "JohnH"<br>>Waiting Command...</p><br>
+   <h1 class="usersub">Connecting to SaER servers...<br>Connected using username, 'JohnH'<br>>Waiting Command...</p><br>
 </div>
 <div id="footer">
   <p id="arrow">></p>
@@ -193,7 +194,9 @@ document.getElementById("input").onkeypress = function(event){
          		para.innerHTML = "[" + time + "] < Contact a Network Administrator for help";
          		document.getElementById("commands").appendChild(para);
          		updateScroll()
-            } else if (commandinput == "get currentVersion") {
+            } else if (commandinput == "clear") {
+				document.getElementById("commands").innerHTML = "<b>Connecting to SaER servers...<br>Connected using username, 'JohnH'<br>>Waiting Command...</b><br>";
+            } else  if (commandinput == "get currentVersion") {
          		var para = document.createElement("H1");
          		para.innerHTML = "[" + time + "] < " + currentVersion;
          		document.getElementById("commands").appendChild(para);
@@ -213,6 +216,7 @@ function updateScroll(){
     var element = document.getElementById("commands");
     element.scrollTop = element.scrollHeight;
 }
+
 
 </script>
 </html>
