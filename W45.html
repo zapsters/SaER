@@ -146,7 +146,7 @@ h2 {
    <ul class="menu"></ul>
 </div>
 <div class="commanddiv" id="commands">
-   <p class="usersub">>Test Command</p>
+   <h1 class="usersub">Connecting to SaER servers...<br>Connected using username, "JohnH"<br>>Waiting Command...</p><br>
 </div>
 <div id="footer">
   <p id="arrow">></p>
@@ -155,23 +155,45 @@ h2 {
 </br></br></br>
 </body>
 <script>
+// DEFAULT VARIABLES
+var currentVersion = "Beta: 5-15-19: 0.01"
+
+
+
+
 document.getElementById("input").onkeypress = function(event){
    if (event.keyCode == 13 || event.which == 13){
+//GET CURRENT DATE / TIME (UNFORMATED)
        var today = new Date();
        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+//FORMAT MINUTES & SECONDS
+       var minutes = today.getMinutes();
+       if (minutes >= 0 && minutes < 10) {
+          var minutes = "0" + minutes; 
+       }
+       var seconds = today.getSeconds();
+       if (seconds >= 0 && seconds < 10) {
+          var seconds = "0" + seconds; 
+       }
+//REDEFINE TIME (FORMATTED)
+       var time = today.getHours() + ":" + minutes + ":" + seconds;
        var commandinput = document.getElementById('input').value;
+       
+//Detect if command is blank, if not run command detection--
        if (commandinput != "") {
        		var para = document.createElement("P");
        		para.innerHTML = "[" + time + "] < " + commandinput;
        		document.getElementById("commands").appendChild(para);
        		updateScroll()
        		document.getElementById("input").value="";
+//Run if Commandinput == command--
        		if (commandinput == "help") {
          		var para = document.createElement("H1");
-         		para.innerHTML = "[" + time + "] < I wish I could help you...";
+         		para.innerHTML = "[" + time + "] < Contact a Network Administrator for help";
          		document.getElementById("commands").appendChild(para);
          		updateScroll()
             } else {
+//Display No Command error
                 var para = document.createElement("H2");
          		para.innerHTML = "[" + time + "] < Error - '" + commandinput + "' is an unknown command.";
          		document.getElementById("commands").appendChild(para);
