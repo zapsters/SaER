@@ -1,13 +1,17 @@
 
 
+
 <!DOCTYPE html>
 <html>
 	<!-- This code was ment to be viewable... Plus, I hate you for doing this -->
 <script>
+var version = "1.0.0a";
 var statePass = 0;
 var stateSecret = 0;
+
 function handle(e){
 	if(e.keyCode === 13){
+    document.getElementById("version").innerHTML="version " + version;
     document.getElementById("inputPass").value="";
 		if(document.getElementById('input').value == "Help") {
         	document.getElementById("sub2b").innerHTML="Wish I could help you";
@@ -69,19 +73,27 @@ function handle2(e){
         
     }
 }
+
 </script>
 <head>
 <link rel="shortcut icon" type="image/png" href="https://zapstergames.github.io/Home/images/ZapsterGames.png"/>
 <style>
 html, body {margin: 0; height: 100%; overflow: hidden}
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300);
-@import url(https://fonts.googleapis.com/css?family=Squada+One);
+
+@font-face {
+    font-family: 'bauhausc_demi';
+    src: url('https://zapstergames.github.io/Home/fonts/bauhausc_demibold_regular-webfont.woff2') format('woff2'),
+         url('https://zapstergames.github.io/Home/fonts/bauhausc_demibold_regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 map {
   display: block;
   cursor: pointer;
 }
 #sub {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'bauhausc_demi';
   color: #999;
   text-decoration: none;
   text-transform: uppercase;
@@ -92,21 +104,34 @@ map {
   text-shadow: #555 3px 2px 0;
   position: relative;
 }
-.sub {
-font-family: 'Open Sans', sans-serif;
+#version {
+font-family: 'bauhausc_demi';
   text-decoration: none;
   text-transform: uppercase;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 3px;
-  line-height: 1;
+  line-height: 0;
+  text-shadow: #000000 3px 2px 0;
+  color: #999;
+  position: relative;
+  bottom: 25px;
+}
+.sub {
+font-family: 'bauhausc_demi';
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  line-height: 0;
   text-shadow: #000000 3px 2px 0;
   color: #fff;
   position: relative;
-  bottom: 5px;
+  bottom: -5px;
 }
 #sub2 { 
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'bauhausc_demi';
   text-decoration: none;
   text-transform: uppercase;
   font-size: 15px;
@@ -116,10 +141,10 @@ font-family: 'Open Sans', sans-serif;
   text-shadow: #000000 3px 2px 0;
   color: #fff;
   position: relative;
-  bottom: 5px;
+  bottom: -5px;
 }
 #sub2v2 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'bauhausc_demi';
   text-decoration: none;
   text-transform: uppercase;
   font-size: 15px;
@@ -132,7 +157,7 @@ font-family: 'Open Sans', sans-serif;
   bottom: 5px;
 }
 #sub2b {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'bauhausc_demi';
   color: #777;
   text-decoration: none;
   text-transform: uppercase;
@@ -145,7 +170,7 @@ font-family: 'Open Sans', sans-serif;
   bottom: 5px;
 }
 #sub2c { 
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'bauhausc_demi';
   color: #777;
   text-decoration: none;
   text-transform: uppercase;
@@ -158,7 +183,7 @@ font-family: 'Open Sans', sans-serif;
   bottom: 5px;
 }
 .poz{ 
-font-family: 'Open Sans', sans-serif;
+font-family: 'bauhausc_demi';
 text-shadow: #000000 3px 2px 0;
 font-size: 30px;
   position: absolute;
@@ -170,7 +195,7 @@ font-size: 30px;
   border: 3px solid #555;"
 }
 .pozb{
-font-family: 'Open Sans', sans-serif;
+font-family: 'bauhausc_demi';
 text-shadow: #000000 3px 2px 0;
 font-size: 30px;
   background-color: #555;
@@ -182,7 +207,7 @@ font-size: 30px;
 }
 
 .poz2{
-font-family: 'Open Sans', sans-serif;
+font-family: 'bauhausc_demi';
   position: absolute;
   bottom: 35px;
   left: 5px;
@@ -190,7 +215,7 @@ font-family: 'Open Sans', sans-serif;
     width: 100%;
 }
 .poz3{
-font-family: 'Open Sans', sans-serif;
+font-family: 'bauhausc_demi';
 font-size: 30px;
   position: absolute;
   bottom: 150px;
@@ -233,7 +258,7 @@ font-size: 30px;
   background:none;
   border:none;
   color:#FFF;
-  font-family:Verdana, Geneva, sans-serif;
+  font-family:'bauhausc_demi';
 cursor: default
 }
 
@@ -248,7 +273,7 @@ cursor: default
 #mydivheader {
   cursor: move;
   z-index: 10;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'bauhausc_demi';
   color: #888;
   text-decoration: none;
   font-size: 20px;
@@ -260,6 +285,14 @@ cursor: default
   position: relative;
   bottom: 5px;
 }
+#log {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: red;
+  width: 40%;
+  max-width: 500px;
+}
 
 </style>
 	<title>SaER Console</title>
@@ -268,16 +301,16 @@ cursor: default
 <body style="background-color:black;">
 
 <center>
-<p id="sub" ><b>SAER ADMIN CONSOLE</b></p>
+<p id="sub" ><b>SAER ADMIN CONSOLE</b></p><p id="version"></p>
 <div class="container">
-  <button onclick="secretB()" style="display:none" class="btn" id="more" ></button>
+  <button onclick="secretB()" style="display:none" class="btn" id="more"></button>
 </div>
 <img id="logo" src="https://zapstergames.github.io/Home/images/V4ZapsterLogoGlitch.gif" width="400px" id="i1" usemap="#saer" cursor="default;">
 </br></br></br></br></br></br></br></br></br>
 <div class=poz2>
 <p class="sub" id="subtext">(SUB TEXT)</p>
 <p id="sub2" style="font-size:3;">SaER  Copyright  2019</p>
-<p id="sub2v2" style="font-size:3;">SaER logo above, Websites, and other media are owned and claimed by Science and Entity Research /// UPDATE 1/19/19</p>
+<p id="sub2v2" style="font-size:3;">SaER logo above, Websites, and other media are owned and claimed by Science and Entity Research</p>
 </div>
 <div id="mydiv" class=poz3>
 </br></br>
@@ -291,15 +324,17 @@ cursor: default
 <div>
 <input type="text" id="input" autocomplete="off" class="poz" placeholder="Awaiting Command..."onkeypress="handle(event)" spellcheck="false">
 </div>
-
-
+<div id="log">
+<p class="sub">hi</p>
+</div>
 </center>
 </body>
 <script>
 //Make the DIV element draggagle:
 dragElement(document.getElementById("mydiv"));
-
+    
 function dragElement(elmnt) {
+elmnt.style.bottom = "200px";
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   if (document.getElementById(elmnt.id + "header")) {
     /* if present, the header is where you move the DIV from:*/
@@ -308,7 +343,6 @@ function dragElement(elmnt) {
   } else {
     /* otherwise, move the DIV from anywhere inside the DIV:*/
     elmnt.onmousedown = dragMouseDown;
-    ee
   }
 
   function dragMouseDown(e) {
@@ -342,5 +376,6 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   }
 }
+
 </script>
 </html>
