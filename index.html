@@ -1,13 +1,20 @@
 
+
 <!DOCTYPE html>
 <html>
 <script>
-var version = "1.0.0";
+var version = "Beta1.1.0";
 var statePass = 0;
 var stateSecret = 0;
 var commands = "";
 var marissaProg = 0;
 var adminCMD = "0";
+window.setInterval(function(){
+  
+}, 5000);
+function onLoad() {
+  document.getElementById("version").innerHTML="version " + version;
+}
 function handle(e){
     if(adminCMD == 1) {
     	document.getElementById("subtext").innerHTML=".Admin Command Unlocked.";
@@ -74,7 +81,7 @@ function handle(e){
     
     // End of Delievery Function
     
-    document.getElementById("version").innerHTML="version " + version;
+    
     document.getElementById("inputPass").value="";
 //GET CURRENT DATE / TIME (UNFORMATED)
        var today = new Date();
@@ -468,7 +475,7 @@ cursor: default
 	<title>SaER Console</title>
 	<link rel="shortcut icon" type="image/png" href="https://zapstergames.github.io/Home/images/ZapsterGames.png"/>
 </head>
-<body style="background-color:black;">
+<body style="background-color:black;" onload="onLoad()">
 
 <center>
 <p id="sub" ><b>SAER ADMIN CONSOLE</b></p><p id="version"></p>
