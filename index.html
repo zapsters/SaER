@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html>
 <script>
-var version = "Beta1.1.1";
+var version = "Beta1.1.1 Url Test";
 var statePass = 0;
 var stateSecret = 0;
 var commands = "";
 var adminCMD = "0";
 var override = "0";
+// Shhhhh - Get URL Variables
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+var a = getUrlVars()["A"];
+//var a = "W95"
 window.setInterval(function(){
       if(adminCMD == 1 && override == 0) {
     	document.getElementById("subtext").innerHTML="ADMINCMD = TRUE";
@@ -20,6 +30,9 @@ window.setInterval(function(){
 }, 10);
 function onLoad() {
   document.getElementById("version").innerHTML="version " + version;
+  if (a == "W95") {
+  	alert(a);
+  }
 }
 function handle(e){
 	if(e.keyCode === 13){
