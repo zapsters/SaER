@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <script>
-var version = "Beta1.1.2 Admin Test";
+var version = "Beta1.1.3 Admin Test";
 var statePass = 0;
 var stateSecret = 0;
 var commands = "";
@@ -44,7 +44,7 @@ window.setInterval(function(){
 function onLoad() {
   	document.getElementById("version").innerHTML="version " + version;
   	if (typeof a !== 'undefined') {
-    	if (a != "") {
+    	if (a != "" && a != "0") {
   			if (a == "W95") {
   				alert(a + " - Success");
                 reset(0);
