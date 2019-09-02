@@ -16,7 +16,7 @@ function getUrlVars() {
     return vars;
 }
 var a = getUrlVars()["A"];
-//var a = "W95"
+//var a = ""
 window.setInterval(function(){
       if(adminCMD == 1 && override == 0) {
     	document.getElementById("subtext").innerHTML="ADMINCMD = TRUE";
@@ -29,11 +29,18 @@ window.setInterval(function(){
     }
 }, 10);
 function onLoad() {
-  document.getElementById("version").innerHTML="version " + version;
-  if (a == "W95") {
-  	alert(a);
-  }
+  	document.getElementById("version").innerHTML="version " + version;
+  	if (typeof a !== 'undefined') {
+    	if (a != "") {
+  			if (a == "W95") {
+  				alert(a + " - Success");
+    		} else {
+    			alert(a + " - Incorrect");
+    		}
+  		}
+	}
 }
+  
 function handle(e){
 	if(e.keyCode === 13){
     //FUNCTION DELIEVERY -------------------------------------------------------------------------------------------------------------XXXX
