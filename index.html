@@ -1,44 +1,33 @@
-
-
-
 <!DOCTYPE html>
 <html>
 <script>
-var version = "Beta1.1.0";
+var version = "Beta1.1.1";
 var statePass = 0;
 var stateSecret = 0;
 var commands = "";
-var marissaProg = 0;
-var adminCMD = "0";
-var locked = 0;
-//Run every second
-
-// Runs AFTER HTML Load - Fixes Most Javascript Bugs That Interact With HTML / TEXT
+var adminCMD = "1";
+var override = "0";
+window.setInterval(function(){
+      if(adminCMD == 1 && override == 0) {
+    	document.getElementById("subtext").innerHTML="ADMINCMD = TRUE";
+    } else if(override == 1 && adminCMD == 0) {
+    	document.getElementById("subtext").innerHTML="override = TRUE";
+    } else if(override == 1 && adminCMD == 1) {
+    	document.getElementById("subtext").innerHTML="OVERRIDE = TRUE /// ADMINCMD = TRUE";
+    } else {
+    	document.getElementById("subtext").innerHTML="";
+    }
+}, 10);
 function onLoad() {
   document.getElementById("version").innerHTML="version " + version;
 }
 function handle(e){
-
-    if(adminCMD == 1) {
-    	document.getElementById("subtext").innerHTML=".Admin Command Unlocked.";
-    } else {
-    	document.getElementById("subtext").innerHTML="";
-    }
 	if(e.keyCode === 13){
-    //FUNCTION DELIEVERY - - - - - - - - - - - - - - - - - - -
+    //FUNCTION DELIEVERY -------------------------------------------------------------------------------------------------------------XXXX
     function delivery(a){
-    	if(a == 1) {
-        //If a == 1 (Valid Command)
-            var para = document.createElement("P");
-       		para.innerHTML = "[" + time + "] > " + commandinput;
-       		document.getElementById("log").appendChild(para);
-       		var element = document.getElementById("log");
-    element.scrollTop = element.scrollHeight;
-       		document.getElementById("input").value="";
-        } else if (a == 0) {
+    	if (a == 0) { //If a == 0 (Invalid/Unkown command)
             if(commandinput == "" || commandinput == " ") {
             } else {
-        //If a == 0 (Invalid/Unkown command)
             	var para = document.createElement("P");
        			para.innerHTML = "[" + time + "] > '" + commandinput + "' is an unkown command.";
        			document.getElementById("log").appendChild(para);
@@ -46,33 +35,42 @@ function handle(e){
     element.scrollTop = element.scrollHeight;
        			document.getElementById("input").value="";
             }
-        } else if (a == 2) {
-        //If a == 2 (Run ####.exe function)
-        		if (statePass == 0) {
-            	var para = document.createElement("P");
-       			para.innerHTML = "[" + time + "] > 'Admin.PasswordTest's file is password protected. Security Level 0";
-       			document.getElementById("log").appendChild(para);
-       			var element = document.getElementById("log");
+        } else if(a == 1) { //If a == 1 (Valid Command)
+            var para = document.createElement("P");
+       		para.innerHTML = "[" + time + "] > " + commandinput;
+       		document.getElementById("log").appendChild(para);
+       		var element = document.getElementById("log");
     element.scrollTop = element.scrollHeight;
-       			document.getElementById("input").value="";
-        		} else if (statePass == 1) {
-            	var para = document.createElement("P");
-       			para.innerHTML = "[" + time + "] > 'Marissa's file is password protected. Security Level 4";
-       			document.getElementById("log").appendChild(para);
-       			var element = document.getElementById("log");
-    element.scrollTop = element.scrollHeight;
-       			document.getElementById("input").value="";
-        		}
-        } else if (a == 3) {
-           //If a == 3 (Valid Command - With NO RESPONCE)
        		document.getElementById("input").value="";
+        } else if (a == 2) { //If a == 2 (Run ####.exe function)
+        		if (statePass == 0) {
+            		var para = document.createElement("P");
+       				para.innerHTML = "[" + time + "] > 'Admin.PasswordTest's file is password protected. Security Level 0";
+       				document.getElementById("log").appendChild(para);
+       				var element = document.getElementById("log");
+    				element.scrollTop = element.scrollHeight;
+       				document.getElementById("input").value="";
+        		} else if (statePass == 1) {
+            		var para = document.createElement("P");
+       				para.innerHTML = "[" + time + "] > 'Marissa's file is password protected. Security Level 4";
+       				document.getElementById("log").appendChild(para);
+       				var element = document.getElementById("log");
+    				element.scrollTop = element.scrollHeight;
+       				document.getElementById("input").value="";
+        		} else {
+                  var para = document.createElement("P");
+       				para.innerHTML = "[" + time + "] > 'Server Error, Unkown Context";
+       				document.getElementById("log").appendChild(para);
+       				var element = document.getElementById("log");
+    				element.scrollTop = element.scrollHeight;
+       				document.getElementById("input").value="";
+                }
+        } else if (a == 3) { // a ==3 (No Responce)
+           document.getElementById("input").value="";
         }
 	}
     
-    // End of Delievery Function
-    
-    
-    document.getElementById("inputPass").value="";
+    // End of Delievery Function -------------------------------------------------------------------------------------------------------------XXXX
 //GET CURRENT DATE / TIME (UNFORMATED)
        var today = new Date();
        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
@@ -89,58 +87,95 @@ function handle(e){
        var time = today.getHours() + ":" + minutes + ":" + seconds;
        var commandinput = document.getElementById('input').value;
         
-// Commands
-
+			
+//COMMAND LOGIC -------------------------------------------------------------------------------------------------------------XXXX
 		if(document.getElementById('input').value == "Help") {
         	document.getElementById("sub2b").innerHTML="Wish I could help you";
             document.getElementById("sub2c").innerHTML="";
             document.getElementById("input").value="";
-            
             delivery(1);
-        } else if(document.getElementById('input').value == "Clear" || document.getElementById('input').value == "clear") {
+        } else if(document.getElementById('input').value == "var override = 1") {
+			override = 1;
+        } else if(document.getElementById('input').value == "var adminCMD = 1") {
+			adminCMD = 1;
+        } else if(document.getElementById('input').value == "var override = 0") {
+			override = 0;
+        } else if(document.getElementById('input').value == "var adminCMD = 0") {
+			adminCMD = 0;
+        } else if(document.getElementById('input').value == "Clear") {
         	document.getElementById("log").innerHTML = "";
-            delivery(3);
+            delivery(1);
         } else if(document.getElementById('input').value == "Run Marissa.exe") {
         	document.getElementById("sub2b").innerHTML="Insufficient Access to Marissa.exe";
-            document.getElementById("sub2c").innerHTML="Enter your code."; 
+            document.getElementById("sub2c").innerHTML="Please Enter Your Node Url Modem Bandwidth Email Router"; 
             document.getElementById("input").value="";
 			document.getElementById("temp123").style.display='block';
             statePass = 1;
             delivery(2);
-        } 
+        } else {
+            document.getElementById("sub2b").innerHTML="-NO-";
+            document.getElementById("sub2c").innerHTML="-RESPONSE-";
+            document.getElementById("input").value="";
+        	document.getElementById("temp123").style.display='none';
+            document.getElementById("inputPass").value="";
+            statePass = 0;
+            marissaProg = 0;
+            delivery(0);
+        }
         document.getElementById("mydivheader").innerHTML="━━━━━━━━";
 	}
 }
+//RESET FUNCTIONS -------------------------------------------------------------------------------------------------------------XXXX
+function reset(s){
+	if(s == 0){ // S == 0 - Hard Reset - Leaves nothing in its tracks
+		document.getElementById("inputPass").style.visibility = "hidden";
+      		document.getElementById("log").style.visibility = "hidden";
+	      	document.getElementById("input").style.visibility = "hidden";
+	      	document.getElementById("temp123").style.visibility = "hidden";
+	      	document.getElementById("mydivheader").style.visibility = "hidden";
+	      	document.getElementById("sub").style.visibility = "hidden";
+	      	document.getElementById("version").style.visibility = "hidden";
+	      	document.getElementById("sub2").style.visibility = "hidden";
+	      	document.getElementById("sub2v2").style.visibility = "hidden";
+	     	document.getElementById("subtext").style.visibility = "hidden";	
+		document.getElementById("logo").style.visibility = "hidden";	
+		document.getElementById("sub2b").style.visibility = "hidden";	
+		document.getElementById("sub2c").style.visibility = "hidden";	
+	} else if(s == 1){ // S == 1 - Medium Reset - Changes Logo to Red and Leaves responce visible - Used in Marissa.exe 
+		document.getElementById("inputPass").style.visibility = "hidden";
+      		document.getElementById("log").style.visibility = "hidden";
+	      	document.getElementById("input").style.visibility = "hidden";
+	      	document.getElementById("temp123").style.visibility = "hidden";
+	      	document.getElementById("mydivheader").style.visibility = "hidden";
+	      	document.getElementById("sub").style.visibility = "hidden";
+	      	document.getElementById("version").style.visibility = "hidden";
+	      	document.getElementById("sub2").style.visibility = "hidden";
+	      	document.getElementById("sub2v2").style.visibility = "hidden";
+	     	document.getElementById("subtext").style.visibility = "hidden";
+	     	document.getElementById("logo").width = "700";
+	    	document.getElementById("logo").height = "700";
+	        document.getElementById("logo").src = "https://zapstergames.github.io/Home/images/V4ZapsterLogoRedStill.png";
+	}
+}
+//RUN SUB COMMANDS  -------------------------------------------------------------------------------------------------------------XXXX
 function handle2(e){
-//Locked Function
-	function locked(s){
-  		if(s == 1) {
-   	   		document.getElementById("inputPass").style.visibility = "hidden";
-            document.getElementById("log").style.visibility = "hidden";
-            document.getElementById("input").style.visibility = "hidden";
-            document.getElementById("temp123").style.visibility = "hidden";
-            document.getElementById("mydivheader").style.visibility = "hidden";
-            document.getElementById("sub").style.visibility = "hidden";
-            document.getElementById("version").style.visibility = "hidden";
-            document.getElementById("sub2").style.visibility = "hidden";
-            document.getElementById("sub2v2").style.visibility = "hidden";
-            document.getElementById("logo").width = "600";
-            document.getElementById("logo").height = "600";
-            document.getElementById("logo").src = "https://zapstergames.github.io/Home/images/V4ZapsterLogoRedStill.png";
-    	} else {
-			alert("You seemed to have found a bug.")
-		}
-  	}
 	if(e.keyCode == 13){
-    	if(statePass == 1 && document.getElementById('inputPass').value == "") {
-            document.getElementById("sub2b").innerHTML="Greetings";
-            document.getElementById("sub2c").innerHTML="a=W95";
+    	if(statePass == 1 && document.getElementById('inputPass').value == "(317) 775-3124" || override == 1) {
+            document.getElementById("sub2b").innerHTML="URL";
+            document.getElementById("sub2c").innerHTML="A=W95";
             document.getElementById("input").value="";
         	document.getElementById("temp123").style.display='block';
             marissaProg = 2;
-            locked(1);
-        } 
-        
+            reset(1);
+        } else {
+        document.getElementById("sub2b").innerHTML="-Insufficient Permissions to SaER Servers-";
+            document.getElementById("sub2c").innerHTML="-Activating Memetic Kill Agent-";
+            document.getElementById("input").value="";
+            document.getElementById("inputPass").value="";
+        	document.getElementById("temp123").style.display='none';
+            statePass = 0;
+            marissaProg = 0;
+        }
     }
 }
 </script>
@@ -148,8 +183,6 @@ function handle2(e){
 <link rel="shortcut icon" type="image/png" href="https://zapstergames.github.io/Home/images/ZapsterGames.png"/>
 <style>
 html, body {margin: 0; height: 100%;}
-
-
 @font-face {
     font-family: 'bauhausc_demi';
     src: url('https://zapstergames.github.io/Home/fonts/bauhausc_demibold_regular-webfont.woff2') format('woff2'),
@@ -282,7 +315,6 @@ font-size: 30px;
     width: 15%;
   border: 3px solid #555;"
 }
-
 .poz2{
 font-family: 'bauhausc_demi';
   position: absolute;
@@ -338,7 +370,6 @@ font-size: 30px;
   font-family:'bauhausc_demi';
 cursor: default
 }
-
 #mydiv {
   position: absolute;
   z-index: 9;
@@ -346,7 +377,6 @@ cursor: default
   text-align: center;
   border: 1px solid transparent;
 }
-
 #mydivheader {
   cursor: move;
   z-index: 1;
@@ -380,7 +410,6 @@ cursor: default
   overflow: scroll;
   z-index: 9;
 }
-
 </style>
 	<title>SaER Console</title>
 	<link rel="shortcut icon" type="image/png" href="https://zapstergames.github.io/Home/images/ZapsterGames.png"/>
@@ -390,8 +419,9 @@ cursor: default
 <center>
 <p id="sub" ><b>SAER ADMIN CONSOLE</b></p><p id="version"></p>
 <div class="container">
+  <button onclick="secretB()" style="display:none" class="btn" id="more"></button>
 </div>
-<img id="logo" src="https://zapstergames.github.io/Home/images/V4ZapsterLogoGlitch.gif" width="400px" height="400px" id="i1" usemap="#saer" cursor="default;">
+<img id="logo" src="https://zapstergames.github.io/Home/images/V4ZapsterLogoGlitch.gif" width="400px" id="i1" usemap="#saer" cursor="default;">
 </br></br></br></br></br></br></br></br></br>
 <div class=poz2>
 <p class="sub" id="subtext"></p>
@@ -416,7 +446,6 @@ cursor: default
 
 </body>
 <script>
-
 //Make the DIV element draggagle:
 dragElement(document.getElementById("mydiv"));
     
@@ -431,7 +460,6 @@ elmnt.style.bottom = "200px";
     /* otherwise, move the DIV from anywhere inside the DIV:*/
     elmnt.onmousedown = dragMouseDown;
   }
-
   function dragMouseDown(e) {
     e = e || window.event;
     e.preventDefault();
@@ -442,7 +470,6 @@ elmnt.style.bottom = "200px";
     // call a function whenever the cursor moves:
     document.onmousemove = elementDrag;
   }
-
   function elementDrag(e) {
   document.getElementById("mydivheader").innerHTML="━━━━━━━━";
     e = e || window.event;
@@ -456,14 +483,11 @@ elmnt.style.bottom = "200px";
     elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
     elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
   }
-
   function closeDragElement() {
     /* stop moving when mouse button is released:*/
     document.onmouseup = null;
     document.onmousemove = null;
   }
 }
-
-
 </script>
 </html>
