@@ -20,8 +20,8 @@ if (a == "0"){
 	var a = getUrlVars()["A"];
 }
 
-var adminCMD = getUrlVars()["B"];
-var override = getUrlVars()["C"];
+var adminCMD = getUrlVars()["admin"];
+var override = getUrlVars()["op"];
 if (typeof adminCMD == 'undefined') {
 	var adminCMD = "0";
 }
