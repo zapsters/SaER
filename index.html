@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <script>
-var version = "Beta1.1.1 Url Test";
+var version = "Beta1.1.2 Admin Test";
 var statePass = 0;
 var stateSecret = 0;
 var commands = "";
 var adminCMD = "0";
 var override = "0";
+var a = "0";
 // Shhhhh - Get URL Variables
 function getUrlVars() {
     var vars = {};
@@ -15,8 +16,20 @@ function getUrlVars() {
     });
     return vars;
 }
-var a = getUrlVars()["A"];
-//var a = ""
+if (a == "0"){
+	var a = getUrlVars()["A"];
+}
+
+var adminCMD = getUrlVars()["B"];
+var override = getUrlVars()["C"];
+if (typeof adminCMD == 'undefined') {
+	var adminCMD = "0";
+}
+if (typeof override == 'undefined') {
+	var override = "0";
+}
+
+
 window.setInterval(function(){
       if(adminCMD == 1 && override == 0) {
     	document.getElementById("subtext").innerHTML="ADMINCMD = TRUE";
@@ -34,13 +47,17 @@ function onLoad() {
     	if (a != "") {
   			if (a == "W95") {
   				alert(a + " - Success");
+                reset(0);
+                w95(1);
     		} else {
     			alert(a + " - Incorrect");
+                reset(0);
+                w95(0);
     		}
   		}
 	}
 }
-  
+
 function handle(e){
 	if(e.keyCode === 13){
     //FUNCTION DELIEVERY -------------------------------------------------------------------------------------------------------------XXXX
@@ -114,14 +131,6 @@ function handle(e){
             document.getElementById("sub2c").innerHTML="";
             document.getElementById("input").value="";
             delivery(1);
-        } else if(document.getElementById('input').value == "var override = 1") {
-			override = 1;
-        } else if(document.getElementById('input').value == "var adminCMD = 1") {
-			adminCMD = 1;
-        } else if(document.getElementById('input').value == "var override = 0") {
-			override = 0;
-        } else if(document.getElementById('input').value == "var adminCMD = 0") {
-			adminCMD = 0;
         } else if(document.getElementById('input').value == "Clear") {
         	document.getElementById("log").innerHTML = "";
             delivery(1);
@@ -146,6 +155,17 @@ function handle(e){
 	}
 }
 //RESET FUNCTIONS -------------------------------------------------------------------------------------------------------------XXXX
+function w95(s){
+	if(s == 0) {
+		document.getElementById("sub2b").style.visibility = "";	
+    } else if (s == 1){
+    	document.getElementById("sub2b").style.visibility = "";	
+        document.getElementById("sub2b").innerHTML = "-YES-";
+        document.getElementById("sub2c").style.visibility = "";	
+        document.getElementById("sub2c").innerHTML = "-Welcome to W95-";
+        
+    }
+}
 function reset(s){
 	if(s == 0){ // S == 0 - Hard Reset - Leaves nothing in its tracks
 		document.getElementById("inputPass").style.visibility = "hidden";
