@@ -66,7 +66,7 @@ function handle(e){
             if(commandinput == "" || commandinput == " ") {
             } else {
             	var para = document.createElement("P");
-       			para.innerHTML = ".   [" + time + "] > '" + commandinput + "' is an unkown command.";
+       			para.innerHTML = "[" + time + "] > '" + commandinput + "' is an unkown command.";
        			document.getElementById("log").appendChild(para);
        			var element = document.getElementById("log");
     element.scrollTop = element.scrollHeight;
