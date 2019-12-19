@@ -45,14 +45,13 @@ function onLoad() {
   	document.getElementById("version").innerHTML="version " + version;
   	if (typeof a !== 'undefined') {
     	if (a != "" && a != "0") {
-  			if (a == "W95") {
-  				alert(a + " - Success");
-                reset(0);
-                w95(1);
+  		if (a == "W95") {
+                	reset(1);
+                	w95(1);
     		} else {
     			alert(a + " - Incorrect");
-                reset(0);
-                w95(0);
+                	reset(0);
+                	w95(0);
     		}
   		}
 	}
@@ -158,13 +157,12 @@ function handle(e){
 function w95(s){
 	if(s == 0) {
 		document.getElementById("sub2b").style.visibility = "";	
-    } else if (s == 1){
-    	document.getElementById("sub2b").style.visibility = "";	
-        document.getElementById("sub2b").innerHTML = "-YES-";
-        document.getElementById("sub2c").style.visibility = "";	
-        document.getElementById("sub2c").innerHTML = "-Welcome to W95-";
-        
-    }
+	} else if (s == 1){
+    		document.getElementById("sub2b").style.visibility = "";	
+        	document.getElementById("sub2b").innerHTML = "-HELLO-";
+        	document.getElementById("sub2c").style.visibility = "";	
+        	document.getElementById("sub2c").innerHTML = "-Welcome to W95-";
+        }
 }
 function reset(s){
 	if(s == 0){ // S == 0 - Hard Reset - Leaves nothing in its tracks
