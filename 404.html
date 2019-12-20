@@ -1,218 +1,486 @@
 
-
-
 <!DOCTYPE html>
 <html>
-<head>
-<link href="https://zapstergames.github.io/Home/fonts/stylesheet.css" rel="stylesheet">
-
-<title>ZapsterGames</title>
-<link rel="shortcut icon" type="image/png" href="https://zapstergames.github.io/Home/images/ZapsterGames.png"/>
-</head>
-<style>
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300);
-@import url(https://fonts.googleapis.com/css?family=Squada+One);
-body {
-  padding: 20px 80px;
-  background-color: #24292E;
-  background: #eee url(https://subtlepatterns.com/patterns/extra_clean_paper.png);
-}
-.sub {
-  font-family: 'bauhausc_demi', sans-serif;
-  color: #000;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 30px;
-  font-weight: 500;
-  letter-spacing: 0px;
-  line-height: 1;
-  position: relative;
-}
-
-.sublink {
-  font-family: 'bauhausc_demi', sans-serif;
-  color: #000;
-  text-decoration: underline;
-  text-transform: uppercase;
-  font-size: 30px;
-  font-weight: 500;
-  letter-spacing: 0px;
-  line-height: 1;
-  position: relative;
-}
-
-
-.subbottom {
-opacity: 0.2;
-  ont-family: 'bauhausc_demi', sans-serif;
-  color: #000;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0px;
-  line-height: 1;
-  text-shadow: #EDEDED 3px 2px 0;
-  position: relative;
-}
-
-#menu {
-  width: 1030px;
-  height: 150px;
-  list-style: none;
-  margin: 10px 0 0 0; padding: 25px 10px;
-  border-top: 4px double #AAA;
-  border-bottom: 4px double #AAA;
-  position: relative;
-  text-align: center;
-}
-#menu li {
-  display: inline-block;
-  width: 213px;
-  margin: 0 10px;
-  position: relative;
-  -webkit-transform: skewy(-3deg);
-  -webkit-backface-visibility: hidden;
-  -webkit-transition: 200ms all;
-}
-#menu li a {
-  text-transform: uppercase;
-  font-family: 'Squada One', cursive;
-  font-weight: 800;
-  display: block;
-  background: #FFF;
-  padding: 2px 10px;
-  color: #000;
-  font-size: 35px;
-  text-align: center;
-  text-decoration: none;
-  position: relative;
-  z-index: 1;
-  text-shadow: 
-		1px 1px 0px #FFF, 
-		2px 2px 0px #999,
-		3px 3px 0px #FFF;
-	background-image: -webkit-linear-gradient(top, transparent 0%, rgba(0,0,0,.05) 100%);
-	-webkit-transition: 1s all;
-	background-image: -webkit-linear-gradient(left top, 
-		transparent 0%, transparent 25%, 
-		rgba(0,0,0,.15) 25%, rgba(0,0,0,.15) 50%, 
-		transparent 50%, transparent 75%, 
-		rgba(0,0,0,.15) 75%);
-  background-size: 4px 4px;
-	box-shadow: 
-		0 0 0 1px rgba(0,0,0,.4) inset, 
-		0 0 20px -5px rgba(0,0,0,.4),
-		0 0 0px 3px #FFF inset;
-}
-#menu li:hover {
-	width: 243px;
-	margin: 0 -5px;
-}
-#menu a:hover {
-  color: #d90075;
-}
-#menu li:after {
-	background-image: -webkit-linear-gradient(left, transparent 0%, rgba(0,0,0,.4) 100%);
-  right: 0;
-  top: -4px; 
-}
-#menu li:before {
-  left: 0;
-  bottom: -4px;
-	background-image: -webkit-linear-gradient(right, transparent 0%, rgba(0,0,0,.4) 100%);
-}
-.slideleft_1 {
-  position: relative;
-  -webkit-animation-name: slideleft; /* Safari 4.0 - 8.0 */
-  -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
-  animation-name: slideleft;
-  animation-duration: 4s;
-}
-@keyframes slideleft {
-  0%   {background-color:red; left:-700px; top:0px;}
-  40% {background-color:red; left:0px; top:0px;}
-}
-.slideright_1 {
-  position: relative;
-  -webkit-animation-name: slideright; /* Safari 4.0 - 8.0 */
-  -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
-  animation-name: slideright;
-  animation-duration: 4s;
-}
-@keyframes slideright {
-  0%   {background-color:red; left:700px; top:0px;}
-  40% {background-color:red; left:0px; top:0px;}
-}
-.slidetop_1 {
-  position: relative;
-  -webkit-animation-name: slidetop; /* Safari 4.0 - 8.0 */
-  -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
-  animation-name: slidetop;
-  animation-duration: 4s;
-}
-@keyframes slidetop {
-  0%   {opacity: 0; left:0px; top:-200px;}
-  20% {opacity: 1; left:0px; top:0px;}
-}
-.slidebottom_1 {
-  position: relative;
-  -webkit-animation-name: slidebottom; /* Safari 4.0 - 8.0 */
-  -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
-  animation-name: slidebottom;
-  animation-duration: 4s;
-  
-}
-@keyframes slidebottom {
-  0%   {left:0px; top:1500px;}
-  70% {left:0px; top:0px;}
-}
-.slideimage_1 {
-  position: relative;
-  -webkit-animation-name: slideimage; /* Safari 4.0 - 8.0 */
-  -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
-  animation-name: slideimage;
-  animation-duration: 4s;
-  
-}
-@keyframes slideimage {
-  0%   {left:0px; top:-450px;}
-  20% {left:0px; top:0px;}
-}
-.bannerlogo {
-   width: 80%;
-}
-</style>
-<body>
-<center>
-<div id="header">
-  <img class="bannerlogo" id="logo" src="https://zapstergames.github.io/Home/images/ZapsterGames_Logo_Banner_Neon.png" alt="logo">
-  
-  <ul id="menu">
-
-    <p class="sub slidebottom_1" ><b>ERROR - 404</br>This Page does not Exist or is under maintenance</br><a href="https://zapstergames.github.io/Home/" class="sublink">Return to Home</a></p>
-	<a id="timer" class="sublink slidebottom_1" href="/Timer/RiftS"><p id="timer" class="slidebottom_1"></p></a>
-
-  </ul>
-</div>
-	</br></br></br></br></br></br></br></br></br></br></br></br>
-	<img src="https://zapstergames.github.io/Home/images/V4ZapsterLogoGlitch.gif" width="400px" id="i1" class="slideimage_1">
-        <p class="subbottom">Im too lazy to put an easter egg here. I might add a game here later.</p>
-  </center>
-
 <script>
+var version = "ERROR - 404";
+var versionSUB = "PAGE DOES NOT EXIST";
+function onLoad() {
+  	document.getElementById("version").innerHTML="version " + version;
+	document.getElementById("versionSUB").innerHTML="" + versionSUB;
+}
 
-document.getElementById("logo").onclick = function() {myFunction()};
-var logo = document.getElementById('logo');
-
-function myFunction() {
-  if (logo.src.match("https://zapstergames.github.io/Home/images/ZapsterGames_Logo_Banner_Neon.png")) {
-          logo.src = "https://zapstergames.github.io/Home/images/ZapsterGames_Logo_Banner.png";
-     }
-     else {
-          logo.src = "https://zapstergames.github.io/Home/images/ZapsterGames_Logo_Banner_Neon.png";
-     }
+function handle(e){
+	if(e.keyCode === 13){
+    //FUNCTION DELIEVERY -------------------------------------------------------------------------------------------------------------XXXX
+    function delivery(a){
+    	if (a == 0) { //If a == 0 (Invalid/Unkown command)
+            if(commandinput == "" || commandinput == " ") {
+            } else {
+            	var para = document.createElement("P");
+       			para.innerHTML = "[" + time + "] > Command '" + commandinput + "' could not be ran, as connection to SAER Servers isn't established.";
+       			document.getElementById("log").appendChild(para);
+       			var element = document.getElementById("log");
+    element.scrollTop = element.scrollHeight;
+       			document.getElementById("input").value="";
+            }
+        } else if(a == 1) { //If a == 1 (Valid Command)
+            var para = document.createElement("P");
+       		para.innerHTML = "[" + time + "] > '" + commandinput + "' has been ran.";
+       		document.getElementById("log").appendChild(para);
+       		var element = document.getElementById("log");
+    element.scrollTop = element.scrollHeight;
+       		document.getElementById("input").value="";
+        } else if (a == 2) { //If a == 2 (Run ####.exe function)
+        		if (statePass == 0) {
+            		var para = document.createElement("P");
+       				para.innerHTML = "[" + time + "] > 'Admin.PasswordTest's file is password protected. Security Level 0";
+       				document.getElementById("log").appendChild(para);
+       				var element = document.getElementById("log");
+    				element.scrollTop = element.scrollHeight;
+       				document.getElementById("input").value="";
+        		} else if (statePass == 1) {
+            		var para = document.createElement("P");
+       				para.innerHTML = "[" + time + "] > 'Marissa's file is password protected. Security Level 4";
+       				document.getElementById("log").appendChild(para);
+       				var element = document.getElementById("log");
+    				element.scrollTop = element.scrollHeight;
+       				document.getElementById("input").value="";
+        		} else {
+                  var para = document.createElement("P");
+       				para.innerHTML = "[" + time + "] > 'Server Error, Unkown Context";
+       				document.getElementById("log").appendChild(para);
+       				var element = document.getElementById("log");
+    				element.scrollTop = element.scrollHeight;
+       				document.getElementById("input").value="";
+                }
+        } else if (a == 3) { // a ==3 (No Responce)
+           document.getElementById("input").value="";
+        }
+	}
+    
+    // End of Delievery Function -------------------------------------------------------------------------------------------------------------XXXX
+//GET CURRENT DATE / TIME (UNFORMATED)
+       var today = new Date();
+       var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+//FORMAT MINUTES & SECONDS
+       var minutes = today.getMinutes();
+       if (minutes >= 0 && minutes < 10) {
+          var minutes = "0" + minutes; 
+       }
+       var seconds = today.getSeconds();
+       if (seconds >= 0 && seconds < 10) {
+          var seconds = "0" + seconds; 
+       }
+//REDEFINE TIME (FORMATTED)
+       var time = today.getHours() + ":" + minutes + ":" + seconds;
+       var commandinput = document.getElementById('input').value;
+        
+			
+//COMMAND LOGIC -------------------------------------------------------------------------------------------------------------XXXX
+		if(document.getElementById('input').value == "run Astro.exe") {
+        	document.getElementById("sub2b").innerHTML="SUCCESS.";
+            document.getElementById("sub2c").innerHTML="INTERNAL CONNECTION ESTABLISHED. REDIRECTING YOU TO PRIVATE CONNECTON.";
+            document.getElementById("input").value="";
+            delivery(1);
+        } else {
+            document.getElementById("sub2b").innerHTML="ERROR - NO CONNECTION";
+            document.getElementById("sub2c").innerHTML="PLEASE CONCTACT SAER SOFTWARE MANAGER OR ACTIVE CLASS 2+ I.T. SUPPORT";
+            document.getElementById("input").value="";
+        	document.getElementById("temp123").style.display='none';
+            document.getElementById("inputPass").value="";
+            statePass = 0;
+            marissaProg = 0;
+            delivery(0);
+        }
+        document.getElementById("mydivheader").innerHTML="━━━━━━━━";
+	}
+}
+//RESET FUNCTIONS -------------------------------------------------------------------------------------------------------------XXXX
+function w95(s){
+	if(s == 0) {
+		document.getElementById("sub2b").style.visibility = "";	
+	} else if (s == 1){
+    		document.getElementById("sub2b").style.visibility = "";	
+        	document.getElementById("sub2b").innerHTML = "-HELLO-";
+        	document.getElementById("sub2c").style.visibility = "";	
+        	document.getElementById("sub2c").innerHTML = "-Welcome to W95-";
+        }
+}
+function reset(s){
+	if(s == 0){ // S == 0 - Hard Reset - Leaves nothing in its tracks
+		document.getElementById("inputPass").style.visibility = "hidden";
+      		document.getElementById("log").style.visibility = "hidden";
+	      	document.getElementById("input").style.visibility = "hidden";
+	      	document.getElementById("temp123").style.visibility = "hidden";
+	      	document.getElementById("mydivheader").style.visibility = "hidden";
+	      	document.getElementById("sub").style.visibility = "hidden";
+	      	document.getElementById("version").style.visibility = "hidden";
+	      	document.getElementById("sub2").style.visibility = "hidden";
+	      	document.getElementById("sub2v2").style.visibility = "hidden";
+	     	document.getElementById("subtext").style.visibility = "hidden";	
+		document.getElementById("logo").style.visibility = "hidden";	
+		document.getElementById("sub2b").style.visibility = "hidden";	
+		document.getElementById("sub2c").style.visibility = "hidden";	
+	} else if(s == 1){ // S == 1 - Medium Reset - Changes Logo to Red and Leaves responce visible - Used in Marissa.exe 
+		document.getElementById("inputPass").style.visibility = "hidden";
+      		document.getElementById("log").style.visibility = "hidden";
+	      	document.getElementById("input").style.visibility = "hidden";
+	      	document.getElementById("temp123").style.visibility = "hidden";
+	      	document.getElementById("mydivheader").style.visibility = "hidden";
+	      	document.getElementById("sub").style.visibility = "hidden";
+	      	document.getElementById("version").style.visibility = "hidden";
+	      	document.getElementById("sub2").style.visibility = "hidden";
+	      	document.getElementById("sub2v2").style.visibility = "hidden";
+	     	document.getElementById("subtext").style.visibility = "hidden";
+	     	document.getElementById("logo").width = "700";
+	    	document.getElementById("logo").height = "700";
+	        document.getElementById("logo").src = "https://zapstergames.github.io/Home/images/V4ZapsterLogoRedStill.png";
+	}
+}
+//RUN SUB COMMANDS  -------------------------------------------------------------------------------------------------------------XXXX
+function handle2(e){
+	if(e.keyCode == 13){
+    	if(statePass == 1 && document.getElementById('inputPass').value == "624" || override == 1) {
+            document.getElementById("sub2b").innerHTML="URL";
+            document.getElementById("sub2c").innerHTML="?A=W95";
+            document.getElementById("input").value="";
+        	document.getElementById("temp123").style.display='block';
+            marissaProg = 2;
+            reset(1);
+        } else {
+        document.getElementById("sub2b").innerHTML="-Insufficient Permissions to SaER Servers-";
+            document.getElementById("sub2c").innerHTML="-Activating Memetic Kill Agent-";
+            document.getElementById("input").value="";
+            document.getElementById("inputPass").value="";
+        	document.getElementById("temp123").style.display='none';
+            statePass = 0;
+            marissaProg = 0;
+        }
+    }
 }
 </script>
+<head>
+<link rel="shortcut icon" type="image/png" href="https://zapstergames.github.io/Home/images/ZapsterGames.png"/>
+<style>
+html, body {margin: 0; height: 100%;}
+@font-face {
+    font-family: 'bauhausc_demi';
+    src: url('https://zapstergames.github.io/Home/fonts/bauhausc_demibold_regular-webfont.woff2') format('woff2'),
+         url('https://zapstergames.github.io/Home/fonts/bauhausc_demibold_regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+html, body {
+    max-width: 100%;
+    overflow: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+map {
+  display: block;
+  cursor: pointer;
+}
+#sub {
+  font-family: 'bauhausc_demi';
+  color: #999;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: -1px;
+  line-height: 1;
+  text-shadow: #555 3px 2px 0;
+  position: relative;
+}
+#version {
+font-family: 'bauhausc_demi';
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  line-height: 0;
+  text-shadow: #000000 3px 2px 0;
+  color: #999;
+  position: relative;
+  bottom: 25px;
+}
+#versionSUB {
+font-family: 'bauhausc_demi';
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  line-height: 0;
+  text-shadow: #000000 3px 2px 0;
+  color: #999;
+  position: relative;
+  bottom: 25px;
+}
+.sub {
+font-family: 'bauhausc_demi';
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  line-height: 0;
+  text-shadow: #000000 3px 2px 0;
+  color: #fff;
+  position: relative;
+  bottom: -5px;
+}
+#sub2 { 
+  font-family: 'bauhausc_demi';
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  line-height: 1;
+  text-shadow: #000000 3px 2px 0;
+  color: #fff;
+  position: relative;
+  bottom: -5px;
+}
+#sub2v2 {
+  font-family: 'bauhausc_demi';
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  line-height: 1;
+  text-shadow: #000000 3px 2px 0;
+  color: #fff;
+  position: relative;
+  bottom: 5px;
+}
+#sub2b {
+  font-family: 'bauhausc_demi';
+  color: #777;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  line-height: 1;
+  text-shadow: #000000 3px 2px 0;
+  position: relative;
+  bottom: 5px;
+}
+#sub2c { 
+  font-family: 'bauhausc_demi';
+  color: #777;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  line-height: 1;
+  text-shadow: #000000 3px 2px 0;
+  position: relative;
+  bottom: 5px;
+}
+.poz{ 
+font-family: 'bauhausc_demi';
+text-shadow: #000000 3px 2px 0;
+font-size: 30px;
+  position: absolute;
+  background-color: #555;
+  bottom: 5px;
+  left: 5px;
+  color: white;
+    width: 100%;
+  border: 3px solid #555;"
+}
+.pozb{
+font-family: 'bauhausc_demi';
+text-shadow: #000000 3px 2px 0;
+font-size: 30px;
+  background-color: #555;
+  bottom: -40px;
+    z-index: 5;
+  color: white;
+    width: 15%;
+  border: 3px solid #555;"
+}
+.poz2{
+font-family: 'bauhausc_demi';
+  position: absolute;
+  bottom: 35px;
+  left: 5px;
+  color: white;
+    width: 100%;
+}
+.poz3{
+font-family: 'bauhausc_demi';
+font-size: 30px;
+  position: absolute;
+  bottom: 150px;
+  left: 5px;
+    z-index: 9;
+  color: white;
+    width: 100%;
+}
+.temp123{
+  text-align:center;
+  
+  font-size: 30px;
+    text-shadow: #000000 3px 2px 0;
+}
+.temp123 > input{
+  text-align:left;
+  width: 50%;
+}
+.container .btn {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  transform: translate(-50%, 30%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #fff;
+  color: #fff;
+  font-size: 5px;
+  padding: 5px 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+#more {
+  background:none;
+  border:none;
+  color:#FFF;
+  font-family:'bauhausc_demi';
+cursor: default
+}
+#mydiv {
+  position: absolute;
+  z-index: 9;
+  background-color: transparent;
+  text-align: center;
+  border: 1px solid transparent;
+}
+#mydivheader {
+  cursor: move;
+  z-index: 1;
+  font-family: 'bauhausc_demi';
+  color: #888;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  line-height: 1;
+  text-shadow: #000000 3px 2px 0;
+  color: #888;
+  position: relative;
+  bottom: 5px;
+}
+#log {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 500px;
+  max-width: 500px;
+  color-background: red;
+  letter-spacing: 0px;
+  font-family: 'bauhausc_demi';
+  text-shadow: #000000 5px 3px 0;
+  font-size: 16px;
+  margin: 0px 0 0 0; 
+  padding: 0px 0px;
+  color: #ffffff;
+  height: 55%;
+  overflow: scroll;
+  z-index: 9;
+}
+</style>
+	<title>SaER Console</title>
+	<link rel="shortcut icon" type="image/png" href="https://zapstergames.github.io/Home/images/ZapsterGames.png"/>
+</head>
+<body style="background-color:black;" onload="onLoad()">
+
+<center>
+<p id="sub" ><b>SAER ADMIN CONSOLE</b></p><p id="version"></p><p id="versionSUB"></p>
+<div class="container">
+  <button onclick="secretB()" style="display:none" class="btn" id="more"></button>
+</div>
+<img id="logo" src="https://zapstergames.github.io/Home/images/V4ZapsterLogoGlitch.gif" width="400px" id="i1" usemap="#saer" cursor="default;">
+</br></br></br></br></br></br></br></br></br>
+<div class=poz2>
+<p class="sub" id="subtext"></p>
+<p id="sub2" style="font-size:3;">SaER  Copyright  2019</p>
+<p id="sub2v2" style="font-size:3;">SaER logo above, Websites, and other media are owned and claimed by Science and Entity Research</p>
+</div>
+<div id="mydiv" class=poz3>
+</br></br>
+<div id="mydivheader">━━━━━━━━</div>
+<p id="sub2b" style="font-size:20;">-NO-</p>
+<p id="sub2c" style="font-size:20;">-RESPONSE-</p>
+<div class="temp123" id="temp123" style="display:none" autocomplete="off" spellcheck="false">
+<input type="text" id="inputPass" class="pozb" onkeypress="handle2(event)" autocomplete="off" spellcheck="false" placeholder="">
+</div>
+</div>
+<div>
+<input type="text" id="input" autocomplete="off" class="poz" placeholder="Awaiting Command..."onkeypress="handle(event)" spellcheck="false">
+</div>
+</center>
+<div id="log">
+</div>
+
 </body>
+<script>
+//Make the DIV element draggagle:
+dragElement(document.getElementById("mydiv"));
+    
+function dragElement(elmnt) {
+elmnt.style.bottom = "100px";
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+    
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+  function elementDrag(e) {
+  document.getElementById("mydivheader").innerHTML="━━━━━━━━";
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+</script>
 </html>
