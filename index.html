@@ -2,6 +2,7 @@
 <html>
 <script>
 var version = "Beta0.1.1 DEVELOPMENT";
+var versionSUB = "Beta0.1.1 DEVELOPMENT";
 var statePass = 0;
 var stateSecret = 0;
 var commands = "";
@@ -43,6 +44,7 @@ window.setInterval(function(){
 }, 10);
 function onLoad() {
   	document.getElementById("version").innerHTML="version " + version;
+	document.getElementById("versionSUB").innerHTML="" + versionSUB;
   	if (typeof a !== 'undefined') {
     	if (a != "" && a != "0") {
   		if (a == "W95") {
@@ -265,6 +267,19 @@ font-family: 'bauhausc_demi';
   position: relative;
   bottom: 25px;
 }
+#versionSUB {
+font-family: 'bauhausc_demi';
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  line-height: 0;
+  text-shadow: #000000 3px 2px 0;
+  color: #999;
+  position: relative;
+  bottom: 25px;
+}
 .sub {
 font-family: 'bauhausc_demi';
   text-decoration: none;
@@ -455,7 +470,7 @@ cursor: default
 <body style="background-color:black;" onload="onLoad()">
 
 <center>
-<p id="sub" ><b>SAER ADMIN CONSOLE</b></p><p id="version"></p>
+<p id="sub" ><b>SAER ADMIN CONSOLE</b></p><p id="version"></p><p id="versionSUB"></p>
 <div class="container">
   <button onclick="secretB()" style="display:none" class="btn" id="more"></button>
 </div>
