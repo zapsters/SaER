@@ -418,7 +418,7 @@ cursor: default
 #mydivheader {
   cursor: move;
   z-index: 1;
-    font-family: 'bauhausc_demi';
+  font-family: 'bauhausc_demi';
   color: #888;
   text-decoration: none;
   font-size: 20px;
@@ -427,8 +427,8 @@ cursor: default
   line-height: 1;
   text-shadow: #000000 3px 2px 0;
   color: #888;
-  position: absolute;
-  bottom: 50px;
+  position: relative;
+  bottom: 5px;
 }
 #log {
   position: absolute;
@@ -467,7 +467,7 @@ cursor: default
 <p id="sub2v2" style="font-size:3;">SaER logo above, Websites, and other media are owned and claimed by Science and Entity Research</p>
 </div>
 <div id="mydiv" class=poz3>
-</br></br></br></br></br></br>
+</br></br>
 <div id="mydivheader">*Click and Hold to drag*</div>
 <p id="sub2b" style="font-size:20;">-NO-</p>
 <p id="sub2c" style="font-size:20;">-RESPONSE-</p>
@@ -488,7 +488,7 @@ cursor: default
 dragElement(document.getElementById("mydiv"));
     
 function dragElement(elmnt) {
-elmnt.style.bottom = "200px";
+elmnt.style.bottom = "50px";
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   if (document.getElementById(elmnt.id + "header")) {
     /* if present, the header is where you move the DIV from:*/
