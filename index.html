@@ -10,7 +10,7 @@ var commands = "";
 var adminCMD = "0";
 var override = "0";
 var style = "0";
-var dev = "0";
+var dev = "1";
 var a = "0";
 var active_modify = "";
 // Shhhhh - Get URL Variables
@@ -41,6 +41,9 @@ if (typeof style == 'undefined') {
 if (typeof dev == 'undefined') {
 	var dev = "0";
 }
+
+
+//var dev = "1";
 if (dev == "1") {
 	alert("You are entered into DEVELOPER MODE. This will ruin lore. If you would like to leave dev mode, go back to the home page and press the 'SAER' button.")
 }
@@ -191,25 +194,25 @@ function handle(e){
 			document.getElementById("temp123").style.display='block';
             statePass = 0;
             delivery(2);
-        } else if(commandinput == "VAR ADMINCMD = TRUE") {
+        } else if(commandinput == "VAR ADMINCMD = TRUE" && dev == "1") {
         	document.getElementById("sub2b").innerHTML="Admin Level Verified";
             document.getElementById("sub2c").innerHTML=" "; 
             document.getElementById("input").value="";
             adminCMD = 1;
             delivery(4, "adminCMD = TRUE");
-        } else if(commandinput == "VAR OVERRIDE = TRUE") {
+        } else if(commandinput == "VAR OVERRIDE = TRUE" && dev == "1") {
         	document.getElementById("sub2b").innerHTML="Admin Level Verified";
             document.getElementById("sub2c").innerHTML=" "; 
             document.getElementById("input").value="";
             override = 1;
             delivery(4, "OVERRIDE = TRUE");
-        } else if(commandinput == "VAR ADMINCMD = FALSE") {
+        } else if(commandinput == "VAR ADMINCMD = FALSE" && dev == "1") {
         	document.getElementById("sub2b").innerHTML="Admin Level Verified";
             document.getElementById("sub2c").innerHTML=" "; 
             document.getElementById("input").value="";
             adminCMD = 0;
             delivery(4, "adminCMD = FALSE");
-        } else if(commandinput == "VAR OVERRIDE = FALSE") {
+        } else if(commandinput == "VAR OVERRIDE = FALSE" && dev == "1") {
         	document.getElementById("sub2b").innerHTML="Admin Level Verified";
             document.getElementById("sub2c").innerHTML=" "; 
             document.getElementById("input").value="";
