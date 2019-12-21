@@ -40,8 +40,8 @@ if (a == "0"){
 // Set variables to the URL Version
 var ADMINCMD = getUrlVars()["admin"];
 var OVERRIDE = getUrlVars()["op"];
-var STYLE = getUrlVars()["STYLE"];
-var DEV = getUrlVars()["DEV"];
+var STYLE = getUrlVars()["style"];
+var DEV = getUrlVars()["dev"];
 
 // If there isnt a URL version, set the variable to 0
 if (typeof ADMINCMD == 'undefined') {
@@ -61,7 +61,7 @@ if (typeof DEV == 'undefined') {
 }
 
 //Check if DEVelopermode is on. Alert if so.
-var DEV = "1";
+//var DEV = "1";
 if (DEV == "1") {
 	alert("You are entered into DEVELOPER MODE. This will ruin lore. If you would like to leave DEV mode, go back to the home page and press the 'SAER' button.")
 }
