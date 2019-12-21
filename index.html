@@ -12,11 +12,10 @@ var active_modify = "";
 var commands = "LEVEL 0 COMMANDS<br>VAR (Variable) (True/False) - Change a local veriable.";
 
 //Create Variables
-var Unlocked = ["ADMINCMD", "OVERRIDE", "style", "DEV"];
+var Unlocked = ["ADMINCMD", "OVERRIDE", "DEV"];
 var STATEPASS = "0";
 var ADMINCMD = "0";
 var OVERRIDE = "0";
-var style = "0";
 var DEV = "0";
 var a = "0";
 
@@ -38,8 +37,7 @@ if (a == "0"){
 // Set variables to the URL Version
 var ADMINCMD = getUrlVars()["admin"];
 var OVERRIDE = getUrlVars()["op"];
-var style = getUrlVars()["style"];
-var DEV = getUrlVars()["DEV"];
+var DEV = getUrlVars()["dev"];
 
 // If there isnt a URL version, set the variable to 0
 if (typeof ADMINCMD == 'undefined') {
@@ -48,16 +46,11 @@ if (typeof ADMINCMD == 'undefined') {
 if (typeof OVERRIDE == 'undefined') {
 	var OVERRIDE = "0";
 }
-if (typeof style == 'undefined') {
-	var style = "0";
-} else if (style == "SAVVY") {
-	document.getElementsByTagName("*").innerHTML = "I Love You!";
-}
 if (typeof DEV == 'undefined') {
 	var DEV = "0";
 }
 
-//Check if DEVelopermode is on. Alert if so.
+//Check if Developermode is on. Alert if so.
 //var DEV = "1";
 if (DEV == "1") {
 	alert("You are entered into DEVELOPER MODE. This will ruin lore. If you would like to leave DEV mode, go back to the home page and press the 'SAER' button.")
@@ -250,7 +243,7 @@ function handle(e){
             }
 		} else {
             delivery(0);
-            document.getElementById("sub2b").innerHTML="-NaO-";
+            document.getElementById("sub2b").innerHTML="-NO-";
             document.getElementById("sub2c").innerHTML="-RESPONSE-";
             document.getElementById("input").value="";
         	document.getElementById("temp123").style.display='none';
