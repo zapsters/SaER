@@ -14,8 +14,9 @@ var active_modify = "";
 var commands = "LEVEL 0 COMMANDS<br>VAR (Variable) (True/False) - Change a local veriable.";
 
 //Create Variables
-var STATEPASS = 0;
-var STATESECRET = 0;
+var Unlocked = ["ADMINCMD", "OVERRIDE", "STYLE", "DEV"];
+var STATEPASS = "0";
+var STATESECRET = "0";
 var ADMINCMD = "0";
 var OVERRIDE = "0";
 var STYLE = "0";
@@ -215,30 +216,6 @@ function handle(e){
 			document.getElementById("temp123").STYLE.display='block';
             STATEPASS = 0;
             delivery(2);
-        } else if(commandinput == "VAR ADMINCMD = TRUE" && DEV == "1") {
-        	document.getElementById("sub2b").innerHTML="Admin Level Verified";
-            document.getElementById("sub2c").innerHTML=" "; 
-            document.getElementById("input").value="";
-            ADMINCMD = 1;
-            delivery(4, "ADMINCMD = TRUE");
-        } else if(commandinput == "VAR OVERRIDE = TRUE" && DEV == "1") {
-        	document.getElementById("sub2b").innerHTML="Admin Level Verified";
-            document.getElementById("sub2c").innerHTML=" "; 
-            document.getElementById("input").value="";
-            OVERRIDE = 1;
-            delivery(4, "OVERRIDE = TRUE");
-        } else if(commandinput == "VAR ADMINCMD = FALSE" && DEV == "1") {
-        	document.getElementById("sub2b").innerHTML="Admin Level Verified";
-            document.getElementById("sub2c").innerHTML=" "; 
-            document.getElementById("input").value="";
-            ADMINCMD = 0;
-            delivery(4, "ADMINCMD = FALSE");
-        } else if(commandinput == "VAR OVERRIDE = FALSE" && DEV == "1") {
-        	document.getElementById("sub2b").innerHTML="Admin Level Verified";
-            document.getElementById("sub2c").innerHTML=" "; 
-            document.getElementById("input").value="";
-            OVERRIDE = 0;
-            delivery(4, "OVERRIDE = FALSE");
         } else if(commandinput.startsWith(variable_prefix)) {
             //var onlyvariable = commandinput.replace(variable_prefix, '');
 			var variablearray = commandinput.split(/(\s+)/).filter( function(e) { return e.trim().length > 0; } );
@@ -258,13 +235,19 @@ function handle(e){
                 //alert(window[input_var.toString()]); -> THIS READS THE INPUTED VARIABLE, TURNS THE NAME OF VARIABLE INTO A STRING, AND THEN IT READS THE STRING AND SAYS [HEY! THIS IS THE VARIABLE NAME, NOW READ IT!]. AND I SPENT LIKE 1 HOUR ON ONE LINE OF CODE. THANK GOD IT WORKS.
                 delivery(4, "Variable '" + input_var.toString() + "' is " + window[input_var.toString()] + ".")
             } else if (third_term == "TRUE") {
-            	window[input_var] = true;
-   				//variables[input_var] = true; 
-                //alert(variables[input_var]);
-                delivery(4, "Variable '" + input_var.toString() + "' has been set to " + window[input_var.toString()] + ".")
+            	if(Unlocked.includes(input_var)) {
+					window[input_var] = true;
+                	delivery(4, "Variable '" + input_var.toString() + "' has been set to " + window[input_var.toString()] + ".")
+				} else {
+                	delivery(4, "Variable '" + input_var.toString() + "' can not be changed.")
+                }
             } else if (third_term == "FALSE") {
-            	window[input_var] = false;
-                delivery(4, "Variable '" + input_var.toString() + "' has been set to " + window[input_var.toString()] + ".")
+            	if(Unlocked.includes(input_var)) {
+            		window[input_var] = false;
+                	delivery(4, "Variable '" + input_var.toString() + "' has been set to " + window[input_var.toString()] + ".")
+                } else {
+                	delivery(4, "Variable '" + input_var.toString() + "' can not be changed.")
+                }
             }
 		} else {
             document.getElementById("sub2b").innerHTML="-NO-";
