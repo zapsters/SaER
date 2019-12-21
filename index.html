@@ -166,75 +166,89 @@ function handle(e){
     
     // End of Delievery Function -------------------------------------------------------------------------------------------------------------XXXX
 //GET CURRENT DATE / TIME (UNFORMATED)
-       var today = new Date();
-       var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var today = new Date();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 //FORMAT MINUTES & SECONDS
-       var minutes = today.getMinutes();
-       if (minutes >= 0 && minutes < 10) {
-          var minutes = "0" + minutes; 
-       }
-       var seconds = today.getSeconds();
-       if (seconds >= 0 && seconds < 10) {
-          var seconds = "0" + seconds; 
-       }
+    var minutes = today.getMinutes();
+    if (minutes >= 0 && minutes < 10) {
+       var minutes = "0" + minutes; 
+    }
+    var seconds = today.getSeconds();
+    if (seconds >= 0 && seconds < 10) {
+       var seconds = "0" + seconds; 
+    }
 //REDEFINE TIME (FORMATTED)
-       var time = today.getHours() + ":" + minutes + ":" + seconds;
-       var rawinput = document.getElementById('input').value;
-       var commandinput = rawinput.toUpperCase();
+    var time = today.getHours() + ":" + minutes + ":" + seconds;
+    var rawinput = document.getElementById('input').value;
+    var commandinput = rawinput.toUpperCase();
         
 			
 //COMMAND LOGIC -------------------------------------------------------------------------------------------------------------XXXX
 //OLD METHOD ---  || document.getElementById('input').value == "HELP"
 //NEW METHOD --- ALL INPUT IS CONVERTED TO ALL CAPITALS. THIS MEANS ALL IF REQUESTS MUST BE CAPITOL, OR ELSE THEY DONT WORK!!!!
-		if(commandinput == "HELP") {
-        	document.getElementById("sub2b").innerHTML="Printing Help Receipt";
-            document.getElementById("sub2c").innerHTML="";
-            document.getElementById("input").value="";
-            delivery(4,commands);
-        } else if(commandinput == "INJECT ASTRO.EXE") {
-        	document.getElementById("sub2b").innerHTML="MALAWARE DETECTED IN 'Astro.exe'";
-            document.getElementById("sub2c").innerHTML="Terminating SaER Connection"; 
-            document.getElementById("input").value="";
-			document.getElementById("temp123").style.display='block';
-            STATEPASS = 1;
-            delivery(2);
-        } else if(commandinput == "CLEAR") {
-        	document.getElementById("log").innerHTML = "";
-            delivery(1);
-        } else if(commandinput == "RUN ADMIN.EXE") {
-        	document.getElementById("sub2b").innerHTML="Insufficient Access to Admin.exe";
-            document.getElementById("sub2c").innerHTML="ENTER YOUR CODE"; 
-            document.getElementById("input").value="";
-			document.getElementById("temp123").style.display='block';
-            STATEPASS = 0;
-            delivery(2);
-        } else if(commandinput.startsWith(variable_prefix)) {
-            //var onlyvariable = commandinput.replace(variable_prefix, '');
-			var variablearray = commandinput.split(/(\s+)/).filter( function(e) { return e.trim().length > 0; } );
-			console.log(variablearray); // ["VAR", "(VARIABLE)", "TRUE/FALSE/READ"] 
+	if(commandinput == "HELP") {
+        document.getElementById("sub2b").innerHTML="Printing Help Receipt";
+        document.getElementById("sub2c").innerHTML="";
+        document.getElementById("input").value="";
+        delivery(4,commands);
+    } else if(commandinput == "INJECT ASTRO.EXE") {
+        document.getElementById("sub2b").innerHTML="MALAWARE DETECTED IN 'Astro.exe'";
+        document.getElementById("sub2c").innerHTML="Terminating SaER Connection"; 
+        document.getElementById("input").value="";
+		document.getElementById("temp123").style.display='block';
+        STATEPASS = 1;
+        delivery(2);
+    } else if(commandinput == "CLEAR") {
+      document.getElementById("log").innerHTML = "";
+      delivery(1);
+    } else if(commandinput == "RUN ADMIN.EXE") {
+      document.getElementById("sub2b").innerHTML="Insufficient Access to Admin.exe";
+      document.getElementById("sub2c").innerHTML="ENTER YOUR CODE"; 
+      document.getElementById("input").value="";
+      document.getElementById("temp123").style.display='block';
+      STATEPASS = 0;
+      delivery(2);
+    } else if(commandinput == "RUN MARISSA.EXE") {
+      document.getElementById("sub2b").innerHTML="MARISSA'S FILE IS PASSWORD PROTECTED";
+      document.getElementById("sub2c").innerHTML="ENTER YOUR 3 DIGIT COMBO"; 
+      document.getElementById("input").value="";
+      document.getElementById("temp123").style.display='block';
+      STATEPASS = 1;
+      delivery(2);
+    } else if(commandinput == "RUN SAVANNAH.EXE") {
+      document.getElementById("sub2b").innerHTML="SAVANNAH'S FILE IS PASSWORD PROTECTED";
+      document.getElementById("sub2c").innerHTML="ENTER YOUR DATE"; 
+      document.getElementById("input").value="";
+      document.getElementById("temp123").style.display='block';
+      STATEPASS = 2;
+      delivery(2);
+    } else if(commandinput.startsWith(variable_prefix)) {
+      //var onlyvariable = commandinput.replace(variable_prefix, '');
+      var variablearray = commandinput.split(/(\s+)/).filter( function(e) { return e.trim().length > 0; } );
+      console.log(variablearray); // ["VAR", "(VARIABLE)", "TRUE/FALSE/READ"] 
             
-            //Read the inputed variable
-            var input_var = variablearray[1];
-            //Read the 3rd term - The action to be preformed (True/False/Read)
-            var third_term = variablearray[2];
-            if (typeof input_var == 'undefined') {
-				delivery(4, "Error, blank variable. [VAR (VARIABLE) (TRUE/FALSE/READ)]")
-			} else if (typeof third_term == 'undefined') {
-				delivery(4, "Error, blank action. [VAR (VARIABLE) (TRUE/FALSE/READ)]")
-			}
-            if (third_term == "READ") {
-                //READ VARIABLE - IT F*CKING WORKS.
-                //alert(window[input_var.toString()]); -> THIS READS THE INPUTED VARIABLE, TURNS THE NAME OF VARIABLE INTO A STRING, AND THEN IT READS THE STRING AND SAYS [HEY! THIS IS THE VARIABLE NAME, NOW READ IT!]. AND I SPENT LIKE 1 HOUR ON ONE LINE OF CODE. THANK GOD IT WORKS.
-                delivery(4, "Variable '" + input_var.toString() + "' is " + window[input_var.toString()] + ".")
-            } else if (third_term == "TRUE") {
-            	if(Unlocked.includes(input_var)) {
-					window[input_var] = true;
-                	delivery(4, "Variable '" + input_var.toString() + "' has been set to " + window[input_var.toString()] + ".")
-				} else {
-                	delivery(4, "Variable '" + input_var.toString() + "' can not be changed.")
-                }
-            } else if (third_term == "FALSE") {
-            	if(Unlocked.includes(input_var)) {
+      //Read the inputed variable
+      var input_var = variablearray[1];
+      //Read the 3rd term - The action to be preformed (True/False/Read)
+      var third_term = variablearray[2];
+      if (typeof input_var == 'undefined') {
+        delivery(4, "Error, blank variable. [VAR (VARIABLE) (TRUE/FALSE/READ)]")
+      } else if (typeof third_term == 'undefined') {
+        delivery(4, "Error, blank action. [VAR (VARIABLE) (TRUE/FALSE/READ)]")
+      }
+      if (third_term == "READ") {
+        //READ VARIABLE - IT F*CKING WORKS.
+        //alert(window[input_var.toString()]); -> THIS READS THE INPUTED VARIABLE, TURNS THE NAME OF VARIABLE INTO A STRING, AND THEN IT READS THE STRING AND SAYS [HEY! THIS IS THE VARIABLE NAME, NOW READ IT!]. AND I SPENT LIKE 1 HOUR ON ONE LINE OF CODE. THANK GOD IT WORKS.
+        delivery(4, "Variable '" + input_var.toString() + "' is " + window[input_var.toString()] + ".")
+      } else if (third_term == "TRUE") {
+        if(Unlocked.includes(input_var)) {
+          window[input_var] = true;
+          delivery(4, "Variable '" + input_var.toString() + "' has been set to " + window[input_var.toString()] + ".")
+        	} else {
+          		delivery(4, "Variable '" + input_var.toString() + "' can not be changed.")
+          	}
+      	} else if (third_term == "FALSE") {
+        if(Unlocked.includes(input_var)) {
             		window[input_var] = false;
                 	delivery(4, "Variable '" + input_var.toString() + "' has been set to " + window[input_var.toString()] + ".")
                 } else {
@@ -310,7 +324,7 @@ function handle2(e){
             reset(1);
         } else if(STATEPASS == 2 && document.getElementById('inputPass').value == "09-16-19" || OVERRIDE == 1) {
             document.getElementById("sub2b").innerHTML="I Love You";
-            document.getElementById("sub2c").innerHTML="?style=Savvy&";
+            document.getElementById("sub2c").innerHTML="";
             document.getElementById("input").value="";
         	document.getElementById("temp123").style.display='block';
             reset(1);
