@@ -4,8 +4,8 @@
 <html>
 <script>
 // Stylized and Custom HTML Text
-var version = "Beta0.2 DEVELOPMENT";
-var versionSUB = "DEV VARIABLE COMMAND";
+var version = "Beta0.2.1 DEVELOPMENT";
+var versionSUB = "VARIABLE COMMAND FULLY WORKING";
 
 //Dont touch this var tho...
 var active_modify = "";
@@ -58,7 +58,7 @@ if (typeof DEV == 'undefined') {
 }
 
 //Check if DEVelopermode is on. Alert if so.
-var DEV = "1";
+//var DEV = "1";
 if (DEV == "1") {
 	alert("You are entered into DEVELOPER MODE. This will ruin lore. If you would like to leave DEV mode, go back to the home page and press the 'SAER' button.")
 }
@@ -70,22 +70,23 @@ window.setInterval(function(){
   
   if(ADMINCMD == 1 && !activemodifytext.includes("[ ADMINCMD - TRUE ]")) {
   	active_modify = " " + active_modify + "[ ADMINCMD - TRUE ]";
-  } else if(ADMINCMD == 1 && activemodifytext.includes("[ ADMINCMD - TRUE ]")) {
+  } else if(ADMINCMD == 0 && activemodifytext.includes("[ ADMINCMD - TRUE ]")) {
   	active_modify = "";
   } 
   if(DEV == 1 && !activemodifytext.includes("[ DEV - TRUE ]")) {
   	active_modify = " " + active_modify + "[ DEV - TRUE ]";
-  } else if(DEV == 1 && activemodifytext.includes("[ DEV - TRUE ]")) {
+  } else if(DEV == 0 && activemodifytext.includes("[ DEV - TRUE ]")) {
   	active_modify = "";
   } 
   if (OVERRIDE == 1 && !activemodifytext.includes("[ OVERRIDE - TRUE ]")) {
   	active_modify = " " + active_modify + "[ OVERRIDE - TRUE ]";
-  } else if (OVERRIDE == 1 && activemodifytext.includes("[ OVERRIDE - TRUE ]")) {
+  } else if (OVERRIDE == 0 && activemodifytext.includes("[ OVERRIDE - TRUE ]")) {
   	active_modify = "";
   }
   
   document.getElementById("subtext").innerHTML="" + active_modify;
-  
+
+
 }, 500);
 
 // Update Header
@@ -257,10 +258,12 @@ function handle(e){
                 //alert(window[input_var.toString()]); -> THIS READS THE INPUTED VARIABLE, TURNS THE NAME OF VARIABLE INTO A STRING, AND THEN IT READS THE STRING AND SAYS [HEY! THIS IS THE VARIABLE NAME, NOW READ IT!]. AND I SPENT LIKE 1 HOUR ON ONE LINE OF CODE. THANK GOD IT WORKS.
                 delivery(4, "Variable '" + input_var.toString() + "' is " + window[input_var.toString()] + ".")
             } else if (third_term == "TRUE") {
-            	alert("This function isn't working just yet, please ignore.");
+            	window[input_var] = true;
+   				//variables[input_var] = true; 
+                //alert(variables[input_var]);
                 delivery(4, "Variable '" + input_var.toString() + "' has been set to " + window[input_var.toString()] + ".")
             } else if (third_term == "FALSE") {
-            	alert("This function isn't working just yet, please ignore.");
+            	window[input_var] = false;
                 delivery(4, "Variable '" + input_var.toString() + "' has been set to " + window[input_var.toString()] + ".")
             }
 		} else {
