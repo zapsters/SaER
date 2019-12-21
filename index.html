@@ -1,14 +1,18 @@
+
 <!DOCTYPE html>
 <html>
 <script>
-var version = "Beta0.1.1 DEVELOPMENT";
-var versionSUB = "DRAG PATCH x2";
+var version = "Beta0.2 DEVELOPMENT";
+var versionSUB = "DEV VARIABLE COMMAND";
 var statePass = 0;
 var stateSecret = 0;
 var commands = "";
-var adminCMD = "0";
+var adminCMD = "1";
 var override = "0";
+var style = "0";
+var dev = "0";
 var a = "0";
+var active_modify = "";
 // Shhhhh - Get URL Variables
 function getUrlVars() {
     var vars = {};
@@ -23,26 +27,49 @@ if (a == "0"){
 
 var adminCMD = getUrlVars()["admin"];
 var override = getUrlVars()["op"];
+var style = getUrlVars()["style"];
+var dev = getUrlVars()["dev"];
 if (typeof adminCMD == 'undefined') {
 	var adminCMD = "0";
 }
 if (typeof override == 'undefined') {
 	var override = "0";
 }
+if (typeof style == 'undefined') {
+	var style = "0";
+}
+if (typeof dev == 'undefined') {
+	var dev = "0";
+}
+//REMOVE
+var adminCMD = "1";
+if (dev == "1") {
+	alert("You are entered into DEVELOPER MODE. This will ruin lore. If you would like to leave dev mode, go back to the home page and press the 'SAER' button.")
+}
 
 
 window.setInterval(function(){
-      if(adminCMD == 1 && override == 0) {
-    	document.getElementById("subtext").innerHTML="ADMINCMD = TRUE";
-    } else if(override == 1 && adminCMD == 0) {
-    	document.getElementById("subtext").innerHTML="override = TRUE";
-    } else if(override == 1 && adminCMD == 1) {
-    	document.getElementById("subtext").innerHTML="OVERRIDE = TRUE /// ADMINCMD = TRUE";
-    } else {
-    	document.getElementById("subtext").innerHTML="";
-    }
-}, 10);
+  var activemodifytext = document.getElementById("subtext").innerHTML;
+  
+  
+  if(adminCMD == 1 && !activemodifytext.includes("[ ADMINCMD - TRUE ]")) {
+  	active_modify = " " + active_modify + "[ ADMINCMD - TRUE ]";
+  } else if(adminCMD == 0 && activemodifytext.includes("[ ADMINCMD - TRUE ]")) {
+  	active_modify = "";
+  } 
+  if (override == 1 && !activemodifytext.includes("[ OVERRIDE - TRUE ]")) {
+  	active_modify = " " + active_modify + "[ OVERRIDE - TRUE ]";
+  } else if (override == 0 && activemodifytext.includes("[ OVERRIDE - TRUE ]")) {
+  	active_modify = "";
+  }
+  
+  document.getElementById("subtext").innerHTML="" + active_modify;
+  
+}, 500);
+
+
 function onLoad() {
+	// Update Header - version & versionSUB
   	document.getElementById("version").innerHTML="version " + version;
 	document.getElementById("versionSUB").innerHTML="" + versionSUB;
   	if (typeof a !== 'undefined') {
@@ -57,17 +84,17 @@ function onLoad() {
     		}
   		}
 	}
-}
 
+}
 function handle(e){
 	if(e.keyCode === 13){
     //FUNCTION DELIEVERY -------------------------------------------------------------------------------------------------------------XXXX
-    function delivery(a){
+    function delivery(a,b){
     	if (a == 0) { //If a == 0 (Invalid/Unkown command)
             if(commandinput == "" || commandinput == " ") {
             } else {
             	var para = document.createElement("P");
-       			para.innerHTML = "[" + time + "] > '" + commandinput + "' is an unkown command.";
+       			para.innerHTML = "[" + time + "] > '" + commandinput + "' is an unkown command. See help command.";
        			document.getElementById("log").appendChild(para);
        			var element = document.getElementById("log");
     element.scrollTop = element.scrollHeight;
@@ -75,22 +102,29 @@ function handle(e){
             }
         } else if(a == 1) { //If a == 1 (Valid Command)
             var para = document.createElement("P");
-       		para.innerHTML = "[" + time + "] > " + commandinput;
+       		para.innerHTML = "[" + time + "] > " + commandinput + "";
        		document.getElementById("log").appendChild(para);
        		var element = document.getElementById("log");
     element.scrollTop = element.scrollHeight;
        		document.getElementById("input").value="";
-        } else if (a == 2) { //If a == 2 (Run ####.exe function)
+        } else if (a == 2) { //If a == 2 (Run Command function)
         		if (statePass == 0) {
             		var para = document.createElement("P");
-       				para.innerHTML = "[" + time + "] > 'Admin.PasswordTest's file is password protected. Security Level 0";
+       				para.innerHTML = "[" + time + "] > 'Admin.exe' is password protected.";
        				document.getElementById("log").appendChild(para);
        				var element = document.getElementById("log");
     				element.scrollTop = element.scrollHeight;
        				document.getElementById("input").value="";
         		} else if (statePass == 1) {
             		var para = document.createElement("P");
-       				para.innerHTML = "[" + time + "] > 'Marissa's file is password protected. Security Level 4";
+       				para.innerHTML = "[" + time + "] > 'Marissa's file is password protected.";
+       				document.getElementById("log").appendChild(para);
+       				var element = document.getElementById("log");
+    				element.scrollTop = element.scrollHeight;
+       				document.getElementById("input").value="";
+        		} else if (statePass == 2) {
+            		var para = document.createElement("P");
+       				para.innerHTML = "[" + time + "] > 'Savannah's file is password protected.";
        				document.getElementById("log").appendChild(para);
        				var element = document.getElementById("log");
     				element.scrollTop = element.scrollHeight;
@@ -105,6 +139,13 @@ function handle(e){
                 }
         } else if (a == 3) { // a ==3 (No Responce)
            document.getElementById("input").value="";
+        } else if (a == 4) { // a == 4 (Custom & Special Responce)
+        	var para = document.createElement("P");
+       		para.innerHTML = "[" + time + "] > " + b;
+       		document.getElementById("log").appendChild(para);
+       		var element = document.getElementById("log");
+    		element.scrollTop = element.scrollHeight;
+       		document.getElementById("input").value="";
         }
 	}
     
@@ -123,25 +164,59 @@ function handle(e){
        }
 //REDEFINE TIME (FORMATTED)
        var time = today.getHours() + ":" + minutes + ":" + seconds;
-       var commandinput = document.getElementById('input').value;
+       var rawinput = document.getElementById('input').value;
+       var commandinput = rawinput.toUpperCase();
         
 			
 //COMMAND LOGIC -------------------------------------------------------------------------------------------------------------XXXX
-		if(document.getElementById('input').value == "Help") {
-        	document.getElementById("sub2b").innerHTML="Wish I could help you";
+//OLD METHOD ---  || document.getElementById('input').value == "HELP"
+//NEW METHOD --- ALL INPUT IS CONVERTED TO ALL CAPITALS. THIS MEANS ALL IF REQUESTS MUST BE CAPITOL, OR ELSE THEY DONT WORK!!!!
+		if(commandinput == "HELP") {
+        	document.getElementById("sub2b").innerHTML="Printing Help Receipt";
             document.getElementById("sub2c").innerHTML="";
             document.getElementById("input").value="";
-            delivery(1);
-        } else if(document.getElementById('input').value == "Clear") {
-        	document.getElementById("log").innerHTML = "";
-            delivery(1);
-        } else if(document.getElementById('input').value == "Run Marissa.exe") {
-        	document.getElementById("sub2b").innerHTML="Insufficient Access to Marissa.exe";
-            document.getElementById("sub2c").innerHTML="ENTER YOUR CODE"; 
+            delivery(4);
+        } else if(commandinput == "INJECT ASTRO.EXE") {
+        	document.getElementById("sub2b").innerHTML="MALAWARE DETECTED IN 'Astro.exe'";
+            document.getElementById("sub2c").innerHTML="Terminating SaER Connection"; 
             document.getElementById("input").value="";
 			document.getElementById("temp123").style.display='block';
             statePass = 1;
             delivery(2);
+        } else if(commandinput == "CLEAR") {
+        	document.getElementById("log").innerHTML = "";
+            delivery(1);
+        } else if(commandinput == "RUN ADMIN.EXE") {
+        	document.getElementById("sub2b").innerHTML="Insufficient Access to Admin.exe";
+            document.getElementById("sub2c").innerHTML="ENTER YOUR CODE"; 
+            document.getElementById("input").value="";
+			document.getElementById("temp123").style.display='block';
+            statePass = 0;
+            delivery(2);
+        } else if(commandinput == "VAR ADMINCMD = TRUE") {
+        	document.getElementById("sub2b").innerHTML="Admin Level Verified";
+            document.getElementById("sub2c").innerHTML=" "; 
+            document.getElementById("input").value="";
+            adminCMD = 1;
+            delivery(4, "adminCMD = TRUE");
+        } else if(commandinput == "VAR OVERRIDE = TRUE") {
+        	document.getElementById("sub2b").innerHTML="Admin Level Verified";
+            document.getElementById("sub2c").innerHTML=" "; 
+            document.getElementById("input").value="";
+            override = 1;
+            delivery(4, "OVERRIDE = TRUE");
+        } else if(commandinput == "VAR ADMINCMD = FALSE") {
+        	document.getElementById("sub2b").innerHTML="Admin Level Verified";
+            document.getElementById("sub2c").innerHTML=" "; 
+            document.getElementById("input").value="";
+            adminCMD = 0;
+            delivery(4, "adminCMD = FALSE");
+        } else if(commandinput == "VAR OVERRIDE = FALSE") {
+        	document.getElementById("sub2b").innerHTML="Admin Level Verified";
+            document.getElementById("sub2c").innerHTML=" "; 
+            document.getElementById("input").value="";
+            override = 0;
+            delivery(4, "OVERRIDE = FALSE");
         } else {
             document.getElementById("sub2b").innerHTML="-NO-";
             document.getElementById("sub2c").innerHTML="-RESPONSE-";
@@ -155,7 +230,9 @@ function handle(e){
         document.getElementById("mydivheader").innerHTML="━━━━━━━━";
 	}
 }
+
 //RESET FUNCTIONS -------------------------------------------------------------------------------------------------------------XXXX
+
 function w95(s){
 	if(s == 0) {
 		document.getElementById("sub2b").style.visibility = "";	
@@ -175,13 +252,14 @@ function reset(s){
 	      	document.getElementById("mydivheader").style.visibility = "hidden";
 	      	document.getElementById("sub").style.visibility = "hidden";
 	      	document.getElementById("version").style.visibility = "hidden";
+            document.getElementById("versionSUB").style.visibility = "hidden";
 	      	document.getElementById("sub2").style.visibility = "hidden";
 	      	document.getElementById("sub2v2").style.visibility = "hidden";
 	     	document.getElementById("subtext").style.visibility = "hidden";	
 		document.getElementById("logo").style.visibility = "hidden";	
 		document.getElementById("sub2b").style.visibility = "hidden";	
 		document.getElementById("sub2c").style.visibility = "hidden";	
-	} else if(s == 1){ // S == 1 - Medium Reset - Changes Logo to Red and Leaves responce visible - Used in Marissa.exe 
+	} else if(s == 1){ // S == 1 - Medium Reset - Changes Logo to Red and Leaves responce visible
 		document.getElementById("inputPass").style.visibility = "hidden";
       		document.getElementById("log").style.visibility = "hidden";
 	      	document.getElementById("input").style.visibility = "hidden";
@@ -189,6 +267,7 @@ function reset(s){
 	      	document.getElementById("mydivheader").style.visibility = "hidden";
 	      	document.getElementById("sub").style.visibility = "hidden";
 	      	document.getElementById("version").style.visibility = "hidden";
+            document.getElementById("versionSUB").style.visibility = "hidden";
 	      	document.getElementById("sub2").style.visibility = "hidden";
 	      	document.getElementById("sub2v2").style.visibility = "hidden";
 	     	document.getElementById("subtext").style.visibility = "hidden";
@@ -201,11 +280,16 @@ function reset(s){
 function handle2(e){
 	if(e.keyCode == 13){
     	if(statePass == 1 && document.getElementById('inputPass').value == "624" || override == 1) {
-            document.getElementById("sub2b").innerHTML="URL";
-            document.getElementById("sub2c").innerHTML="?A=W95";
+            document.getElementById("sub2b").innerHTML="ADD URL";
+            document.getElementById("sub2c").innerHTML="?A=W95&";
             document.getElementById("input").value="";
         	document.getElementById("temp123").style.display='block';
-            marissaProg = 2;
+            reset(1);
+        } else if(statePass == 2 && document.getElementById('inputPass').value == "09-16-19" || override == 1) {
+            document.getElementById("sub2b").innerHTML="I Love You";
+            document.getElementById("sub2c").innerHTML="?style=Savvy&";
+            document.getElementById("input").value="";
+        	document.getElementById("temp123").style.display='block';
             reset(1);
         } else {
         document.getElementById("sub2b").innerHTML="-Insufficient Permissions to SaER Servers-";
@@ -354,7 +438,7 @@ font-size: 30px;
   bottom: 5px;
   left: 5px;
   color: white;
-    width: 100%;
+    width: 99%;
   border: 3px solid #555;"
 }
 .pozb{
