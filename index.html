@@ -215,54 +215,52 @@
                 var variablearray = commandinput.split(/(\s+)/).filter(function(e) {
                     return e.trim().length > 0;
                 });
-            	console.log(variablearray); // ["VAR", "(VARIABLE)", "TRUE/FALSE/READ"] 
+            console.log(variablearray); // ["VAR", "(VARIABLE)", "TRUE/FALSE/READ"] 
 
-            	//Read the inputed variable
-            	var input_var = variablearray[1];
-            	//Read the 3rd term - The action to be preformed (True/False/Read)
-            	var third_term = variablearray[2];
-            	if (typeof input_var == 'undefined') {
-                	delivery(4, "Error - blank variable. [VAR (VARIABLE) (TRUE/FALSE/READ)]")
-            	} else if (typeof third_term == 'undefined') {
-                	delivery(4, "Error - no action input. [VAR (VARIABLE) (TRUE/FALSE/READ)]")
-            	} else if (third_term == "READ") {
-                	//READ VARIABLE
-                	delivery(4, "Variable '" + input_var.toString() + "' is " + window[input_var.toString()] + ".")
-            	} else if (third_term == "TRUE") {
-                	if (Unlocked.includes(input_var)) {
-                    	window[input_var] = true;
-                    	delivery(4, "Variable '" + input_var.toString() + "' has been set to " + window[input_var.toString()] + ".")
-            		} else {
-                		delivery(4, "Variable '" + input_var.toString() + "' can not be changed.")
-            		}
-            	} else if (third_term == "FALSE") {
-                	if (Unlocked.includes(input_var)) {
-                   		window[input_var] = false;
-                   		delivery(4, "Variable '" + input_var.toString() + "' has been set to " + window[input_var.toString()] + ".")
-                	} else {
-                   		delivery(4, "Variable '" + input_var.toString() + "' can not be changed.")
-                	}
-            	} else if (third_term !== "TRUE" || third_term !== "FALSE" || third_term !== "READ") {
-                	delivery(4, "Error - [VAR (VARIABLE) (TRUE/FALSE/READ)]")
+            //Read the inputed variable
+            var input_var = variablearray[1];
+            //Read the 3rd term - The action to be preformed (True/False/Read)
+            var third_term = variablearray[2];
+            if (typeof input_var == 'undefined') {
+                delivery(4, "Error - blank variable. [VAR (VARIABLE) (TRUE/FALSE/READ)]")
+            } else if (typeof third_term == 'undefined') {
+                delivery(4, "Error - no action input. [VAR (VARIABLE) (TRUE/FALSE/READ)]")
+            } else if (third_term == "READ") {
+                //READ VARIABLE
+                delivery(4, "Variable '" + input_var.toString() + "' is " + window[input_var.toString()] + ".")
+            } else if (third_term == "TRUE") {
+                if (Unlocked.includes(input_var)) {
+                    window[input_var] = true;
+                    delivery(4, "Variable '" + input_var.toString() + "' has been set to " + window[input_var.toString()] + ".")
+            	} else {
+                	delivery(4, "Variable '" + input_var.toString() + "' can not be changed.")
             	}
+            } else if (third_term == "FALSE") {
+                if (Unlocked.includes(input_var)) {
+                   window[input_var] = false;
+                   delivery(4, "Variable '" + input_var.toString() + "' has been set to " + window[input_var.toString()] + ".")
+                } else {
+                   delivery(4, "Variable '" + input_var.toString() + "' can not be changed.")
+                }
+            } else if (third_term !== "TRUE" || third_term !== "FALSE" || third_term !== "READ") {
+                delivery(4, "Error - [VAR (VARIABLE) (TRUE/FALSE/READ)]")
+            }
             } else if (commandinput.startsWith(inject_prefix)) {
-		var injectarray = commandinput.split(/(\s+)/).filter(function(e) {
-            	return e.trim().length > 0;
-            	});
-		console.log(variablearray); // ["INJECT", "(###-###)"] 
+				var injectarray = commandinput.split(/(\s+)/).filter(function(e) {
+                    return e.trim().length > 0;
+                });
+				console.log(variablearray); // ["INJECT", "(###-###)"] 
 				
-		//Read the inputed variable
+				//Read the inputed variable
                 var inject_num = injectarray[1];
 				
-		if(inject_num == "105") {
-			delivery(4, "Uploading URL Variables...")	
-		} else if(inject_num == "HAL") {
-			delivery(4, "Im afrid I can´t let you do that...")	
-		{
-			delivery(4, "Error, unkown packet.")
-		}
+				if(inject_num == "105") {
+					delivery(4, "Uploading URL Variables...")	
+				} else {
+					delivery(4, "Error, unkown packet.")
+				}
 				
-	    } else {
+			} else {
                 delivery(0);
                 document.getElementById("sub2b").innerHTML = "-NO-";
                 document.getElementById("sub2c").innerHTML = "-RESPONSE-";
