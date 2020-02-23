@@ -11,77 +11,9 @@ function onLoad() {
 
 function handle(e){
 	if(e.keyCode === 13){
-    //FUNCTION DELIEVERY -------------------------------------------------------------------------------------------------------------XXXX
-    function delivery(a){
-    	if (a == 0) { //If a == 0 (Invalid/Unkown command)
-            if(commandinput == "" || commandinput == " ") {
-            } else {
-            	var para = document.createElement("P");
-       			para.innerHTML = "[" + time + "] > Command '" + commandinput + "' could not be ran, as connection to SAER Servers isn't established.";
-       			document.getElementById("log").appendChild(para);
-       			var element = document.getElementById("log");
-    element.scrollTop = element.scrollHeight;
-       			document.getElementById("input").value="";
-            }
-        } else if(a == 1) { //If a == 1 (Valid Command)
-            var para = document.createElement("P");
-       		para.innerHTML = "[" + time + "] > '" + commandinput + "' has been ran.";
-       		document.getElementById("log").appendChild(para);
-       		var element = document.getElementById("log");
-    element.scrollTop = element.scrollHeight;
-       		document.getElementById("input").value="";
-        } else if (a == 2) { //If a == 2 (Run ####.exe function)
-        		if (statePass == 0) {
-            		var para = document.createElement("P");
-       				para.innerHTML = "[" + time + "] > 'Admin.PasswordTest's file is password protected. Security Level 0";
-       				document.getElementById("log").appendChild(para);
-       				var element = document.getElementById("log");
-    				element.scrollTop = element.scrollHeight;
-       				document.getElementById("input").value="";
-        		} else if (statePass == 1) {
-            		var para = document.createElement("P");
-       				para.innerHTML = "[" + time + "] > 'Marissa's file is password protected. Security Level 4";
-       				document.getElementById("log").appendChild(para);
-       				var element = document.getElementById("log");
-    				element.scrollTop = element.scrollHeight;
-       				document.getElementById("input").value="";
-        		} else {
-                  var para = document.createElement("P");
-       				para.innerHTML = "[" + time + "] > 'Server Error, Unkown Context";
-       				document.getElementById("log").appendChild(para);
-       				var element = document.getElementById("log");
-    				element.scrollTop = element.scrollHeight;
-       				document.getElementById("input").value="";
-                }
-        } else if (a == 3) { // a ==3 (No Responce)
-           document.getElementById("input").value="";
-        }
-	}
-    
-    // End of Delievery Function -------------------------------------------------------------------------------------------------------------XXXX
-//GET CURRENT DATE / TIME (UNFORMATED)
-       var today = new Date();
-       var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-//FORMAT MINUTES & SECONDS
-       var minutes = today.getMinutes();
-       if (minutes >= 0 && minutes < 10) {
-          var minutes = "0" + minutes; 
-       }
-       var seconds = today.getSeconds();
-       if (seconds >= 0 && seconds < 10) {
-          var seconds = "0" + seconds; 
-       }
-//REDEFINE TIME (FORMATTED)
-       var time = today.getHours() + ":" + minutes + ":" + seconds;
-       var commandinput = document.getElementById('input').value;
-        
-			
-//COMMAND LOGIC -------------------------------------------------------------------------------------------------------------XXXX
-		if(document.getElementById('input').value == "run Astro.exe") {
-        	document.getElementById("sub2b").innerHTML="SUCCESS.";
-            document.getElementById("sub2c").innerHTML="INTERNAL CONNECTION ESTABLISHED. REDIRECTING YOU TO PRIVATE CONNECTON.";
-            document.getElementById("input").value="";
-            delivery(1);
+    //COMMAND LOGIC -------------------------------------------------------------------------------------------------------------XXXX
+		if(document.getElementById('input').value == "astro") {
+        	reset(1);
         } else {
             document.getElementById("sub2b").innerHTML="ERROR 404 - NO CONNECTION";
             document.getElementById("sub2c").innerHTML="PLEASE CONCTACT SAER SOFTWARE MANAGER OR ACTIVE CLASS 2+ I.T. SUPPORT";
@@ -96,16 +28,6 @@ function handle(e){
 	}
 }
 //RESET FUNCTIONS -------------------------------------------------------------------------------------------------------------XXXX
-function w95(s){
-	if(s == 0) {
-		document.getElementById("sub2b").style.visibility = "";	
-	} else if (s == 1){
-    		document.getElementById("sub2b").style.visibility = "";	
-        	document.getElementById("sub2b").innerHTML = "-HELLO-";
-        	document.getElementById("sub2c").style.visibility = "";	
-        	document.getElementById("sub2c").innerHTML = "-Welcome to W95-";
-        }
-}
 function reset(s){
 	if(s == 0){ // S == 0 - Hard Reset - Leaves nothing in its tracks
 		document.getElementById("inputPass").style.visibility = "hidden";
@@ -114,7 +36,6 @@ function reset(s){
 	      	document.getElementById("temp123").style.visibility = "hidden";
 	      	document.getElementById("mydivheader").style.visibility = "hidden";
 	      	document.getElementById("sub").style.visibility = "hidden";
-	      	document.getElementById("version").style.visibility = "hidden";
 	      	document.getElementById("sub2").style.visibility = "hidden";
 	      	document.getElementById("sub2v2").style.visibility = "hidden";
 	     	document.getElementById("subtext").style.visibility = "hidden";	
@@ -122,16 +43,16 @@ function reset(s){
 		document.getElementById("sub2b").style.visibility = "hidden";	
 		document.getElementById("sub2c").style.visibility = "hidden";	
 	} else if(s == 1){ // S == 1 - Medium Reset - Changes Logo to Red and Leaves responce visible - Used in Marissa.exe 
-		document.getElementById("inputPass").style.visibility = "hidden";
       		document.getElementById("log").style.visibility = "hidden";
 	      	document.getElementById("input").style.visibility = "hidden";
 	      	document.getElementById("temp123").style.visibility = "hidden";
 	      	document.getElementById("mydivheader").style.visibility = "hidden";
 	      	document.getElementById("sub").style.visibility = "hidden";
-	      	document.getElementById("version").style.visibility = "hidden";
 	      	document.getElementById("sub2").style.visibility = "hidden";
 	      	document.getElementById("sub2v2").style.visibility = "hidden";
 	     	document.getElementById("subtext").style.visibility = "hidden";
+            document.getElementById("sub2b").style.visibility = "hidden";	
+			document.getElementById("sub2c").style.visibility = "hidden";	
 	     	document.getElementById("logo").width = "700";
 	    	document.getElementById("logo").height = "700";
 	        document.getElementById("logo").src = "https://zapstergames.github.io/Home/images/V4ZapsterLogoRedStill.png";
@@ -286,16 +207,14 @@ font-family: 'bauhausc_demi';
   bottom: 5px;
 }
 .poz{ 
-font-family: 'bauhausc_demi';
-text-shadow: #000000 3px 2px 0;
 font-size: 30px;
   position: absolute;
-  background-color: #555;
+  background-color: #000;
   bottom: 5px;
   left: 5px;
-  color: white;
+  color: #111;
     width: 100%;
-  border: 3px solid #555;"
+  border: 0px solid #000;"
 }
 .pozb{
 font-family: 'bauhausc_demi';
@@ -333,7 +252,7 @@ font-size: 30px;
     text-shadow: #000000 3px 2px 0;
 }
 .temp123 > input{
-  text-align:left;
+  text-align:ce;
   width: 50%;
 }
 .container .btn {
@@ -404,13 +323,13 @@ cursor: default
   z-index: 9;
 }
 </style>
-	<title>SaER Console</title>
+	<title>ERROR 404</title>
 	<link rel="shortcut icon" type="image/png" href="https://zapstergames.github.io/Home/images/ZapsterGames.png"/>
 </head>
 <body style="background-color:black;" onload="onLoad()">
 
 <center>
-<p id="sub" ><b>SAER ADMIN CONSOLE</b></p><p id="version"></p><p id="versionSUB"></p>
+<p id="sub" ><b>ERROR 404 - PAGE NOT FOUND</b></p>
 <div class="container">
   <button onclick="secretB()" style="display:none" class="btn" id="more"></button>
 </div>
@@ -423,15 +342,15 @@ cursor: default
 </div>
 <div id="mydiv" class=poz3>
 </br></br>
-<div id="mydivheader">━━━━━━━━</div>
-<p id="sub2b" style="font-size:20;">-NO-</p>
-<p id="sub2c" style="font-size:20;">-RESPONSE-</p>
+<div id="mydivheader"></div>
+<p id="sub2b" style="font-size:20;"></p>
+<p id="sub2c" style="font-size:20;"></p>
 <div class="temp123" id="temp123" style="display:none" autocomplete="off" spellcheck="false">
-<input type="text" id="inputPass" class="pozb" onkeypress="handle2(event)" autocomplete="off" spellcheck="false" placeholder="">
+
 </div>
 </div>
 <div>
-<input type="text" id="input" autocomplete="off" class="poz" placeholder="Awaiting Command..."onkeypress="handle(event)" spellcheck="false">
+<input type="text" id="input" autocomplete="off" class="poz" placeholder="" onkeypress="handle(event)" spellcheck="false">
 </div>
 </center>
 <div id="log">
