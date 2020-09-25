@@ -1,2 +1,7 @@
 # SaER
-i dont want to pay $4 just so you wont look through my code, so I cant do some projects because you would ruin it by looking through the code
+I dont know why I made this.
+
+It is made though.
+VERSION 2.6 Ready
+
+I think this will end up being a way bigger project. Bigger than a website.
