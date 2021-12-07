@@ -13,66 +13,54 @@ var DEV = getUrlVars()["astro"];
 var URLSTYLE = getUrlVars()["s"];
 var COMMANDHISTORY = [];
 // If getUrlVars returns undefined, set it to 0
-if (typeof OVERRIDE == 'undefined') {
-    var OVERRIDE = "0";
+if (typeof DEV == 'undefined') {
+    var DEV = "0";
 }
 
+
+// Static Variables - Change Freely
+var version = "Beta0.2.5 DEVELOPMENT";
+var versionSUB = "Project Astro";
 
 //set Variables
 var VARIABLE_PREFIX = 'VAR';
 var PRINT_PREFIX = 'PRINT';
-var COPYRIGHT1 = "SaER Copyright 2020"
+var COPYRIGHT1 = "SaER Copyright 2021"
 var COPYRIGHT2 = "SaER logo above, Websites, and other media are owned and claimed by Science and Entity Research"
+
+var active_modify = "";
 
 //Variables used by Variable command
 var Unlockedvars = ["DEV", "FILETEST", "VARIABLE_PREFIX"];
-var active_modify = "";
-var PRIDE = 0;
-
 //Files that can be read using Print command
 var Unlockedfiles = ["VERSION", "ASTRO", "FAIL"];
 
 //Update active vars at bottomn of screen
 window.setInterval(function() {
-	//var COPYRIGHT1 = "SaER Copyright 2020"
-    document.getElementById("sub2").innerHTML = COPYRIGHT1;
-    //var COPYRIGHT2 = "SaER logo above, Websites, and other media are owned and claimed by Science and Entity Research"
-    document.getElementById("sub2v2").innerHTML = COPYRIGHT2;
-
-	//console.log(active_modify);
+    	//var COPYRIGHT1 = "SaER Copyright 2020"
+    	document.getElementById("sub2").innerHTML = COPYRIGHT1;
+    	//var COPYRIGHT2 = "SaER logo above, Websites, and other media are owned and claimed by Science and Entity Research"
+    	document.getElementById("sub2v2").innerHTML = COPYRIGHT2;
+	
 	document.getElementById("subtext").innerHTML = "" + active_modify;
 	//Dev Mode Alert at bottom
-    var activemodifytext = document.getElementById("subtext").innerHTML;
-    if (DEV == 1 && !activemodifytext.includes("[ DEV - TRUE ]")) {
-		alert("Dev mode gives you more freedom, in ways that will not benifit lore. DO NOT USE. Dev mode effects the Variable command as of BETA 0.2.4");
-        active_modify = " " + active_modify + "[ DEV - TRUE ]";
-    } else if (DEV != 1 && activemodifytext.includes("[ DEV - TRUE ]")) {
-        active_modify = "";
-    }
-
-	if (PRIDE == 1) {
-		//Rainbow text for every text with "rt" class
-		var elements = document.getElementsByClassName("rt");
-		for (let i = 0; i < elements.length; i++) {
-		generateRainbowText(elements[i]);
-		}
-	}
+    	var activemodifytext = document.getElementById("subtext").innerHTML;
+    	if (DEV == 1 && !activemodifytext.includes("[ DEV - TRUE ]")) {
+		alert("Dev mode is unused currently.");
+        	active_modify = " " + active_modify + "[ DEV - TRUE ]";
+    	} else if (DEV != 1 && activemodifytext.includes("[ DEV - TRUE ]")) {
+        	active_modify = "";
+    	}
 }, 500);
 
-// Static Variables - Change Freely
-var version = "Beta0.2.5 DEVELOPMENT";
-var versionSUB = "Project Astro - Indroducing Command History! Press the Up arrow!";
-
-//Set copyright at bottom of screen
+//ONLOAD
 function onLoad() {
-    switch(URLSTYLE) {
-    	case("W95"):
-    		alert("Good Luck");
-    	break;
-    }
+    
 }
-	var COLOR = 60;
+
+
 //rainbow text generator function
+var COLOR = 60;
 function generateRainbowText(element) {
   var text = element.innerText + "";
   element.innerHTML = "";
@@ -98,6 +86,56 @@ COMNUM = COMMANDHISTORY.length;
 if (typeof COMNUM == 'undefined') {
 	COMNUM = COMMANDHISTORY.length;
 }
+
+//
+// THE BRAINS!!!
+//
+
+//DELIVERY FUNCTION
+function delivery(a, b) {
+	if (commandinput == "" || commandinput == " ") {} else {
+		COMMANDHISTORY.push(commandinput);
+	}
+	switch (a) {
+	case 0:
+		//Unkown Command
+		if (commandinput == "" || commandinput == " ") {} else {
+			var para = document.createElement("P");
+			para.innerHTML = "[" + time + "] > '" + commandinput + "' is an unkown command. See help command.";
+			document.getElementById("log").appendChild(para);
+			var element = document.getElementById("log");
+			element.scrollTop = element.scrollHeight;
+			document.getElementById("input").value = "";
+		}
+		break;
+	case 1:
+		// [TIME] (CommandInput)
+		var para = document.createElement("P");
+		para.innerHTML = "[" + time + "] > " + commandinput + "";
+		document.getElementById("log").appendChild(para);
+		var element = document.getElementById("log");
+		element.scrollTop = element.scrollHeight;
+		document.getElementById("input").value = "";
+		break;
+	case 10:
+		// [TIME] (Custom text in var B)
+		var para = document.createElement("P");
+		para.innerHTML = "[" + time + "] > " + b;
+		document.getElementById("log").appendChild(para);
+		var element = document.getElementById("log");
+		element.scrollTop = element.scrollHeight;
+		document.getElementById("input").value = "";
+		break;
+	case 11:
+		//Blank Screen with text
+		document.body.style.visibility = "hidden";
+		document.getElementById("topdivtext").style.visibility = "visible";
+		document.getElementById("topdivtext").innerHTML = "" + b;
+		break;
+}
+	
+
+
 document.onkeydown = logKey;
 function logKey(e) {
 	//Up arrow last command.
@@ -117,53 +155,12 @@ function logKey(e) {
 		}
 	}
 	//Enter Key
-    if (e.keyCode === 13) {
+    	if (e.keyCode === 13) {
 		var rawinput = document.getElementById('input').value;
-        var commandinput = rawinput.toUpperCase();
+        	var commandinput = rawinput.toUpperCase();
 		if (commandinput != "" && typeof commandinput != 'undefined' && commandinput != " " && COMNUM == COMMANDHISTORY.length) {
-		COMNUM = COMMANDHISTORY.length + 1;
+			COMNUM = COMMANDHISTORY.length + 1;
 		}
-        function delivery(a, b) {
-			if (commandinput == "" || commandinput == " ") {} else {
-			COMMANDHISTORY.push(commandinput);
-			}
-            switch (a) {
-                case 0:
-                    //Unkown Command
-                    if (commandinput == "" || commandinput == " ") {} else {
-                        var para = document.createElement("P");
-                        para.innerHTML = "[" + time + "] > '" + commandinput + "' is an unkown command. See help command.";
-                        document.getElementById("log").appendChild(para);
-                        var element = document.getElementById("log");
-                        element.scrollTop = element.scrollHeight;
-                        document.getElementById("input").value = "";
-                    }
-                    break;
-                case 1:
-                    // [TIME] (CommandInput)
-                    var para = document.createElement("P");
-                    para.innerHTML = "[" + time + "] > " + commandinput + "";
-                    document.getElementById("log").appendChild(para);
-                    var element = document.getElementById("log");
-                    element.scrollTop = element.scrollHeight;
-                    document.getElementById("input").value = "";
-                    break;
-                case 10:
-                    // [TIME] (Custom text in var B)
-                    var para = document.createElement("P");
-                    para.innerHTML = "[" + time + "] > " + b;
-                    document.getElementById("log").appendChild(para);
-                    var element = document.getElementById("log");
-                    element.scrollTop = element.scrollHeight;
-                    document.getElementById("input").value = "";
-                    break;
-            	case 11:
-            		//Blank Screen with text
-            		document.body.style.visibility = "hidden";
-            		document.getElementById("topdivtext").style.visibility = "visible";
-            		document.getElementById("topdivtext").innerHTML = "" + b;
-            		break;
-            }
         }
 
         // End of Delievery Function -------------------------------------------------------------------------------------------------------------XXXX
@@ -309,7 +306,6 @@ function logKey(e) {
             case "PRIDE":
                 document.getElementById("logo").src = "https://zapsters.github.io/Home/images/V4ZapsterLogoGlitchPride.gif";
                 document.getElementById("logo").style.filter = "invert(0%)";
-				PRIDE = 1;
                 delivery(1)
                 break;
             case "ASTRO":
