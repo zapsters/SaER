@@ -10,7 +10,6 @@ function getUrlVars() {
 
 // Read variables using getUrlVars function
 var DEV = getUrlVars()["astro"];
-var URLSTYLE = getUrlVars()["s"];
 var COMMANDHISTORY = [];
 // If getUrlVars returns undefined, set it to 0
 if (typeof DEV == 'undefined') {
@@ -25,8 +24,8 @@ var versionSUB = "Project Astro";
 //set Variables
 var isLoggedIn = false;
 
-var COPYRIGHT1 = "SaER Copyright 2021"
-var COPYRIGHT2 = "SaER logo above, Websites, and other media are owned and claimed by Science and Entity Research"
+var COPYRIGHT1 = "SaER Copyright 2021";
+var COPYRIGHT2 = "SaER logo above, Websites, and other media are owned and claimed by Science and Entity Research";
 var ACCESSLEVEL = 0;
 
 var active_modify = "";
