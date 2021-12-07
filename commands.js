@@ -29,6 +29,7 @@ var COPYRIGHT1 = "SaER Copyright 2021"
 var COPYRIGHT2 = "SaER logo above, Websites, and other media are owned and claimed by Science and Entity Research"
 
 var active_modify = "";
+var PRIDE = 0;
 
 //Variables used by Variable command
 var Unlockedvars = ["DEV", "FILETEST", "VARIABLE_PREFIX"];
@@ -51,6 +52,15 @@ window.setInterval(function() {
     	} else if (DEV != 1 && activemodifytext.includes("[ DEV - TRUE ]")) {
         	active_modify = "";
     	}
+	
+	//PRIDE
+	if (PRIDE == 1) {
+		//Rainbow text for every text with "rt" class
+		var elements = document.getElementsByClassName("rt");
+		for (let i = 0; i < elements.length; i++) {
+		generateRainbowText(elements[i]);
+		}
+	}
 }, 500);
 
 //ONLOAD
@@ -308,6 +318,7 @@ function logKey(e) {
             case "PRIDE":
                 document.getElementById("logo").src = "https://zapsters.github.io/Home/images/V4ZapsterLogoGlitchPride.gif";
                 document.getElementById("logo").style.filter = "invert(0%)";
+		PRIDE = !PRIDE;
                 delivery(1)
                 break;
             case "ASTRO":
