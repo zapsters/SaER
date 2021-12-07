@@ -23,16 +23,15 @@ var version = "Beta0.2.5 DEVELOPMENT";
 var versionSUB = "Project Astro";
 
 //set Variables
-var VARIABLE_PREFIX = 'VAR';
-var PRINT_PREFIX = 'PRINT';
 var COPYRIGHT1 = "SaER Copyright 2021"
 var COPYRIGHT2 = "SaER logo above, Websites, and other media are owned and claimed by Science and Entity Research"
+var ACCESSLEVEL = 0;
 
 var active_modify = "";
 var PRIDE = 0;
 
 //Variables used by Variable command
-var Unlockedvars = ["DEV", "FILETEST", "VARIABLE_PREFIX"];
+var Unlockedvars = ["DEV", "ACCESSLEVEL"];
 //Files that can be read using Print command
 var Unlockedfiles = ["VERSION", "ASTRO", "FAIL"];
 
@@ -175,6 +174,7 @@ function logKey(e) {
 		document.getElementById("input").value = COMMANDHISTORY[COMNUM];
 		}
 	}
+	//Down arrowd
 	if (e.keyCode === 40) {
 		if (COMNUM < COMMANDHISTORY.length - 1) {
 			COMNUM = COMNUM + 1;
@@ -192,6 +192,8 @@ function logKey(e) {
 			COMNUM = COMMANDHISTORY.length + 1;
 		}
 		
+	//Reset the current command number, so you can press up to go to the last command.
+	COMNUM = COMMANDHISTORY.length;
 
         //COMMAND LOGIC -------------------------------------------------------------------------------------------------------------XXXX
         //OLD METHOD --- || document.getElementById('input').value == "HELP"
@@ -206,8 +208,8 @@ function logKey(e) {
                 document.getElementById("topdivtext").innerHTML = "Printing Help Receipt";
                 document.getElementById("botdivtext").innerHTML = "";
                 document.getElementById("input").value = "";
-				//help commands
-				var commands = "COMMANDS<br>" + VARIABLE_PREFIX + " (variable) (true/false/read/set) [value] - Change a local veriable.<br>COPYRIGHT - Print copyright information<br>PRINT (File Name) - Print from text file<br>CLEAR - Clear console log<br> VERSION - Prints the current version of the SaER OFFICIAL CONSOLE.";
+			//help commands
+			var commands = "COMMANDS<br> VAR (variable) (true/false/read/set) [value] - Change a local veriable.<br>COPYRIGHT - Print copyright information<br>PRINT (File Name) - Print from text file<br>CLEAR - Clear console log<br> VERSION - Prints the current version of the SaER OFFICIAL CONSOLE.";
                 delivery(10, commands);
                 break;
             case "CLEAR":
@@ -215,11 +217,11 @@ function logKey(e) {
                 delivery(1);
                 break;
             case "VERSION":
-				var versiontext = version.toString() + " - - - [" + versionSUB.toString() + "]";
-				delivery(10, versiontext);
+		var versiontext = version.toString() + " - - - [" + versionSUB.toString() + "]";
+		delivery(10, versiontext);
                 break;
-			case VARIABLE_PREFIX:
-                //var onlyvariable = commandinput.replace(VARIABLE_PREFIX, '');
+	    case "VAR":
+                //var onlyvariable = commandinput.replace("VAR", '');
                 var variablearray = commandinput.split(/(\s+)/).filter(function(e) {
                     return e.trim().length > 0;
                 });
@@ -232,72 +234,65 @@ function logKey(e) {
                 var THIRD_TERM = variablearray[2];
 				var FORTH_TERM = variablearray[3];
                 if (typeof INPUT_VAR == 'undefined') {
-                    delivery(10, "Error - blank variable. [" + VARIABLE_PREFIX + " (VARIABLE) (TRUE/FALSE/READ)]")
+                    delivery(10, "Error - blank variable. [ VAR (VARIABLE) (TRUE/FALSE/READ)]")
                 } else if (typeof THIRD_TERM == 'undefined') {
-                    delivery(10, "Error - no action input. [" + VARIABLE_PREFIX + " (VARIABLE) (TRUE/FALSE/READ)]")
+                    delivery(10, "Error - no action input. [ VAR (VARIABLE) (TRUE/FALSE/READ)]")
                 } else if (THIRD_TERM == "READ") {
                     //READ VARIABLE
                     delivery(10, "Variable '" + INPUT_VAR.toString() + "' is " + window[INPUT_VAR.toString()] + ".")
                 } else if (THIRD_TERM == "TRUE") {
-					switch(DEV) {
-						case 1:
-							window[INPUT_VAR] = 1;
-							delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
-							break;
-						default:
-							if (Unlockedvars.includes(INPUT_VAR)) {
-								window[INPUT_VAR] = 1;
-								delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
-							} else {
-								delivery(10, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
-							}
-							break;
-					}
+			if(DEV) {
+				window[INPUT_VAR] = 1;
+				delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
+			} else {
+				if (Unlockedvars.includes(INPUT_VAR)) {
+					window[INPUT_VAR] = 1;
+					delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
+				} else {
+					delivery(10, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
+				}
+			}
                 } else if (THIRD_TERM == "FALSE") {
-					switch(DEV) {
-						case 1:
-							window[INPUT_VAR] = 0;
-							delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
-							break;
-						default:
-							if (Unlockedvars.includes(INPUT_VAR)) {
-								window[INPUT_VAR] = 0;
-								delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
-							} else {
-								delivery(10, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
-							}
-							break;
-					}
+			if(DEV) {
+				window[INPUT_VAR] = 0;
+				delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
+			} else {
+				if (Unlockedvars.includes(INPUT_VAR)) {
+					window[INPUT_VAR] = 0;
+					delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
+				} else {
+					delivery(10, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
+				}
+			}
                 } else if (THIRD_TERM == "SET") {
-					switch(FORTH_TERM) {
-						case "TRUE":
-							delivery(10, "ERROR USE THE COMMAND '" + VARIABLE_PREFIX + " " + INPUT_VAR.toString() + " TRUE'")
-							break;
-						case "FALSE":
-							delivery(10, "ERROR USE THE COMMAND '" + VARIABLE_PREFIX + " " + INPUT_VAR.toString() + " FALSE'")
-							break;
-						default:
-							switch(DEV) {
-								case 1:
-									window[INPUT_VAR] = FORTH_TERM;
-									delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
-									break;
-								default:
-									if (Unlockedvars.includes(INPUT_VAR)) {
-										window[INPUT_VAR] = FORTH_TERM;
-										delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
-									} else {
-										delivery(10, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
-									}
-									break;
-							}
+			switch(FORTH_TERM) {
+				case "TRUE":
+					delivery(10, "ERROR USE THE COMMAND ' VAR " + INPUT_VAR.toString() + " TRUE'")
+					break;
+				case "FALSE":
+					delivery(10, "ERROR USE THE COMMAND ' VAR " + INPUT_VAR.toString() + " FALSE'")
+					break;
+				default:
+					if(DEV) {
+						window[INPUT_VAR] = FORTH_TERM;
+						delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
+						break;
+					} else {
+						if (Unlockedvars.includes(INPUT_VAR)) {
+							window[INPUT_VAR] = FORTH_TERM;
+							delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
+						} else {
+							delivery(10, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
+						}
+						break;
 					}
+			}
                 } else if (THIRD_TERM !== "TRUE" || THIRD_TERM !== "FALSE" || THIRD_TERM !== "READ") {
-                    delivery(10, "Error - " + VARIABLE_PREFIX + " (VARIABLE) (TRUE/FALSE/READ/SET) [VALUE]")
+                    delivery(10, "Error - " + "VAR" + " (VARIABLE) (TRUE/FALSE/READ) [VALUE]")
                 }
                 break;
-            case PRINT_PREFIX:
-                //var onlyvariable = commandinput.replace(VARIABLE_PREFIX, '');
+            case "PRINT":
+                //var onlyvariable = commandinput.replace("VAR", '');
                 var printarray = commandinput.split(/(\s+)/).filter(function(e) {
                     return e.trim().length > 0;
                 });
@@ -305,7 +300,7 @@ function logKey(e) {
                 //Read the filename
                 var input_file = printarray[1];
                 if (typeof input_file == 'undefined') {
-                    delivery(10, "Error - blank file name. [" + PRINT_PREFIX + " (FILE NAME)")
+                    delivery(10, "Error - blank file name. [" + "PRINT" + " (FILE NAME)")
                 } else if (Unlockedfiles.includes(input_file)) {
                     printcommand(input_file)
                 } else {
