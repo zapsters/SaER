@@ -1,7 +1,8 @@
-# SaER
-I dont know why I made this.
+# SaER Console.
 
-It is made though.
+A connection into the SaER organization.
+
 VERSION 2.6 Ready
 
-I think this will end up being a way bigger project. Bigger than a website.
+ToDo: 
+  Adding Lore lol
