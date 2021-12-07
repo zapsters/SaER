@@ -10,7 +10,7 @@ function onLoad() {
 	//document.getElementById('input').
 	alert("DISBALE THE INPUT FIELD...");
 }
-
+onLoad();
 
 
 //Get URL Variables Function
