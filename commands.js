@@ -1,3 +1,18 @@
+//ONLOAD
+function onLoad() {
+	delivery(10, "Connecting to SaER Servers...");
+	delivery(10, "Connection Established!");
+	delivery(10, "----");
+	delivery(10, "[Login Required] Use the LOGIN command. --- LOGIN (USERNAME) (PASSWORD)");
+	delivery(10, "----<br>");
+	
+	//Disable input field.
+	//document.getElementById('input').
+	alert("DISBALE THE INPUT FIELD...");
+}
+
+
+
 //Get URL Variables Function
 function getUrlVars() {
     var vars = {};
@@ -23,6 +38,8 @@ var version = "Beta0.2.5 DEVELOPMENT";
 var versionSUB = "Project Astro";
 
 //set Variables
+var isLoggedIn = false;
+
 var COPYRIGHT1 = "SaER Copyright 2021"
 var COPYRIGHT2 = "SaER logo above, Websites, and other media are owned and claimed by Science and Entity Research"
 var ACCESSLEVEL = 0;
@@ -61,12 +78,6 @@ window.setInterval(function() {
 		}
 	}
 }, 500);
-
-//ONLOAD
-function onLoad() {
-    
-}
-
 
 //rainbow text generator function
 var COLOR = 60;
