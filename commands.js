@@ -32,7 +32,7 @@ var PRIDE = 0;
 
 //Variables used by Variable command
 var Unlockedvars = ["DEV", "ACCESSLEVEL"];
-//Files that can be read using Print command
+//Files that can be read by using Print command
 var Unlockedfiles = ["VERSION", "ASTRO", "FAIL"];
 
 //Update active vars at bottomn of screen
@@ -209,7 +209,7 @@ function logKey(e) {
                 document.getElementById("botdivtext").innerHTML = "";
                 document.getElementById("input").value = "";
 			//help commands
-			var commands = "COMMANDS<br> VAR (variable) (true/false/read/set) [value] - Change a local veriable.<br>COPYRIGHT - Print copyright information<br>PRINT (File Name) - Print from text file<br>CLEAR - Clear console log<br> VERSION - Prints the current version of the SaER OFFICIAL CONSOLE.";
+			var commands = "COMMANDS<br> VAR (variable) (true/false/read/set) [value] - Change a local veriable.<br>COPYRIGHT - Print copyright information<br>PRINT (File Name) - Print from text file<br>RUN (File Name) - Search for and run a file on SaER servers.<br>CLEAR - Clear console log<br> VERSION - Prints the current version of the SaER OFFICIAL CONSOLE.";
                 delivery(10, commands);
                 break;
             case "CLEAR":
@@ -316,9 +316,29 @@ function logKey(e) {
 		PRIDE = !PRIDE;
                 delivery(1)
                 break;
-            case "ASTRO":
-                delivery(11, "oof")
+            case "ASTRO.EXE":
+                delivery(11, "Connection Terminated")
                 break;
+		case "RUN":
+			var runarray = commandinput.split(/(\s+)/).filter(function(e) {
+			    return e.trim().length > 0;
+			});
+			//console.log(runarray); // ["RUN", "(FILENAME)"]
+			//Read the filename
+			var input_file = runarray[1];
+			if (typeof input_file == 'undefined') {
+			    delivery(10, "Error - blank file name. [" + "RUN" + " (FILE NAME)")
+			} else {
+				switch(input_file) {
+					case "ASTRO.EXE":
+						runcommand(input_file)
+						break;
+					default:
+						delivery(10, "File not found.")
+						break;
+				}
+			}
+			break;
             default:
                 delivery(0);
                 document.getElementById("topdivtext").innerHTML = "";
@@ -328,18 +348,27 @@ function logKey(e) {
         }
     }
 
-    function printcommand(f) {
-        switch (f) {
+    function printcommand(file) {
+        switch (file) {
             case "VERSION":
                 delivery(10, "version.txt<br> - " + version + " - " + versionSUB)
                 break;
-            case "ASTRO":
-                delivery(10, "astro.exe<br> - BLOCKED FILE - Suspicious activity detected on your ip address. You IP has been logged")
-                break;
             default:
-			delivery(10, "ERROR - File exists, but can not be read. Insufficient Access Level?");
+		delivery(10, "ERROR - File exists, but can not be read. Insufficient Access Level?");
+		break;
         }
     }
+	
+	function runcommand(file) {
+		switch (file) {
+		    case "ASTRO.EXE":
+			delivery(10, "astro.exe<br> - BLOCKED FILE - Suspicious activity detected on your ip address. You IP has been logged.")
+			break;
+		    default:
+			delivery(10, "ERROR - File could not be opened. Insufficient Access Level?");
+			break;
+        	}	
+	}
 }
 
 //
