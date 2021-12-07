@@ -93,9 +93,28 @@ if (typeof COMNUM == 'undefined') {
 
 //DELIVERY FUNCTION
 function delivery(a, b) {
+		//GET CURRENT DATE / TIME (UNFORMATED)
+        var today = new Date();
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        	//FORMAT MINUTES & SECONDS
+        var minutes = today.getMinutes();
+        if (minutes >= 0 && minutes < 10) {
+            var minutes = "0" + minutes;
+        }
+	
+        var seconds = today.getSeconds();
+        if (seconds >= 0 && seconds < 10) {
+            var seconds = "0" + seconds;
+        }
+        	//REDEFINE TIME (FORMATTED)
+        var time = today.getHours() + ":" + minutes + ":" + seconds;
+        var rawinput = document.getElementById('input').value;
+        var commandinput = rawinput.toUpperCase();
 	if (commandinput == "" || commandinput == " ") {} else {
 		COMMANDHISTORY.push(commandinput);
 	}
+	
+		//Text delivery!
 	switch (a) {
 	case 0:
 		//Unkown Command
@@ -162,24 +181,7 @@ function logKey(e) {
 		if (commandinput != "" && typeof commandinput != 'undefined' && commandinput != " " && COMNUM == COMMANDHISTORY.length) {
 			COMNUM = COMMANDHISTORY.length + 1;
 		}
-
-        // End of Delievery Function -------------------------------------------------------------------------------------------------------------XXXX
-        //GET CURRENT DATE / TIME (UNFORMATED)
-        var today = new Date();
-        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        //FORMAT MINUTES & SECONDS
-        var minutes = today.getMinutes();
-        if (minutes >= 0 && minutes < 10) {
-            var minutes = "0" + minutes;
-        }
-        var seconds = today.getSeconds();
-        if (seconds >= 0 && seconds < 10) {
-            var seconds = "0" + seconds;
-        }
-        //REDEFINE TIME (FORMATTED)
-        var time = today.getHours() + ":" + minutes + ":" + seconds;
-        var rawinput = document.getElementById('input').value;
-        var commandinput = rawinput.toUpperCase();
+		
 
         //COMMAND LOGIC -------------------------------------------------------------------------------------------------------------XXXX
         //OLD METHOD --- || document.getElementById('input').value == "HELP"
