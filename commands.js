@@ -333,7 +333,7 @@ function logKey(e) {
                 delivery(10, "astro.exe<br> - BLOCKED FILE - Suspicious activity detected on your ip address. You IP has been logged")
                 break;
             default:
-			delivery(10, "ERROR - File exists, but can not be read.");
+			delivery(10, "ERROR - File exists, but can not be read. Insufficient Access Level?");
         }
     }
 }
