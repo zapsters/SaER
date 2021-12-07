@@ -158,6 +158,14 @@ function delivery(a, b) {
 	}
 }
 
+//ONLOAD
+//function onLoad() {
+	delivery(10, "Connecting to SaER Servers...");
+	delivery(10, "Connection Established!");
+	delivery(10, "----");
+	delivery(10, "[Login Required] Use the LOGIN command. --- LOGIN (USERNAME) (PASSWORD)");
+	delivery(10, "----");
+//}
 
 document.onkeydown = logKey;
 function logKey(e) {
