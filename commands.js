@@ -193,7 +193,7 @@ function logKey(e) {
 		}
 		
 	//Reset the current command number, so you can press up to go to the last command.
-	COMNUM = COMMANDHISTORY.length;
+	COMNUM = 1 + COMMANDHISTORY.length;
 
         //COMMAND LOGIC -------------------------------------------------------------------------------------------------------------XXXX
         //OLD METHOD --- || document.getElementById('input').value == "HELP"
