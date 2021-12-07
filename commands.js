@@ -132,6 +132,7 @@ function delivery(a, b) {
 		document.getElementById("topdivtext").style.visibility = "visible";
 		document.getElementById("topdivtext").innerHTML = "" + b;
 		break;
+	}
 }
 	
 
@@ -161,7 +162,6 @@ function logKey(e) {
 		if (commandinput != "" && typeof commandinput != 'undefined' && commandinput != " " && COMNUM == COMMANDHISTORY.length) {
 			COMNUM = COMMANDHISTORY.length + 1;
 		}
-        }
 
         // End of Delievery Function -------------------------------------------------------------------------------------------------------------XXXX
         //GET CURRENT DATE / TIME (UNFORMATED)
