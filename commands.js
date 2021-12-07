@@ -1,18 +1,3 @@
-//ONLOAD
-function onLoad() {
-	delivery(10, "Connecting to SaER Servers...");
-	delivery(10, "Connection Established!");
-	delivery(10, "----");
-	delivery(10, "[Login Required] Use the LOGIN command. --- LOGIN (USERNAME) (PASSWORD)");
-	delivery(10, "----<br>");
-	
-	//Disable input field.
-	//document.getElementById('input').
-	alert("DISBALE THE INPUT FIELD...");
-}
-onLoad();
-
-
 //Get URL Variables Function
 function getUrlVars() {
     var vars = {};
@@ -174,7 +159,19 @@ function delivery(a, b) {
 	}
 }
 	
-
+//ONLOAD
+function onLoad() {
+	delivery(10, "Connecting to SaER Servers...");
+	delivery(10, "Connection Established!");
+	delivery(10, "----");
+	delivery(10, "[Login Required] Use the LOGIN command. --- LOGIN (USERNAME) (PASSWORD)");
+	delivery(10, "----<br>");
+	
+	//Disable input field.
+	//document.getElementById('input').
+	alert("DISBALE THE INPUT FIELD...");
+}
+onLoad();
 
 document.onkeydown = logKey;
 function logKey(e) {
