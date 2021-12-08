@@ -163,11 +163,17 @@ function delivery(a, b) {
 
 //ONLOAD
 function onLoad() {
-	delivery(10, "Connecting to SaER Servers...");
-	delivery(10, "Connection Established!");
-	delivery(10, "----");
-	delivery(10, "[Login Required] Use the LOGIN command. --- LOGIN (USERNAME) (PASSWORD)");
-	delivery(10, "----");
+	deliveryAfterDelay(10, "Connecting to SaER Servers...", 500);
+	deliveryAfterDelay(10, "Connection Established!", 1230);
+	deliveryAfterDelay(10, "_________________________________", 1430);
+	deliveryAfterDelay(10, "[Login Required] Use the LOGIN command. --- LOGIN (USERNAME) (PASSWORD)", 1450);
+	deliveryAfterDelay(10, "_________________________________", 1480);
+}
+
+function deliveryAfterDelay(type, input, delay) {
+	setTimeout(function() {
+		delivery(type, input);
+	}, delay);
 }
 
 document.onkeydown = logKey;
