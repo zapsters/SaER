@@ -105,18 +105,21 @@ function delivery(a, b) {
         if (minutes >= 0 && minutes < 10) {
             var minutes = "0" + minutes;
         }
-	
+        
         var seconds = today.getSeconds();
         if (seconds >= 0 && seconds < 10) {
             var seconds = "0" + seconds;
         }
+        
         	//REDEFINE TIME (FORMATTED)
         var time = today.getHours() + ":" + minutes + ":" + seconds;
         var rawinput = document.getElementById('input').value;
+        
+        //Get command input
         var commandinput = rawinput.toUpperCase();
-	if (commandinput == "" || commandinput == " ") {} else {
-		COMMANDHISTORY.push(commandinput);
-	}
+      if (commandinput == "" || commandinput == " ") {} else {
+          COMMANDHISTORY.push(commandinput);
+      }
 	
 		//Text delivery!
 	switch (a) {
@@ -159,13 +162,13 @@ function delivery(a, b) {
 }
 
 //ONLOAD
-//function onLoad() {
+function onLoad() {
 	delivery(10, "Connecting to SaER Servers...");
 	delivery(10, "Connection Established!");
 	delivery(10, "----");
 	delivery(10, "[Login Required] Use the LOGIN command. --- LOGIN (USERNAME) (PASSWORD)");
 	delivery(10, "----");
-//}
+}
 
 document.onkeydown = logKey;
 function logKey(e) {
