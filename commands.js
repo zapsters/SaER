@@ -18,7 +18,7 @@ if (typeof DEV == 'undefined') {
 
 
 // Static Variables - Change Freely
-var version = "Beta0.2.5 DEVELOPMENT";
+var version = "Beta0.2.6 DEVELOPMENT";
 var versionSUB = "Project Astro";
 
 //set Variables
@@ -58,7 +58,7 @@ window.setInterval(function() {
 		//Rainbow text for every text with "rt" class
 		var elements = document.getElementsByClassName("rt");
 		for (let i = 0; i < elements.length; i++) {
-		generateRainbowText(elements[i]);
+			generateRainbowText(elements[i]);
 		}
 	}
 }, 500);
@@ -322,7 +322,7 @@ function logKey(e) {
                 delivery(10, COPYRIGHT1 + " - " + COPYRIGHT2)
                 break;
             case "PRIDE":
-                document.getElementById("logo").src = "https://zapsters.github.io/Home/images/V4ZapsterLogoGlitchPride.gif";
+                document.getElementById("logo").src = "/images/SaERLogoGlitchPride.gif";
                 document.getElementById("logo").style.filter = "invert(0%)";
 		PRIDE = !PRIDE;
                 delivery(1)
