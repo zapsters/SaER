@@ -2,13 +2,16 @@ html,
 body {
 margin: 0;
 height: 100%;
+font-family: 'Bahnschrift';
 }
 
 @font-face {
-font-family: 'bauhausc_demi';
-src: url('https://zapsters.github.io/Home/fonts/bauhausc_demibold_regular-webfont.woff2') format('woff2'), url('https://zapstergames.github.io/Home/fonts/bauhausc_demibold_regular-webfont.woff') format('woff');
-font-weight: normal;
-font-style: normal;
+    font-family: 'Bahnschrift';
+    src: url('https://zapsters.github.io/Home/fonts/Bahnschrift.woff') format('woff');
+      url('https://zapsters.github.io/Home/fonts/Bahnschrift.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 
 html,
@@ -30,7 +33,6 @@ cursor: pointer;
 }
 
 #sub {
-font-family: 'bauhausc_demi';
 color: #000;
 text-decoration: none;
 text-transform: uppercase;
@@ -42,7 +44,6 @@ position: relative;
 }
 
 #version {
-font-family: 'bauhausc_demi';
 text-decoration: none;
 text-transform: uppercase;
 font-size: 13px;
@@ -55,7 +56,6 @@ bottom: 25px;
 }
 
 #versionSUB {
-font-family: 'bauhausc_demi';
 text-decoration: none;
 text-transform: uppercase;
 font-size: 9px;
@@ -68,7 +68,6 @@ bottom: 25px;
 }
 
 .sub {
-font-family: 'bauhausc_demi';
 text-decoration: none;
 text-transform: uppercase;
 font-size: 13px;
@@ -81,7 +80,6 @@ bottom: -5px;
 }
 
 #sub2 {
-font-family: 'bauhausc_demi';
 text-decoration: none;
 text-transform: uppercase;
 font-size: 15px;
@@ -94,7 +92,6 @@ bottom: -5px;
 }
 
 #sub2v2 {
-font-family: 'bauhausc_demi';
 text-decoration: none;
 text-transform: uppercase;
 font-size: 15px;
@@ -107,7 +104,6 @@ bottom: 5px;
 }
 
 #topdivtext {
-font-family: 'bauhausc_demi';
 color: #000;
 text-decoration: none;
 text-transform: uppercase;
@@ -120,7 +116,6 @@ bottom: 5px;
 }
 
 #botdivtext {
-font-family: 'bauhausc_demi';
 color: #000;
 text-decoration: none;
 text-transform: uppercase;
@@ -133,7 +128,6 @@ bottom: 5px;
 }
 
 .poz {
-font-family: 'bauhausc_demi';
 font-size: 30px;
 position: absolute;
 background-color: #555;
@@ -147,7 +141,6 @@ border: 3px solid #555;
 }
 
 .pozb {
-font-family: 'bauhausc_demi';
 font-size: 30px;
 background-color: #555;
 bottom: -40px;
@@ -160,7 +153,6 @@ border: 3px solid #555;
 }
 
 .poz2 {
-font-family: 'bauhausc_demi';
 position: absolute;
 bottom: 35px;
 left: 5px;
@@ -169,7 +161,6 @@ width: 100%;
 }
 
 .poz3 {
-font-family: 'bauhausc_demi';
 font-size: 30px;
 position: absolute;
 bottom: 150px;
@@ -215,7 +206,6 @@ max-width: 400px;
 background: none;
 border: none;
 color: #000;
-font-family: 'bauhausc_demi';
 cursor: default
 }
 
@@ -230,7 +220,6 @@ border: 1px solid transparent;
 #mydivheader {
 cursor: move;
 z-index: 1;
-font-family: 'bauhausc_demi';
 color: #111;
 text-decoration: none;
 font-size: 20px;
@@ -249,7 +238,6 @@ left: 0;
 width: 90%;
 max-width: 100%;
 letter-spacing: 0px;
-font-family: 'bauhausc_demi';
 text-shadow: -1px -1px #fff;
 font-size: 16px;
 margin: 0px 0 0 0;
