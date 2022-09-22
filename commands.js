@@ -322,7 +322,7 @@ function logKey(e) {
                 delivery(10, COPYRIGHT1 + " - " + COPYRIGHT2)
                 break;
             case "PRIDE":
-                document.getElementById("logo").src = "/images/SaERLogoGlitchPride.gif";
+                document.getElementById("logo").src = "images/SaERLogoGlitchPride.gif";
                 document.getElementById("logo").style.filter = "invert(0%)";
 		PRIDE = !PRIDE;
                 delivery(1)
