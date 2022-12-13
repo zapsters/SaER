@@ -66,11 +66,11 @@ body {
   padding: 10px 10px 10px 10px;
 }
 .alert {
-  border: 2px red solid;
+  border: 0px #4a4a4a solid;
   margin: 0px 0px 0px 0px;
   font-weight: 600;
   padding: 13px 10px 10px 10px;
-  background: #4D0D0D;
+  background: #852828;
   color: white;
 }
 .entry {
@@ -80,21 +80,31 @@ body {
   margin-top: 10px; 
   border: #4a4a4a 4px solid;
   padding: 2px;
+  position: relative;
+  padding-bottom: 30px;
 }
 .entry h1 {
   font-size: 30px;
-  padding: 10px;
+  padding: 14px 10px 6px 10px;
   margin: 0;
 }
 .entry p {
-  padding: 0px 10px 0px 10px;
-  text-indent: 30px
+  padding: 0px 0px 0px 0px;
+  margin: 8px 10px 0px 10px;
+  text-indent: 20px
 }
 .entry hr {
   padding: 0px;
   margin: 0px;
   background-color: #4a4a4a;
-  border: #4a4a4a 2px solid;
+  border: #4a4a4a 1px solid;
+}
+.entry .sub {
+  font-size: 13px;
+  padding: 0;
+  margin: 0;
+  bottom: 0px;
+  position: absolute;
 }
 .footer {
   text-align: center;
