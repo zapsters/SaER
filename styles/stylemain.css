@@ -12,13 +12,13 @@ body {
     margin: auto;
     height: 120px;
     position: relative;
+    background-color: black;
 }
 #header #cC img {
     display: inline;
     width: 100px;
     padding: 6px 0px 0px 14px;
     position: absolute;
-    top: 50%;
 }
 #header #cC h1 {
   display: inline;
