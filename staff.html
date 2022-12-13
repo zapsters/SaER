@@ -8,9 +8,7 @@
   <div id="header">
   </div>
 <div class="pageContent">
-  <div class="alert">
-      <p class="noPM">ALERT: This is an experimental branch with admin access defaulted. Remember to disable before pushing Allan.</p>
-  </div>
+  <div id="alertDiv"></div>
   
   <div class="entry">
   	<h1 href="console.html">Our Staff</h1>
@@ -31,6 +29,7 @@
 	  	$("#header").load("https://zapsters.github.io/SaER/pieces/header.html", function() {
 			$("#navBarStaff").toggleClass("active");
 		});
+	  	$("#alertDiv").load("https://zapsters.github.io/SaER/pieces/alert.html"); 
 	  	$("#footer").load("https://zapsters.github.io/SaER/pieces/footer.html"); 
 	});
 </script>
