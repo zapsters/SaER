@@ -28,8 +28,10 @@
     crossorigin="anonymous"></script>
 <script>
 	$(function(){
-	  $("#header").load("https://zapsters.github.io/SaER/pieces/header.html"); 
-	  $("#footer").load("https://zapsters.github.io/SaER/pieces/footer.html"); 
+	  	$("#header").load("https://zapsters.github.io/SaER/pieces/header.html", function() {
+			$("#navBarStaff").toggleClass("active");
+		});
+	  	$("#footer").load("https://zapsters.github.io/SaER/pieces/footer.html"); 
 	});
 </script>
 </body>
