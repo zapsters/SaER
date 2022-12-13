@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Project Directory</title>
+</head>
+<link rel="shortcut icon" href="https://zapsters.github.io/SaER/images/SaERLogo.png"/>
+<link rel="stylesheet" href="https://zapsters.github.io/SaER/styles/stylemain.css">
+<body>
+  <div id="header">
+  </div>
+<div class="pageContent">
+  <div id="alertDiv"></div>
+  
+  <div class="entry">
+  	<h1 href="console.html">Project Directory</h1>
+	<hr>
+    <p>Welcome to the new project directory system! This was created to serve as better communication between team members and to provide a record of communication. Directors are cautioned to redact any sensitive data uploaded and to share files through encrypted company emails for security.</p>
+    <p>To access the project directory, please input the project ID or name.</p>
+  </div>
+  
+  <div id="footer"></div>
+</div>
+
+<script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+<script>
+	$(function(){
+	  	$("#header").load("https://zapsters.github.io/SaER/pieces/header.html", function() {
+			$("#navBarProjects").toggleClass("active");
+		});
+	  	$("#alertDiv").load("https://zapsters.github.io/SaER/pieces/alert.html"); 
+	  	$("#footer").load("https://zapsters.github.io/SaER/pieces/footer.html"); 
+	});
+</script>
+</body>
+</html>
