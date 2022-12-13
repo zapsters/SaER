@@ -1,32 +1,33 @@
 body {
     background: #fcfcf0;
-    color: white;
-    font-family: monospace;
+    color: black;
+    font-family: "Courier New";
     height: 100%;
     margin: 0; padding: 0;
 }
 .noPM {padding:0;margin:0;}
 #header {
-    border-bottom: 2px white solid;
+	color: white;
     padding: 0px 30px 0px 10px; 
     margin: auto;
     height: 120px;
     position: relative;
-    background-color: black;
+	background: #1a1919;
+    border-bottom: 4px #7a1212 solid;
 }
 #header #cC img {
     display: inline;
     width: 100px;
-    padding: 6px 0px 0px 14px;
+    margin: 12px 0px 0px 10px;
+    padding: 0px;
     position: absolute;
 }
 #header #cC h1 {
   display: inline;
   position: absolute;
   top: 35%;
-  left: 135px;
+  left: 130px;
   font-size: 40px;
-  content: "AH!";
 }
 #header #navbar {
   overflow: hidden;
@@ -70,13 +71,14 @@ body {
   font-weight: 600;
   padding: 13px 10px 10px 10px;
   background: #4D0D0D;
+  color: white;
 }
 .entry {
-  background: #4a4a4a;
-  color: white;
+  background: white;
+  color: black;
   font-size: 19px;
   margin-top: 10px; 
-  border: white 2px solid;
+  border: #4a4a4a 4px solid;
   padding: 2px;
 }
 .entry h1 {
@@ -88,10 +90,16 @@ body {
   padding: 0px 10px 0px 10px;
   text-indent: 30px
 }
+.entry hr {
+  padding: 0px;
+  margin: 0px;
+  background-color: #4a4a4a;
+  border: #4a4a4a 2px solid;
+}
 .footer {
   text-align: center;
-  padding: 5px 0px 0px 0px;
-  margin: 0;
+  margin: 8px 0px 0px 0px;
+  color: black;
 }
 .footer p {
   padding: 0;
@@ -99,7 +107,7 @@ body {
   font-size: 14px;
 }
 
-@media screen and (max-width: 444px) {
+@media screen and (max-width: 700px) {
     #header #navbar {
     	display: none;
     }
