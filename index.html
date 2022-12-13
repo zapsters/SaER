@@ -26,7 +26,9 @@
     crossorigin="anonymous"></script>
 <script>
 	$(function(){
-	  $("#header").load("https://zapsters.github.io/SaER/pieces/header.html"); 
+	  $("#header").load("https://zapsters.github.io/SaER/pieces/header.html", function() {
+      		$("#navBarHome").toggleClass("active");
+      	  });
 	  $("#footer").load("https://zapsters.github.io/SaER/pieces/footer.html"); 
 	});
 </script>
