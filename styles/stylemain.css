@@ -13,7 +13,7 @@ body {
     height: 120px;
     position: relative;
 	background: #1a1919;
-    border-bottom: 4px #7a1212 solid;
+    border-bottom: 5px #852828 solid;
 }
 #header #cC img {
     display: inline;
@@ -66,11 +66,11 @@ body {
   padding: 10px 10px 10px 10px;
 }
 .alert {
-  border: 0px #4a4a4a solid;
+  border: 3px #852828 solid;
   margin: 0px 0px 0px 0px;
   font-weight: 600;
   padding: 13px 10px 10px 10px;
-  background: #852828;
+  background: #B96560;;
   color: white;
 }
 .entry {
