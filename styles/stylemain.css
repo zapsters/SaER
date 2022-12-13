@@ -1,0 +1,98 @@
+body {
+	background: #111;
+    color: white;
+    font-family: monospace;
+    height: 100%;
+    margin: 0; padding: 0;
+}
+.noPM {padding:0;margin:0;}
+#header {
+	border-bottom: 2px white solid;
+    padding: 0px 30px 0px 10px; 
+    margin: auto;
+    height: 120px;
+    position: relative;
+}
+#header #cC img {
+	display: inline;
+	width: 100px;
+    padding: 6px 0px 0px 14px;
+    position: absolute;
+    top: 50%;
+	transform: translateY(-50%);
+}
+#header #cC h1 {
+  display: inline;
+  position: absolute;
+  top: 35%;
+  left: 135px;
+  font-size: 40px;
+  content: "AH!";
+}
+#header #navbar {
+  overflow: hidden;
+  float: right;
+  height: 100%;
+  padding-right: 10px;
+}
+#header #navbar a {
+  position: relative;
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 20px;
+  cursor: pointer;
+  padding: 0px 10px 0px 10px;
+  height: 40%;
+}
+/* Change the color of links on hover */
+#header #navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+/* Add a color to the active/current link */
+#header #navbar a.active {
+  border-bottom: #f2f2f2 4px solid;
+}
+.pageContent {
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+  margin-top: 10px;
+  padding: 10px 10px 10px 10px;
+}
+.alert {
+  border: 2px red solid;
+  margin: 0px 0px 0px 0px;
+  font-weight: 600;
+  padding: 13px 10px 10px 10px;
+  background: #4D0D0D;
+}
+.entry {
+  background: rgba(255,255,255,0.1);
+  color: white;
+  font-size: 19px;
+  margin-top: 10px; 
+  border: white 2px solid;
+  padding: 2px;
+}
+.entry h1 {
+  font-size: 30px;
+  padding: 10px;
+  margin: 0;
+}
+.entry p {
+  padding: 0px 10px 0px 10px;
+  text-indent: 30px
+}
+
+@media screen and (max-width: 444px) {
+    #header #navbar {
+    	display: none;
+    }
+}
+.entry hr {padding:0;margin:0;}
