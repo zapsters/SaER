@@ -5,6 +5,9 @@
 </head>
 <link rel="shortcut icon" href="https://zapsters.github.io/SaER/images/SaERLogo.png"/>
 <link rel="stylesheet" href="https://zapsters.github.io/SaER/styles/stylemain.css">
+<style>
+
+</style>
 <body>
   <div id="header">
   </div>
@@ -16,6 +19,11 @@
 	<hr>
     <p>Welcome to the new project directory system! This was created to serve as better communication between team members and to provide a record of communication. Directors are cautioned to redact any sensitive data uploaded and to share files through encrypted company emails for security.</p>
     <p>To access the project directory, please input the project ID or name.</p>
+  	<form action="/action_page.php" style="padding-left: 37px; padding-top: 12px;">
+    	<label for="projectInput">Project ID or name:</label>
+  		<input type="text" id="projectDirSearch" name="projectInput">
+    	<input type="submit" value="Search" id="proDirBtn" onclick="onProjectSearch(projectDirSearch.value)">
+    </form>
   </div>
   
   <div id="footer"></div>
@@ -33,6 +41,10 @@
 	  	$("#alertDiv").load("https://zapsters.github.io/SaER/pieces/alert.html"); 
 	  	$("#footer").load("https://zapsters.github.io/SaER/pieces/footer.html"); 
 	});
+	
+	function onProjectSearch(input) {
+		alert('No project found by query "' + input + '"');
+	}
 </script>
 </body>
 </html>
