@@ -19,14 +19,15 @@
 	<hr>
     <p>Welcome to the new project directory system! This was created to serve as better communication between team members and to provide a record of communication. Directors are cautioned to redact any sensitive data uploaded and to share files through encrypted company emails for security.</p>
     <p>To access the project directory, please input the project ID or name.</p>
-  	<form style="padding-left: 37px; padding-top: 12px;">
+  	<div style="padding-left: 37px; padding-top: 12px;">
     		<label for="projectInput">Project ID or name:</label>
   		<input type="text" id="projectDirSearch" name="projectInput">
     		<input type="submit" value="Search" id="proDirBtn" onclick="onProjectSearch(projectDirSearch.value)">
-    	</form>
-	<div class="entry" id="searchResult">
-	</div>
+    	</div>
   </div>
+	<div class="entry" style="padding:0;" id="resultDiv">
+		<div id="searchResult">Awaiting input...</div>
+	</div>
   
   <div id="footer"></div>
 </div>
@@ -45,9 +46,18 @@
 	});
 	
 	function onProjectSearch(input) {
-		alert('No project found by query "' + input + '"');
-		$('#searchResult').load("https://zapsters.github.io/SaER/" + input);
+    	$('#searchResult').html("");
+		$('#searchResult').load("https://zapsters.github.io/SaER/projects/" + input);
+		if($('#searchResult').is(":empty")) {$('#searchResult').html("There were no results for '" + input + "'...")}
+        document.getElementById('projectDirSearch').value = "";
 	}
+    
+    document.getElementById("projectDirSearch").addEventListener("keydown",
+     function(event) {
+        if (event.keyCode == 13){
+           proDirBtn.click();
+        }
+     });
 </script>
 </body>
 </html>
