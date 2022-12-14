@@ -90,19 +90,19 @@ body {
   position: relative;
   padding-bottom: 30px;
 }
-.entry h1 {
-  font-size: 30px;
-  padding: 14px 10px 6px 10px;
-  margin: 0;
+.entry h1 { 
+  font-size: 30px; 
+  margin: 14px 15px 10px 18px; 
+  padding: 0;
 }
 .entry p {
-  padding: 0px 0px 0px 0px;
+  padding: 1px 5px 0px 5px;
   margin: 8px 10px 0px 10px;
   text-indent: 20px
 }
 .entry hr {
+  margin: 0px 0px 15px 0px;
   padding: 0px;
-  margin: 0px;
   background-color: #4a4a4a;
   border: #4a4a4a 1px solid;
 }
