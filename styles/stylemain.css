@@ -81,7 +81,7 @@ body {
   color: white;
 }
 .entry {
-  background: white;
+  background: #fffff5;
   color: black;
   font-size: 19px;
   margin-top: 10px; 
@@ -92,19 +92,24 @@ body {
 }
 .entry h1 { 
   font-size: 30px; 
-  margin: 10px 15px 10px 18px; 
+  margin: 14px 15px 10px 18px; 
   padding: 0;
 }
 .entry p {
   padding: 0px 5px 0px 5px;
-  margin: 12px 10px 0px 10px;
+  margin: 16px 10px 0px 10px;
   text-indent: 20px
 }
 .entry hr {
-  margin: 0px 0px 15px 0px;
+  margin: 0px 0px -10px 0px;
   padding: 0px;
   background-color: #4a4a4a;
   border: #4a4a4a 1px solid;
+}
+.entry input {
+  border: #4a4a4a 2px solid;
+  font-size: 19px;
+  font-family: "Courier New";
 }
 .entry .sub {
   font-size: 13px;
