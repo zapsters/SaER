@@ -49,6 +49,13 @@ body {
   padding: 0px 10px 0px 10px;
   height: 40%;
 }
+#header #navbar a p {
+  padding: 0;
+  margin: 0;
+  top: 50%;
+  position: relative;
+  transform: translateY(-50%);
+}
 /* Change the color of links on hover */
 #header #navbar a:hover {
   background-color: #ddd;
