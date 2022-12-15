@@ -46,15 +46,22 @@
 	});
 	
 	function onProjectSearch(input) {
+        document.getElementById('proDirBtn').disabled = true;
+        document.getElementById('projectDirSearch').disabled = true;
     	$('#searchResult').html("searching database...");
-		
-	setTimeout(() => {
-		$('#searchResult').load("https://zapsters.github.io/SaER/projects/" + input);
+		// Loading files with .load is surprisingly fast, so here is a little delay :).
 		setTimeout(() => {
-			if($('#searchResult').is(":empty")) {$('#searchResult').html("There were no results for '" + input + "'...")}
+			$('#searchResult').load("https://zapsters.github.io/SaER/projects/" + input, function() {
+              	// This gets executed when the content is loaded
         		document.getElementById('projectDirSearch').value = "";
-    		}, 500);
-	}, 500);
+            	document.getElementById('proDirBtn').disabled = false;
+            	document.getElementById('projectDirSearch').disabled = false;
+                // If the load didn't add new content, the content probably doesn't exist, so print this error.
+                if($('#searchResult').is(":empty") || $('#searchResult').text() == "searching database..." ) {
+                	$('#searchResult').html("There were no results for '" + input + "'...")
+                }
+            });
+		}, 700 + Math.random() * 1000);
 	}
     
     document.getElementById("projectDirSearch").addEventListener("keydown",
