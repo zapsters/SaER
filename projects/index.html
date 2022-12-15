@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<style>
+.folderDiv {
+	min-height: 60px;
+    border: 4px black solid;
+	border-bottom: 0;
+    background: white;
+  	position: relative;
+}
+.folderDiv:hover {
+	background: rgba(0,0,0,0.1);
+}
+.folderDiv:last-child {
+    border: 4px black solid;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48;
+}
+.folderDiv .folder:after {
+  position: absolute;
+  font-size: 60px;
+  top: 50%;
+  color: #ffcf5e;
+  transform: translateY(-50%);
+  pointer-events: none;
+  content: "folder"
+}
+.folderDiv:hover .folder:after {
+  content: "folder_open"
+}
+</style>
+</head>
+<body>
+<div class="folderDiv">
+	<div class="icon">
+		<span class="folder material-symbols-outlined"></span>
+    </div>
+	<div class="content">
+    	<p>Hi</p>
+    </div>
+</div>
+
+<div class="folderDiv">
+	<span class="folder material-symbols-outlined"></span>
+</div>
+
+<div class="folderDiv">
+	<span class="folder material-symbols-outlined"></span>
+</div>
+
+</body>
+</html>
+
+
