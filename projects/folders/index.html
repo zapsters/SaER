@@ -5,6 +5,12 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 <style>
+body{ 
+    font-family: "Courier New";
+}
+.dirFolder {
+	display: none;
+}
 .containerDiv {
 	min-height: 30px;
 	border-bottom: 0;
@@ -23,7 +29,6 @@
 }
 .containerDiv .content {
   	margin: 0px;
-    width: 200px;
     overflow: none;
     flex: 1;
 }
@@ -61,7 +66,7 @@
   transform: translateY(-50%);
   pointer-events: none;
 }
-.document:after {
+.iDocument:after {
   content: "description";
   color: black;
   font-variation-settings:
@@ -70,44 +75,85 @@
   'GRAD' 0,
   'opsz' 48;
 }
-.program:after {
+.iProgram:after {
   content: "terminal";
   color: black;
 }
-.folder:after {
+.iFolder:after {
   content: "folder";
   color: #ffcf5e;
 }
-.containerDiv:hover .folder:after {
+.iReturn:after {
+  content: "keyboard_return";
+}
+.containerDiv:hover .iFolder:after {
   content: "folder_open"
 }
 </style>
 </head>
 <body>
-<div class="containerDiv" onclick="this.parentElement.style.display='none'">
-	<div class="iconDiv">
-		<span class="folder icon material-symbols-outlined"></span>
+<div id="fileBrowserContainer">
+  <p id="path">...</p>
+  <div id="root/" class="dirFolder">
+    <div class="containerDiv" onclick="openDir('root/FolderA')">
+        <div class="iconDiv">
+            <span class="iFolder icon material-symbols-outlined"></span>
+        </div>
+        <div class="content">
+            <p>FolderA</p>
+        </div>
     </div>
-	<div class="content">
-    	<p>This is an example of a folder. </p>
+    <div class="containerDiv" class="dirFolder" onclick="">
+        <div class="iconDiv">
+            <span class="iDocument icon material-symbols-outlined"></span>
+        </div>
+        <div class="content">
+            <p>This is an example of a text document.</p>
+        </div>
     </div>
+    <div class="containerDiv" class="dirFolder" onclick="">
+        <div class="iconDiv">
+            <span class="iProgram icon material-symbols-outlined"></span>
+        </div>
+        <div class="content">
+            <p>This is an example of a program.</p>
+        </div>
+    </div>
+  </div>
+  
+  <div id="root/FolderA" class="dirFolder">
+    <div class="containerDiv" onclick="">
+        <div class="iconDiv">
+            <span class="iProgram icon material-symbols-outlined"></span>
+        </div>
+        <div class="content">
+            <p>Astro.exe</p>
+        </div>
+    </div>
+    <div class="containerDiv" onclick="onReturn();">
+        <div class="iconDiv">
+            <span class="iReturn icon material-symbols-outlined"></span>
+        </div>
+        <div class="content">
+            <p>Back</p>
+        </div>
+    </div>
+  </div>
 </div>
-<div class="containerDiv" onclick="this.parentElement.style.display='none'">
-	<div class="iconDiv">
-		<span class="document icon material-symbols-outlined"></span>
-    </div>
-	<div class="content">
-    	<p>This is an example of a text document.</p>
-    </div>
-</div>
-<div class="containerDiv" onclick="this.parentElement.style.display='none'">
-	<div class="iconDiv">
-		<span class="program icon material-symbols-outlined"></span>
-    </div>
-	<div class="content">
-    	<p>This is an example of a program.</p>
-    </div>
-</div>
+<script>
+var path = "root/";
 
+function openDir(dir) {
+  document.getElementById(path).style.display = "none";
+  
+  path = dir;
+  document.getElementById("path").innerHTML = path;
+  document.getElementById(dir).style.display = "block";
+}
+function onReturn() {
+  alert(path.split("/"));
+}
+openDir(path);
+</script>
 </body>
 </html>
