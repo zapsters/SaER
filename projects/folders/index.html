@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<style>
+.containerDiv {
+	min-height: 30px;
+	border-bottom: 0;
+    background: white;
+  	position: relative;
+  	display: flex;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+    padding: 10px;
+    cursor: pointer;
+}
+.containerDiv .iconDiv {
+  	margin: 0px;
+	width: 50px;
+}
+.containerDiv .content {
+  	margin: 0px;
+    width: 200px;
+    overflow: none;
+    flex: 1;
+}
+.containerDiv .content p {
+    position: relative;
+    transform: translateY(-50%);
+    top: 50%;
+    padding: 0;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.link {
+	cursor: pointer; 
+    color: blue;
+    text-decoration: underline;
+}
+.containerDiv:hover {
+	background: rgba(0,0,0,0.1);
+}
+.containerDiv:last-child {
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48;
+}
+.containerDiv .icon {
+  position: absolute;
+  font-size: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.document:after {
+  content: "description";
+  color: black;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48;
+}
+.program:after {
+  content: "terminal";
+  color: black;
+}
+.folder:after {
+  content: "folder";
+  color: #ffcf5e;
+}
+.containerDiv:hover .folder:after {
+  content: "folder_open"
+}
+</style>
+</head>
+<body>
+<div class="containerDiv" onclick="this.parentElement.style.display='none'">
+	<div class="iconDiv">
+		<span class="folder icon material-symbols-outlined"></span>
+    </div>
+	<div class="content">
+    	<p>This is an example of a folder. </p>
+    </div>
+</div>
+<div class="containerDiv" onclick="this.parentElement.style.display='none'">
+	<div class="iconDiv">
+		<span class="document icon material-symbols-outlined"></span>
+    </div>
+	<div class="content">
+    	<p>This is an example of a text document.</p>
+    </div>
+</div>
+<div class="containerDiv" onclick="this.parentElement.style.display='none'">
+	<div class="iconDiv">
+		<span class="program icon material-symbols-outlined"></span>
+    </div>
+	<div class="content">
+    	<p>This is an example of a program.</p>
+    </div>
+</div>
+
+</body>
+</html>
