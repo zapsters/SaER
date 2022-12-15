@@ -21,7 +21,7 @@
     <p>To access the project directory, please input the project name.</p>
   	<div style="padding-left: 37px; padding-top: 12px;">
     		<label for="projectInput">Project name:</label>
-  		<input type="text" id="projectDirSearch" name="projectInput">
+  		<input type="text" id="projectDirSearch" style="width: 260px;" name="projectInput">
     		<input type="submit" value="Search" id="proDirBtn" onclick="onProjectSearch(projectDirSearch.value)">
     	</div>
   </div>
@@ -46,19 +46,21 @@
 	});
 	
 	function onProjectSearch(input) {
-        document.getElementById('proDirBtn').disabled = true;
-        document.getElementById('projectDirSearch').disabled = true;
-    	$('#searchResult').html("searching database...");
+		var input = input.toLowerCase();
+		input = input.replaceAll(" ", "%20");
+        	document.getElementById('proDirBtn').disabled = true;
+        	document.getElementById('projectDirSearch').disabled = true;
+    		$('#searchResult').html("searching database...");
 		// Loading files with .load is surprisingly fast, so here is a little delay :).
 		setTimeout(() => {
-			$('#searchResult').load("https://zapsters.github.io/SaER/projects/" + input, function() {
+            	$('#searchResult').load("https://zapsters.github.io/SaER/projects/" + input, function() {
               	// This gets executed when the content is loaded
         		document.getElementById('projectDirSearch').value = "";
             	document.getElementById('proDirBtn').disabled = false;
             	document.getElementById('projectDirSearch').disabled = false;
                 // If the load didn't add new content, the content probably doesn't exist, so print this error.
                 if($('#searchResult').is(":empty") || $('#searchResult').text() == "searching database..." ) {
-                	$('#searchResult').html("There were no results for '" + input + "'...")
+                	$('#searchResult').html("There were no results for '" + input.replaceAll("%20", " ") + "'...")
                 }
             });
 		}, 700 + Math.random() * 1000);
