@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Page Title</title>
+<title>SaER File Browser</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 <style>
@@ -48,7 +48,7 @@ body{
     text-decoration: underline;
 }
 .containerDiv:hover {
-	background: rgba(0,0,0,0.1);
+	background: #E5E5E5;
 }
 .containerDiv:last-child {
 }
@@ -89,18 +89,51 @@ body{
 .containerDiv:hover .iFolder:after {
   content: "folder_open"
 }
+
 </style>
 </head>
 <body>
+<div id="pageblock">
 <div id="fileBrowserContainer">
-  <p id="path">...</p>
-  <div id="root/" class="dirFolder">
-    <div class="containerDiv" onclick="openDir('root/FolderA')">
+  <p style="padding: 0; margin: 0; font-size: 20px; font-weight: bold; text-decoration: underline;">= SaER Directory =</p>
+  <p style="padding: 0; margin: 0; font-size: 16px;">Path: <span id="path"></span></p>
+  
+  <!-- ROOT -->
+  <div id="root" class="dirFolder">
+    <div class="containerDiv" onclick="openDir('root/folderA')">
         <div class="iconDiv">
             <span class="iFolder icon material-symbols-outlined"></span>
         </div>
         <div class="content">
-            <p>FolderA</p>
+            <p>folderA</p>
+        </div>
+    </div>
+    <div class="containerDiv" onclick="openDir('root/templates')">
+        <div class="iconDiv">
+            <span class="iFolder icon material-symbols-outlined"></span>
+        </div>
+        <div class="content">
+            <p>templates</p>
+        </div>
+    </div>
+    <div class="containerDiv backbtn" id="backBtnTemplate" onclick="onReturn(); this.remove()" style="display: none">
+        <div class="iconDiv">
+            <span class="iReturn icon material-symbols-outlined"></span>
+        </div>
+        <div class="content">
+            <p>Back</p>
+        </div>
+    </div>
+  </div>
+  
+  <!-- ROOT/TEMPLATES -->
+  <div id="root/templates" class="dirFolder">
+    <div class="containerDiv" onclick="openDir('root/templates')">
+        <div class="iconDiv">
+            <span class="iFolder icon material-symbols-outlined"></span>
+        </div>
+        <div class="content">
+            <p>This is an exmaple of a folder.</p>
         </div>
     </div>
     <div class="containerDiv" class="dirFolder" onclick="">
@@ -119,9 +152,26 @@ body{
             <p>This is an example of a program.</p>
         </div>
     </div>
+    <div class="containerDiv" onclick="">
+        <div class="iconDiv">
+            <span class="iReturn icon material-symbols-outlined"></span>
+        </div>
+        <div class="content">
+            <p>This is an example of a back button.</p>
+        </div>
+    </div>
   </div>
   
-  <div id="root/FolderA" class="dirFolder">
+  <!-- ROOT/FOLDERA -->
+  <div id="root/folderA" class="dirFolder">
+    <div class="containerDiv" onclick="openDir('root/folderA/folderB')">
+        <div class="iconDiv">
+            <span class="iFolder icon material-symbols-outlined"></span>
+        </div>
+        <div class="content">
+            <p>FolderB</p>
+        </div>
+    </div>
     <div class="containerDiv" onclick="">
         <div class="iconDiv">
             <span class="iProgram icon material-symbols-outlined"></span>
@@ -130,30 +180,53 @@ body{
             <p>Astro.exe</p>
         </div>
     </div>
-    <div class="containerDiv" onclick="onReturn();">
+  </div>
+  
+  <!-- ROOT -->
+  <div id="root/folderA/folderB" class="dirFolder">
+    <div class="containerDiv" onclick="openDir('root');">
         <div class="iconDiv">
-            <span class="iReturn icon material-symbols-outlined"></span>
+            <span class="iFolder icon material-symbols-outlined"></span>
         </div>
         <div class="content">
-            <p>Back</p>
+            <p>Return to root.</p>
         </div>
     </div>
   </div>
 </div>
 <script>
-var path = "root/";
+var path = "root";
 
 function openDir(dir) {
+  //This checks to see if a back button should've been created. If one should've, try to remove it. 
+  if(path.split("/").length > 1) {
+  	var boxes = document.getElementById(path).getElementsByClassName("backbtn");
+    if(boxes[0]) boxes[0].remove();
+  }
+  //Hide the old path's div, set the new path to dir, then displat the new path.
   document.getElementById(path).style.display = "none";
-  
   path = dir;
   document.getElementById("path").innerHTML = path;
   document.getElementById(dir).style.display = "block";
+  
+  //Create a back button if the path is deeper than 'root'
+  if(path.split("/").length > 1) {
+    var clonedBackBtn = document.getElementById("backBtnTemplate").cloneNode(true);
+    clonedBackBtn.style.display = "flex";
+  	document.getElementById(dir).appendChild(clonedBackBtn);
+  }
 }
 function onReturn() {
-  alert(path.split("/"));
+  pathArray = path.split("/");
+  pathArray.pop();
+  pathArray = pathArray.join("/");
+  newpath = pathArray;
+  
+  openDir(newpath);
 }
-openDir(path);
+window.onload = (event) => {
+  openDir(path);
+};
 </script>
 </body>
 </html>
