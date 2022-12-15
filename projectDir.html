@@ -46,10 +46,15 @@
 	});
 	
 	function onProjectSearch(input) {
-    	$('#searchResult').html("");
+    	$('#searchResult').html("searching database...");
+		
+	setTimeout(() => {
 		$('#searchResult').load("https://zapsters.github.io/SaER/projects/" + input);
-		if($('#searchResult').is(":empty")) {$('#searchResult').html("There were no results for '" + input + "'...")}
-        document.getElementById('projectDirSearch').value = "";
+		setTimeout(() => {
+			if($('#searchResult').is(":empty")) {$('#searchResult').html("There were no results for '" + input + "'...")}
+        		document.getElementById('projectDirSearch').value = "";
+    		}, 500);
+	}, 500);
 	}
     
     document.getElementById("projectDirSearch").addEventListener("keydown",
