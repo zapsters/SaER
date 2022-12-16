@@ -9,14 +9,14 @@ body{
     font-family: "Courier New";
 }
 .dirFolder {
-	display: none;
+    display: none;
 }
 .containerDiv {
-	min-height: 30px;
-	border-bottom: 0;
+    min-height: 30px;
+    border-bottom: 0;
     background: white;
-  	position: relative;
-  	display: flex;
+    position: relative;
+    display: flex;
     padding: 0px;
     margin: 0px;
     overflow: hidden;
@@ -24,11 +24,11 @@ body{
     cursor: pointer;
 }
 .containerDiv .iconDiv {
-  	margin: 0px;
-	width: 50px;
+    margin: 0px;
+    width: 50px;
 }
 .containerDiv .content {
-  	margin: 0px;
+    margin: 0px;
     overflow: none;
     flex: 1;
 }
@@ -43,37 +43,37 @@ body{
     text-overflow: ellipsis;
 }
 .link {
-	cursor: pointer; 
+    cursor: pointer; 
     color: blue;
     text-decoration: underline;
 }
 .containerDiv:hover {
-	background: #E5E5E5;
+    background: #E5E5E5;
 }
 .containerDiv:last-child {
 }
 .material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 1,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48;
+     font-variation-settings:
+     'FILL' 1,
+     'wght' 400,
+     'GRAD' 0,
+     'opsz' 48;
 }
 .containerDiv .icon {
-  position: absolute;
-  font-size: 40px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
+     position: absolute;
+     font-size: 40px;
+     top: 50%;
+     transform: translateY(-50%);
+     pointer-events: none;
 }
 .iDocument:after {
-  content: "description";
-  color: black;
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48;
+     content: "description";
+     color: black;
+     font-variation-settings:
+     'FILL' 0,
+     'wght' 400,
+     'GRAD' 0,
+     'opsz' 48;
 }
 .iProgram:after {
   content: "terminal";
@@ -92,7 +92,7 @@ body{
 
 </style>
 </head>
-<body>
+<body onload="onLoad()">
 <div id="pageblock">
 <div id="fileBrowserContainer">
   <p style="padding: 0; margin: 0; font-size: 20px; font-weight: bold; text-decoration: underline;">= SaER Directory =</p>
@@ -225,8 +225,11 @@ function onReturn() {
   openDir(newpath);
 }
 window.onload = (event) => {
-  openDir(path);
+	onLoad();
 };
+function onLoad() {
+	openDir(path);
+}
 </script>
 </body>
 </html>
