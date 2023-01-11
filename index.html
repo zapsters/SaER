@@ -1,38 +1,34 @@
 <!DOCTYPE html>
 <html>
+<script src="scripts/consoleCommands.js"></script>
 <head>
-<title>SaER</title>
+
+<title>SaER Console</title>
+    <link rel="shortcut icon" type="image/png" href="https://zapsters.github.io/SaER/images/SaERLogo.png" />
+<link rel="stylesheet" type="text/css" href="styles/consoleStyle.css">
 </head>
-<link rel="shortcut icon" href="https://zapsters.github.io/SaER/images/SaERLogo.png"/>
-<link rel="stylesheet" href="https://zapsters.github.io/SaER/styles/stylemain.css">
-<body>
-  <div id="header"></div>
-<div class="pageContent">
-  <div id="alertDiv"></div>
-  
-  <div class="entry">
-  	<h1 href="console.html">Hello World!</h1>
-	<hr>
-    <p>Staff, this is a new directory being developed. Be sure to log in before trying to access confidential pages. Check your company emails for more information. Use this site as a resource for updates from higher ups and project leaders. </p>
-  	<div class="sub"><span>Post made by J.H. on Dec 13th 2022 at 12:54</span></div>
-  </div>
-  
-  <div id="footer"></div>
-</div>
 
-<script
-    src="https://code.jquery.com/jquery-3.3.1.js"
-    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-    crossorigin="anonymous"></script>
-<script>
-	$(function(){
-	  $("#header").load("https://zapsters.github.io/SaER/pieces/header.html", function() {
-      		$("#navBarHome").toggleClass("active");
-      	  });
-	  $("#alertDiv").load("https://zapsters.github.io/SaER/pieces/alert.html"); 
-	  $("#footer").load("https://zapsters.github.io/SaER/pieces/footer.html"); 
-	});
-</script>
-
+<body onload="onLoad()">
+	<center>
+        <p id="sub" class="rt"><b>SAER ADMIN CONSOLE</b></p>
+        <img id="logo" src="images/SaERLogoGlitch.gif" width="400px" id="i1" usemap="#saer" cursor="default;" class="logo">
+        <div class=poz2>
+            <p class="sub rt" id="subtext">-----</p>						<!--Hidden top subtext-->
+            <p id="sub2" style="font-size:3;" class="rt"></p>					<!--TOP COPYRIGHT TEXT-->
+            <p id="sub2v2" style="font-size:3;" class="rt">SCRIPT ERROR - CHECK CONSOLE</p>	<!--BOTTOM COPYRIGHT TEXT-->
+        </div>
+        <div id="oldtextdiv" class=poz3>							<!--Only used for the "HELP" command, but could be useful.-->
+            <p id="topdivtext" style="font-size:20;" class="rt"></p>
+            <p id="botdivtext" style="font-size:20;" class="rt"></p>
+        </div>
+        <div>
+            <input type="text" id="input" autocomplete="off" class="poz" placeholder="Awaiting Command..." spellcheck="false">
+        </div>
+    </center>
+    <div id="log"></div>
 </body>
+<script>
+//function onLoad() {} ///See commands.js 
+</script>
 </html>
+
