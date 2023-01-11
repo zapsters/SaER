@@ -1,179 +1,95 @@
-//Get URL Variables Function
-function getUrlVars() {
-    var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
-        vars[key] = value;
-    });
-    return vars;
-
-}
-
-// Read variables using getUrlVars function
-var DEV = getUrlVars()["astro"];
-var COMMANDHISTORY = [];
-// If getUrlVars returns undefined, set it to 0
-if (typeof DEV == 'undefined') {
-    var DEV = "0";
-}
-
+//SaER is a fictional entity, created by me, Erin B, or screen name "Zapster" / "Zapsters".
 
 // Static Variables - Change Freely
 var version = "Beta0.2.6 DEVELOPMENT";
 var versionSUB = "Project Astro";
 
-//set Variables
-var isLoggedIn = false;
-
 var COPYRIGHT1 = "SaER Copyright 2021";
 var COPYRIGHT2 = "SaER logo above, Websites, and other media are owned and claimed by Science and Entity Research";
 var ACCESSLEVEL = 0;
-
-var active_modify = "";
-var PRIDE = 0;
+var DEV = false;
 
 //Variables used by Variable command
 var Unlockedvars = ["DEV", "ACCESSLEVEL"];
 //Files that can be read by using Print command
 var Unlockedfiles = ["VERSION", "ASTRO", "FAIL"];
 
-//Update active vars at bottomn of screen
-window.setInterval(function() {
-    	//var COPYRIGHT1 = "SaER Copyright 2020"
-    	document.getElementById("sub2").innerHTML = COPYRIGHT1;
-    	//var COPYRIGHT2 = "SaER logo above, Websites, and other media are owned and claimed by Science and Entity Research"
-    	document.getElementById("sub2v2").innerHTML = COPYRIGHT2;
-	
-	document.getElementById("subtext").innerHTML = "" + active_modify;
-	//Dev Mode Alert at bottom
-    	var activemodifytext = document.getElementById("subtext").innerHTML;
-    	if (DEV == 1 && !activemodifytext.includes("[ DEV - TRUE ]")) {
-		alert("Dev mode is unused currently.");
-        	active_modify = " " + active_modify + "[ DEV - TRUE ]";
-    	} else if (DEV != 1 && activemodifytext.includes("[ DEV - TRUE ]")) {
-        	active_modify = "";
-    	}
-	
-	//PRIDE
-	if (PRIDE == 1) {
-		//Rainbow text for every text with "rt" class
-		var elements = document.getElementsByClassName("rt");
-		for (let i = 0; i < elements.length; i++) {
-			generateRainbowText(elements[i]);
-		}
+//
+// THE BRAINS!!! Delivery Function
+//
+function delivery(type, textinput) {
+	//GET CURRENT DATE / TIME (UNFORMATED)
+	var today = new Date();
+	var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+	//FORMAT MINUTES & SECONDS
+	var minutes = today.getMinutes();
+	if (minutes >= 0 && minutes < 10) {
+		var minutes = "0" + minutes;
 	}
-}, 500);
-
-//rainbow text generator function
-var COLOR = 60;
-function generateRainbowText(element) {
-  var text = element.innerText + "";
-  element.innerHTML = "";
-  for (let i = 0; i < text.length; i++) {
-    let charElem = document.createElement("span");
-    charElem.style.color = "hsl(" + (COLOR * i / text.length) + ",80%,50%)";
-	COLOR = COLOR + 1;
-    charElem.innerHTML = text[i];
-    element.appendChild(charElem);
 	
-	if (COLOR > 1467) {
-		COLOR = 60;
+	var seconds = today.getSeconds();
+	if (seconds >= 0 && seconds < 10) {
+		var seconds = "0" + seconds;
 	}
-  }
-}
-
-
-//
-// Below is the delivery function and Last Command function, it is used when a command is entered to log and display text
-//
-var COMNUM = -1;
-COMNUM = COMMANDHISTORY.length;
-if (typeof COMNUM == 'undefined') {
-	COMNUM = COMMANDHISTORY.length;
-}
-
-//
-// THE BRAINS!!!
-//
-
-//DELIVERY FUNCTION
-function delivery(a, b) {
-		//GET CURRENT DATE / TIME (UNFORMATED)
-        var today = new Date();
-        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        	//FORMAT MINUTES & SECONDS
-        var minutes = today.getMinutes();
-        if (minutes >= 0 && minutes < 10) {
-            var minutes = "0" + minutes;
-        }
-        
-        var seconds = today.getSeconds();
-        if (seconds >= 0 && seconds < 10) {
-            var seconds = "0" + seconds;
-        }
-        
-        	//REDEFINE TIME (FORMATTED)
-        var time = today.getHours() + ":" + minutes + ":" + seconds;
-        var rawinput = document.getElementById('input').value;
-        
-        //Get command input
-        var commandinput = rawinput.toUpperCase();
-      if (commandinput == "" || commandinput == " ") {} else {
-          COMMANDHISTORY.push(commandinput);
-      }
 	
-		//Text delivery!
-	switch (a) {
-	case 0:
-		//Unkown Command
-		if (commandinput == "" || commandinput == " ") {} else {
+	//REDEFINE TIME (FORMATTED)
+	var time = today.getHours() + ":" + minutes + ":" + seconds;
+	var rawinput = document.getElementById('input').value;
+	
+	//Get command input
+	var commandinput = rawinput.toUpperCase();
+	if (commandinput == "" || commandinput == " ") {} else {
+		COMMANDHISTORY.push(commandinput);
+	}
+
+	//Text delivery!
+	switch (type) {
+		case 0:
+			//Unkown Command
+			if (commandinput == "" || commandinput == " ") {} else {
+				var para = document.createElement("P");
+				para.innerHTML = "[" + time + "] > '" + commandinput + "' is an unkown command. See help command.";
+				document.getElementById("log").appendChild(para);
+				var element = document.getElementById("log");
+				element.scrollTop = element.scrollHeight;
+				document.getElementById("input").value = "";
+			}
+			break;
+		case 1:
+			// [TIME] (CommandInput)
 			var para = document.createElement("P");
-			para.innerHTML = "[" + time + "] > '" + commandinput + "' is an unkown command. See help command.";
+			para.innerHTML = "[" + time + "] > " + commandinput + "";
 			document.getElementById("log").appendChild(para);
 			var element = document.getElementById("log");
 			element.scrollTop = element.scrollHeight;
 			document.getElementById("input").value = "";
-		}
-		break;
-	case 1:
-		// [TIME] (CommandInput)
-		var para = document.createElement("P");
-		para.innerHTML = "[" + time + "] > " + commandinput + "";
-		document.getElementById("log").appendChild(para);
-		var element = document.getElementById("log");
-		element.scrollTop = element.scrollHeight;
-		document.getElementById("input").value = "";
-		break;
-	case 10:
-		// [TIME] (Custom text in var B)
-		var para = document.createElement("P");
-		para.innerHTML = "[" + time + "] > " + b;
-		document.getElementById("log").appendChild(para);
-		var element = document.getElementById("log");
-		element.scrollTop = element.scrollHeight;
-		document.getElementById("input").value = "";
-		break;
-	case 11:
-		//Blank Screen with text
-		document.body.style.visibility = "hidden";
-		document.getElementById("topdivtext").style.visibility = "visible";
-		document.getElementById("topdivtext").innerHTML = "" + b;
-		break;
+			break;
+		case 10:
+			// [TIME] (Custom text in var B)
+			var para = document.createElement("P");
+			para.innerHTML = "[" + time + "] > " + textinput;
+			document.getElementById("log").appendChild(para);
+			var element = document.getElementById("log");
+			element.scrollTop = element.scrollHeight;
+			document.getElementById("input").value = "";
+			break;
+		case 11:
+			//Blank Screen with text
+			document.body.style.visibility = "hidden";
+			document.getElementById("topdivtext").style.visibility = "visible";
+			document.getElementById("topdivtext").innerHTML = "" + textinput;
+			break;
 	}
 }
-
-//ONLOAD
-function onLoad() {
-	deliveryAfterDelay(10, "Connecting to SaER Servers...", 500);
-	deliveryAfterDelay(10, "Connection Established!", 1230);
-	deliveryAfterDelay(10, "_________________________________", 1430);
-	deliveryAfterDelay(10, "[Login Required] Use the LOGIN command. --- LOGIN (USERNAME) (PASSWORD)", 1450);
-	deliveryAfterDelay(10, "_________________________________", 1480);
-}
-
+//Call delivery() after a delay.
 function deliveryAfterDelay(type, input, delay) {
 	setTimeout(function() {
 		delivery(type, input);
 	}, delay);
+}
+
+function inputCommand(command) {
+	
 }
 
 document.onkeydown = logKey;
@@ -181,8 +97,8 @@ function logKey(e) {
 	//Up arrow last command.
 	if (e.keyCode === 38) {
 		if (COMNUM > 0) {
-		COMNUM = COMNUM - 1;
-		document.getElementById("input").value = COMMANDHISTORY[COMNUM];
+			COMNUM = COMNUM - 1;
+			document.getElementById("input").value = COMMANDHISTORY[COMNUM];
 		}
 	}
 	//Down arrowd
@@ -196,192 +112,221 @@ function logKey(e) {
 		}
 	}
 	//Enter Key
-    	if (e.keyCode === 13) {
+	if (e.keyCode === 13) {
 		var rawinput = document.getElementById('input').value;
-        	var commandinput = rawinput.toUpperCase();
+		var commandinput = rawinput.toUpperCase();
 		if (commandinput != "" && typeof commandinput != 'undefined' && commandinput != " " && COMNUM == COMMANDHISTORY.length) {
 			COMNUM = COMMANDHISTORY.length + 1;
 		}
 		
-	//Reset the current command number, so you can press up to go to the last command.
-	COMNUM = 1 + COMMANDHISTORY.length;
-
+		//Reset the current command number, so you can press up to go to the last command.
+		COMNUM = 1 + COMMANDHISTORY.length;
+		
         //COMMAND LOGIC -------------------------------------------------------------------------------------------------------------XXXX
-        //OLD METHOD --- || document.getElementById('input').value == "HELP"
         //NEW METHOD --- Makes input capital and reads the first word to run that command.
         function getFirstWord(str) {
-            let spaceIndex = str.indexOf(' ');
+			let spaceIndex = str.indexOf(' ');
             return spaceIndex === -1 ? str : str.substr(0, spaceIndex);
         };
+		
         var commandfirstword = getFirstWord(commandinput);
         switch (commandfirstword) {
-            case "HELP":
-                document.getElementById("topdivtext").innerHTML = "Printing Help Receipt";
+			case "HELP":
+				document.getElementById("topdivtext").innerHTML = "Printing Help Receipt";
                 document.getElementById("botdivtext").innerHTML = "";
                 document.getElementById("input").value = "";
-			//help commands
-			var commands = "COMMANDS<br> VAR (variable) (true/false/read/set) [value] - Change a local veriable.<br>COPYRIGHT - Print copyright information<br>PRINT (File Name) - Print from text file<br>RUN (File Name) - Search for and run a file on SaER servers.<br>CLEAR - Clear console log<br> VERSION - Prints the current version of the SaER OFFICIAL CONSOLE.";
+				//help commands
+				var commands = "COMMANDS<br> VAR (variable) (true/false/read/set) [value] - Change a local veriable.<br>COPYRIGHT - Print copyright information<br>PRINT (File Name) - Print from text file<br>RUN (File Name) - Search for and run a file on SaER servers.<br>CLEAR - Clear console log<br> VERSION - Prints the current version of the SaER OFFICIAL CONSOLE.";
                 delivery(10, commands);
                 break;
-            case "CLEAR":
-                document.getElementById("log").innerHTML = "";
-                delivery(1);
-                break;
-            case "VERSION":
-		var versiontext = version.toString() + " - - - [" + versionSUB.toString() + "]";
-		delivery(10, versiontext);
-                break;
-	    case "VAR":
+			case "CLEAR":
+				document.getElementById("log").innerHTML = "";
+				delivery(1);
+				break;
+			case "VERSION":
+				var versiontext = version.toString() + " - - - [" + versionSUB.toString() + "]";
+				delivery(10, versiontext);
+				break;
+	    	case "VAR":
                 //var onlyvariable = commandinput.replace("VAR", '');
                 var variablearray = commandinput.split(/(\s+)/).filter(function(e) {
-                    return e.trim().length > 0;
+					return e.trim().length > 0;
                 });
                 //console.log(variablearray); // ["VAR", "(VARIABLE)", "TRUE/FALSE/READ"] 
                 //(PRINTS ARRAY IN CONSOLE)
-
+				
                 //Read the inputed variable
                 var INPUT_VAR = variablearray[1];
                 //Read the 3rd term - The action to be preformed (True/False/Read)
                 var THIRD_TERM = variablearray[2];
 				var FORTH_TERM = variablearray[3];
                 if (typeof INPUT_VAR == 'undefined') {
-                    delivery(10, "Error - blank variable. [ VAR (VARIABLE) (TRUE/FALSE/READ)]")
+					delivery(10, "Error - blank variable. [ VAR (VARIABLE) (TRUE/FALSE/READ)]")
                 } else if (typeof THIRD_TERM == 'undefined') {
-                    delivery(10, "Error - no action input. [ VAR (VARIABLE) (TRUE/FALSE/READ)]")
+					delivery(10, "Error - no action input. [ VAR (VARIABLE) (TRUE/FALSE/READ)]")
                 } else if (THIRD_TERM == "READ") {
-                    //READ VARIABLE
+					//READ VARIABLE
                     delivery(10, "Variable '" + INPUT_VAR.toString() + "' is " + window[INPUT_VAR.toString()] + ".")
                 } else if (THIRD_TERM == "TRUE") {
-			if(DEV) {
-				window[INPUT_VAR] = 1;
-				delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
-			} else {
-				if (Unlockedvars.includes(INPUT_VAR)) {
-					window[INPUT_VAR] = 1;
-					delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
-				} else {
-					delivery(10, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
-				}
-			}
-                } else if (THIRD_TERM == "FALSE") {
-			if(DEV) {
-				window[INPUT_VAR] = 0;
-				delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
-			} else {
-				if (Unlockedvars.includes(INPUT_VAR)) {
-					window[INPUT_VAR] = 0;
-					delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
-				} else {
-					delivery(10, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
-				}
-			}
-                } else if (THIRD_TERM == "SET") {
-			switch(FORTH_TERM) {
-				case "TRUE":
-					delivery(10, "ERROR USE THE COMMAND ' VAR " + INPUT_VAR.toString() + " TRUE'")
-					break;
-				case "FALSE":
-					delivery(10, "ERROR USE THE COMMAND ' VAR " + INPUT_VAR.toString() + " FALSE'")
-					break;
-				default:
 					if(DEV) {
-						window[INPUT_VAR] = FORTH_TERM;
+						//If dev is true, set the variable no matter what.
+						window[INPUT_VAR] = 1;
 						delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
-						break;
 					} else {
+						//Check Unclockvars for the variable trying to be changed, if it is there, change it. 
 						if (Unlockedvars.includes(INPUT_VAR)) {
-							window[INPUT_VAR] = FORTH_TERM;
+							window[INPUT_VAR] = 1;
 							delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
 						} else {
 							delivery(10, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
 						}
-						break;
 					}
-			}
-                } else if (THIRD_TERM !== "TRUE" || THIRD_TERM !== "FALSE" || THIRD_TERM !== "READ") {
-                    delivery(10, "Error - " + "VAR" + " (VARIABLE) (TRUE/FALSE/READ) [VALUE]")
-                }
-                break;
-            case "PRINT":
-                //var onlyvariable = commandinput.replace("VAR", '');
-                var printarray = commandinput.split(/(\s+)/).filter(function(e) {
-                    return e.trim().length > 0;
-                });
-                //console.log(printarray); // ["PRINT", "(FILENAME)"]
-                //Read the filename
-                var input_file = printarray[1];
-                if (typeof input_file == 'undefined') {
-                    delivery(10, "Error - blank file name. [" + "PRINT" + " (FILE NAME)")
-                } else if (Unlockedfiles.includes(input_file)) {
-                    printcommand(input_file)
-                } else {
-                    delivery(10, "File not found.")
-                }
-                break;
-            case "COPYRIGHT":
+                } else if (THIRD_TERM == "FALSE") {
+					if(DEV) {
+						window[INPUT_VAR] = 0;
+						delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
+					} else {
+						if (Unlockedvars.includes(INPUT_VAR)) {
+							window[INPUT_VAR] = 0;
+							delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
+						} else {
+							delivery(10, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
+						}
+					}
+                } else if (THIRD_TERM == "SET") {
+					switch(FORTH_TERM) {
+						case "TRUE":
+							delivery(10, "ERROR USE THE COMMAND ' VAR " + INPUT_VAR.toString() + " TRUE'")
+							break;
+							case "FALSE":
+								delivery(10, "ERROR USE THE COMMAND ' VAR " + INPUT_VAR.toString() + " FALSE'")
+							break;
+						default:
+							if(DEV) {
+								window[INPUT_VAR] = FORTH_TERM;
+								delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
+								break;
+							} else {
+								if (Unlockedvars.includes(INPUT_VAR)) {
+									window[INPUT_VAR] = FORTH_TERM;
+									delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
+								} else {
+									delivery(10, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
+								}
+								break;
+							}
+						}
+					} else if (THIRD_TERM !== "TRUE" || THIRD_TERM !== "FALSE" || THIRD_TERM !== "READ") {
+						delivery(10, "Error - " + "VAR" + " (VARIABLE) (TRUE/FALSE/READ) [VALUE]")
+					}
+					break;
+			case "PRINT":
+				//var onlyvariable = commandinput.replace("VAR", '');
+				var printarray = commandinput.split(/(\s+)/).filter(function(e) {
+					return e.trim().length > 0;
+				});
+
+				//console.log(printarray); // ["PRINT", "(FILENAME)"]
+				//Read the filename
+				var input_file = printarray[1];
+				if (typeof input_file == 'undefined') {
+					delivery(10, "Error - blank file name. [" + "PRINT" + " (FILE NAME)")
+				} else if (Unlockedfiles.includes(input_file)) {
+					printcommand(input_file)
+				} else {
+					delivery(10, "File not found.")
+				}
+				break;
+			case "COPYRIGHT":
                 delivery(10, COPYRIGHT1 + " - " + COPYRIGHT2)
                 break;
-            case "PRIDE":
-                document.getElementById("logo").src = "images/SaERLogoGlitchPride.gif";
-                document.getElementById("logo").style.filter = "invert(0%)";
-		PRIDE = !PRIDE;
-                delivery(1)
-                break;
-            case "ASTRO.EXE":
-                delivery(11, "Connection Terminated")
-                break;
-		case "RUN":
-			var runarray = commandinput.split(/(\s+)/).filter(function(e) {
-			    return e.trim().length > 0;
-			});
-			//console.log(runarray); // ["RUN", "(FILENAME)"]
-			//Read the filename
-			var input_file = runarray[1];
-			if (typeof input_file == 'undefined') {
-			    delivery(10, "Error - blank file name. [" + "RUN" + " (FILE NAME)")
-			} else {
-				switch(input_file) {
-					case "ASTRO.EXE":
-						runcommand(input_file)
-						break;
-					default:
-						delivery(10, "File not found.")
-						break;
-				}
-			}
-			break;
-            default:
-                delivery(0);
-                document.getElementById("topdivtext").innerHTML = "";
-                document.getElementById("botdivtext").innerHTML = "";
-                document.getElementById("input").value = "";
-                break;
-        }
-    }
 
-    function printcommand(file) {
-        switch (file) {
-            case "VERSION":
-                delivery(10, "version.txt<br> - " + version + " - " + versionSUB)
-                break;
-            default:
-		delivery(10, "ERROR - File exists, but can not be read. Insufficient Access Level?");
-		break;
-        }
-    }
-	
-	function runcommand(file) {
-		switch (file) {
-		    case "ASTRO.EXE":
+			//The run command gets one variable and passes it onto the runcommand(input_file)
+			case "RUN":
+				var runarray = commandinput.split(/(\s+)/).filter(function(e) {
+					return e.trim().length > 0;
+				});
+				//console.log(runarray); // ["RUN", "(FILENAME)"]
+				//Read the filename
+				var input_file = runarray[1];
+				if (typeof input_file == 'undefined') {
+					delivery(10, "Error - blank file name. [" + "RUN" + " (FILE NAME)")
+				} else {
+					runcommand(input_file)
+				}
+				break;
+			
+			case "ASTRO.EXE":
+				delivery(11, "Connection Terminated");
+				break;
+			case "PRIDE":
+				document.getElementById("logo").src = "images/SaERLogoGlitchPride.gif";
+				delivery(1)
+				break;
+			
+			//Ran if the command isn't recognized
+			default:
+				delivery(0);
+				document.getElementById("topdivtext").innerHTML = "";
+				document.getElementById("botdivtext").innerHTML = "";
+				document.getElementById("input").value = "";
+				break;
+		}
+	}
+}
+		
+//Function ran with the "Print [file]" command.
+function printcommand(file) {
+	switch (file) {
+		case "VERSION":
+			delivery(10, "version.txt<br> - " + version + " - " + versionSUB)
+			break;
+		default:
+			delivery(10, "ERROR - File exists, but can not be read. Insufficient Access Level?");
+			break;
+		}
+}
+
+//Function ran with the "Ran [file]" command.
+function runcommand(file) {
+	switch (file) {
+		case "ASTRO.EXE":
 			delivery(10, "astro.exe<br> - BLOCKED FILE - Suspicious activity detected on your ip address. You IP has been logged.")
 			break;
-		    default:
-			delivery(10, "ERROR - File could not be opened. Insufficient Access Level?");
+		default:
+			delivery(10, "ERROR - File could not be found.");
 			break;
-        	}	
+	}	
+}
+
+			
+//ONLOAD, "connect" to servers.
+var COMNUM = -1;
+var COMMANDHISTORY = [];
+function onLoad() {
+	//Set Text
+	//var COPYRIGHT1 = "SaER Copyright 2020"
+	document.getElementById("BtmTextTop").innerHTML = COPYRIGHT1;
+	//var COPYRIGHT2 = "SaER logo above, Websites, and other media are owned and claimed by Science and Entity Research"
+	document.getElementById("BtmTextBtm").innerHTML = COPYRIGHT2;
+
+	deliveryAfterDelay(10, "Connecting to SaER Servers...", 500);
+	deliveryAfterDelay(10, "Connection Established!", 1230);
+	deliveryAfterDelay(10, "_________________________________", 1430);
+	deliveryAfterDelay(10, "[Login Required] Use the LOGIN command. --- LOGIN (USERNAME) (PASSWORD)", 1450);
+	deliveryAfterDelay(10, "_________________________________", 1480);
+	//Set Command Number for command history.  
+	COMNUM = COMMANDHISTORY.length;
+	if (typeof COMNUM == 'undefined') {
+		COMNUM = COMMANDHISTORY.length;
 	}
 }
 
-//
-// END OF DELIVERY FUNCTION
-//
+//Get URL Variables Function
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
+        vars[key] = value;
+    });
+    return vars;
+}

@@ -1,0 +1,133 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: 'Bahnschrift';
+}
+
+@font-face {
+  font-family: 'Bahnschrift';
+  src: url('https://zapsters.github.io/Home/fonts/Bahnschrift.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+html, body {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  /* Remove scrollbar space */
+  background: transparent;
+  /* Optional: just make scrollbar invisible */
+}
+
+map {
+  display: block;
+  cursor: pointer;
+}
+
+.sub {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  line-height: 0;
+  color: #000;
+  position: relative;
+  bottom: -5px;
+}
+
+.rt {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  line-height: 1;
+  color: #000;
+  position: relative;
+}
+
+.divtext {
+  color: #000;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  line-height: 1;
+  position: relative;
+  bottom: 5px;
+}
+
+.textInput {
+  font-size: 30px;
+  position: absolute;
+  background-color: #555;
+  bottom: 5px;
+  left: 5px;
+  color: white;
+  width: 99%;
+  border: 3px solid #555;
+}
+
+.bottomTextDiv {
+  position: absolute;
+  bottom: 35px;
+  left: 5px;
+  color: white;
+  width: 100%;
+}
+
+.poz3 {
+  font-size: 30px;
+  position: absolute;
+  bottom: 150px;
+  left: 5px;
+  z-index: 9;
+  color: white;
+  width: 100%;
+}
+
+.container .btn {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  transform: translate(-50%, 30%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #000;
+  color: #000;
+  font-size: 5px;
+  padding: 5px 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.log {
+  position: absolute;
+  top: 7%;
+  left: 10px;
+  width: 90%;
+  max-width: 100%;
+  letter-spacing: 0px;
+  text-shadow: -1px -1px #fff;
+  font-size: 16px;
+  margin: 0px 0 0 0;
+  padding: 0px 0px;
+  color: #000;
+  height: 55%;
+  overflow: scroll;
+  z-index: 9;
+}
+
+.logo {
+  /* Change to 1 to invite logo class */
+  -webkit-filter: invert(1);
+  filter: invert(1);
+}
