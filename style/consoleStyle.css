@@ -67,12 +67,12 @@ map {
 .textInput {
   font-size: 30px;
   position: absolute;
-  background-color: #555;
+  background-color: #222;
   bottom: 5px;
   left: 5px;
   color: white;
   width: 99%;
-  border: 3px solid #555;
+  border: 3px solid #333;
 }
 
 .bottomTextDiv {
