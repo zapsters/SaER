@@ -64,7 +64,7 @@ function inputCommand(command) {
 	});
 	
 	//Check if there is a current login. If there isn't, terminate the command.
-	if(login == undefined && commandarray[0].toUpperCase() != "LOGIN") {
+	if(login == undefined && commandarray[0].toUpperCase() != "LOGIN" && commandarray[0].toUpperCase() != "HELP") {
                 delivery(9, "SECURITY ISSUE - User is not logged in! See the 'Help Login' command for information.", alertColor);
 		return;	
 	}
