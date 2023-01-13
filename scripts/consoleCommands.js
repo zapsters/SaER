@@ -104,7 +104,7 @@ function inputCommand(command) {
 						delivery(9, "Sets a variable in the console state. Mainly used for debug.");
 						break;
 					default:
-                    	delivery(9, "" + commandarray[1] + " is not a recognized command.");
+                    				delivery(9, "" + commandarray[1] + " is not a recognized command.");
 						break;
 				}
 			} else {
@@ -358,6 +358,7 @@ function logKey(e) {
 	}
 	//Enter Key
 	if (e.keyCode === 13) {
+		if(document.getElementById("input").value == "") return;
 		inputCommand(document.getElementById("input").value);
 	}
 }
