@@ -1,7 +1,7 @@
 //SaER is a fictional entity, created by me, Erin B, or screen name "Zapster" / "Zapsters".
 
 // Static Variables - Change Freely
-var version = "Beta0.8 DEVELOPMENT";
+var version = "Beta0.8.1 DEVELOPMENT";
 var versionSUB = "Project Astro";
 
 var COPYRIGHT1 = "SaER Copyright 2021";
@@ -9,71 +9,141 @@ var COPYRIGHT2 = "SaER logo above, Websites, and other media are owned and claim
 var ACCESSLEVEL = 0;
 var DEV = false;
 
+var alertColor = "#e30b25";
+
 //Variables used by Variable command
 var Unlockedvars = ["DEV", "ACCESSLEVEL"];
 //Files that can be read by using Print command
 var Unlockedfiles = ["VERSION", "ASTRO", "FAIL"];
+var users = [{username:"guest", password:undefined, level:0}, {username:"admin", password:"admin", level:10}];
+var login = Object.values(users).filter(word => word.username == "guest");
+
+function loginCommand(username, password) {
+	//Sort through the users array to find a username matching to password.
+	var usernameIdentity = Object.values(users).filter(word => word.username == username.toLowerCase());
+	var formattedUsername = username.toLowerCase().charAt(0).toUpperCase() + username.toLowerCase().slice(1);
+	console.log(usernameIdentity.password);
+	if(usernameIdentity !== undefined && usernameIdentity.length != 0) {
+		//If a user exists by that username...
+		if(password == usernameIdentity[0].password) {
+			login = usernameIdentity;
+			delivery(9, "> Logged in as " + usernameIdentity[0].username + "!", alertColor);
+			delivery(9, "----------------------------------");
+		} else if(usernameIdentity[0].username == "guest") {
+			login = usernameIdentity;
+			delivery(9, "> Logged in as " + usernameIdentity[0].username + "!", alertColor);
+			delivery(9, "----------------------------------");
+		} else {
+			delivery(9, "Invalid password for " + usernameIdentity[0].username + ".", alertColor);
+		}
+	} else {
+		delivery(9, "There is no user by '" + formattedUsername + "'.", alertColor);
+	}
+}
 
 //
 // THE BRAINS!!
 //
 function inputCommand(command) {
 	//var rawinput = document.getElementById('input').value;
-	var rawinput = command;
-	var commandinput = rawinput.toUpperCase();
+	var commandinput = command;
 	if (commandinput != "" && typeof commandinput != 'undefined' && commandinput != " " && COMNUM == COMMANDHISTORY.length) {
 		COMNUM = COMMANDHISTORY.length + 1;
 	}
 	
+	delivery(10, command, "black");
+
 	COMMANDHISTORY.push(command);
 	//Reset the current command number, so you can press up to go to the last command.
 	COMNUM = COMMANDHISTORY.length;
 	
 	//COMMAND LOGIC -------------------------------------------------------------------------------------------------------------XXXX
 	//NEW METHOD --- Makes input capital and reads the first word to run that command.
-	function getFirstWord(str) {
-		let spaceIndex = str.indexOf(' ');
-		return spaceIndex === -1 ? str : str.substr(0, spaceIndex);
-	};
-	
-	var commandfirstword = getFirstWord(commandinput);
-	switch (commandfirstword) {
+
+	//Seperate the input by spaces.
+	//console.log(commandarray); // ["First", "(Second)", "(Third)" ...] 
+	var commandarray = commandinput.split(/(\s+)/).filter(function(e) {
+		return e.trim().length > 0;
+	});
+
+	var commandfirstword = commandarray[0];
+	switch (commandfirstword.toUpperCase()) {
 		case "HELP":
-			document.getElementById("topdivtext").innerHTML = "Printing Help Receipt";
-			document.getElementById("botdivtext").innerHTML = "";
-			document.getElementById("input").value = "";
-			//help commands
-			var commands = ["COMMANDS",
-			"CLEAR - Clear console log", 
-			"VERSION - Prints the current version of the SaER CONSOLE Software.",
-			"COPYRIGHT - Print copyright information",
-			"PRINT [File Name] - Print from text file. (DEPRECATED AS OF BETA 0.8)",
-			"OPEN [File Name] - Search for and open a file on SaER servers. [File Name] should include extensions (.txt, .exe, etc.) and no spaces.",
-			"VAR [variable] [true/false/read/set] (value) - Used more for debug testing.",
-			];
-			delivery(10, commands.join("<br>&nbsp;&nbsp;&nbsp;"));
+			if(commandfirstword != undefined && commandfirstword != "") {
+				switch (commandarray[1].toUpperCase()) {
+					case "CLEAR":
+						delivery(9, "CLEAR");
+						delivery(9, "Clears the console.");
+						break;
+					case "VERSION":
+						delivery(9, "VERSION");
+						delivery(9, "Displays the current version of the SaER console.");
+						break;
+					case "COPYRIGHT":
+						delivery(9, "COPYRIGHT");
+						delivery(9, "Displays the copyright information of SaER.");
+						break;
+					case "LOGIN":
+						delivery(9, "LOGIN [USERNAME] [PASSWORD]");
+						delivery(9, "Attempts to login to the SaER console under a recognized user.");
+						delivery(9, "Provides higher level access depending on your security ranking. See the tech department for help.");
+						delivery(9, "A guest login exists under username 'guest' with no password.");
+						break;
+					case "PRINT":
+						delivery(9, "THIS IS UNFINISHED!");
+						delivery(9, "[FILE] should include extensions (.txt, .exe, etc.) and no spaces.");
+					break;
+						break;
+					case "OPEN":
+						delivery(9, "OPEN [FILE]");
+						delivery(9, "[FILE] should include extensions (.txt, .exe, etc.) and no spaces.");
+						break;
+					case "VAR":
+						delivery(9, "THIS IS UNFINISHED!");
+						delivery(9, "[FILE] should include extensions (.txt, .exe, etc.) and no spaces.");
+						break;
+						break;
+					default:
+						break;
+				}
+			} else {
+				//help commands
+				var commands = ["COMMANDS",
+				"CLEAR - Clear console log", 
+				"VERSION - Prints the current version of the console.",
+				"COPYRIGHT - Print copyright information",
+				"LOGIN [USERNAME] [PASSWORD] - Used for authentication.",
+				"PRINT [FILE] - Print from text file. (DEPRECATED AS OF BETA 0.8)",
+				"OPEN [FILE] - Search for and open a file on SaER servers.",
+				"VAR [variable] [true/false/read/set] (value) - Used more for debug testing.",
+				];
+				delivery(9, commands.join("<br>&nbsp;&nbsp;&nbsp;"));
+				delivery(9, "Type HELP [Command] for specific information.");
+			}
 			break;
 		case "CLEAR":
 			document.getElementById("log").innerHTML = "";
-			delivery(1);
+			delivery(9, "Console cleared");
+			break;
+		case "LOGIN":
+			//commandarray = LOGIN [Username] [Password]
+			if(commandarray[1] != undefined) {
+				loginCommand(commandarray[1], commandarray[2]);
+			} else {
+				delivery(9, "A username is required to login!");
+			}
 			break;
 		case "VERSION":
 			var versiontext = version.toString() + " - - - [" + versionSUB.toString() + "]";
-			delivery(10, versiontext);
+			delivery(9, versiontext);
 			break;
 		case "VAR":
-			//var onlyvariable = commandinput.replace("VAR", '');
-			var variablearray = commandinput.split(/(\s+)/).filter(function(e) {
-				return e.trim().length > 0;
-			});
-			//console.log(variablearray); // ["VAR", "(VARIABLE)", "TRUE/FALSE/READ"] 
-			//(PRINTS ARRAY IN CONSOLE)
-			
+			//console.log(commandarray); // ["VAR", "(Variable)", "(True/False/Set/Read)", ...] 
 			//Read the inputed variable
-			var INPUT_VAR = variablearray[1];
+			var INPUT_VAR = commandarray[1];
 			//Read the 3rd term - The action to be preformed (True/False/Read)
-			var THIRD_TERM = variablearray[2];
-			var FORTH_TERM = variablearray[3];
+			var THIRD_TERM = commandarray[2];
+			var FORTH_TERM = commandarray[3];
 			if (typeof INPUT_VAR == 'undefined') {
 				delivery(10, "Error - blank variable. [ VAR (VARIABLE) (TRUE/FALSE/READ)]")
 			} else if (typeof THIRD_TERM == 'undefined') {
@@ -110,10 +180,10 @@ function inputCommand(command) {
 			} else if (THIRD_TERM == "SET") {
 				switch(FORTH_TERM) {
 					case "TRUE":
-						delivery(10, "ERROR USE THE COMMAND ' VAR " + INPUT_VAR.toString() + " TRUE'")
+						delivery(10, "USE THE COMMAND ' VAR " + INPUT_VAR.toString() + " TRUE'")
 						break;
-						case "FALSE":
-							delivery(10, "ERROR USE THE COMMAND ' VAR " + INPUT_VAR.toString() + " FALSE'")
+					case "FALSE":
+						delivery(10, "USE THE COMMAND ' VAR " + INPUT_VAR.toString() + " FALSE'")
 						break;
 					default:
 						if(DEV) {
@@ -136,35 +206,27 @@ function inputCommand(command) {
 				break;
 				
 		case "PRINT":
-			//var onlyvariable = commandinput.replace("VAR", '');
-			var printarray = commandinput.split(/(\s+)/).filter(function(e) {
-				return e.trim().length > 0;
-			});
-
-			//console.log(printarray); // ["PRINT", "(FILENAME)"]
-			var input_file = printarray[1];
+			//console.log(commandarray); // ["PRINT", "(FILENAME)"]
+			var input_file = commandarray[1];
 			if(input_file != undefined) {
 				printcommand(input_file);
 			} else {
-				delivery(10, "Missing filename. 'print [filename]'");
+				delivery(9, "Missing filename. 'print [filename]'");
 			}
 			break;
 
 		case "COPYRIGHT":
-			delivery(10, COPYRIGHT1 + " - " + COPYRIGHT2)
+			delivery(9, COPYRIGHT1 + " - " + COPYRIGHT2)
 			break;
 
 		//The OPEN command gets one variable and passes it onto the opencommand(input_file)
 		case "OPEN":
-			var runarray = commandinput.split(/(\s+)/).filter(function(e) {
-				return e.trim().length > 0;
-			});
 			//console.log(runarray); // ["RUN", "(FILENAME)"]
-			var input_file = runarray[1];
+			var input_file = commandarray[1];
 			if(input_file != undefined) {
 				opencommand(input_file);
 			} else {
-				delivery(10, "Missing filename. 'open [filename]'");
+				delivery(9, "Missing filename. 'open [filename]'");
 			}
 			break;
 		
@@ -173,12 +235,12 @@ function inputCommand(command) {
 			break;
 		case "PRIDE":
 			document.getElementById("logo").src = "images/SaERLogoGlitchPride.gif";
-			delivery(1)
+			delivery(9, "very prideful.")
 			break;
 		
 		//Ran if the command isn't recognized
 		default:
-			delivery(0);
+			delivery(0, command);
 			document.getElementById("topdivtext").innerHTML = "";
 			document.getElementById("botdivtext").innerHTML = "";
 			document.getElementById("input").value = "";
@@ -190,7 +252,7 @@ function inputCommand(command) {
 //
 // Delivery Function
 //
-function delivery(type, textinput) {
+function delivery(type, textinput, color) {
 	//GET CURRENT DATE / TIME (UNFORMATED)
 	var today = new Date();
 	var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
@@ -204,43 +266,54 @@ function delivery(type, textinput) {
 	if (seconds >= 0 && seconds < 10) {
 		var seconds = "0" + seconds;
 	}
+
+    if (color === undefined) {
+        color = "#000000";
+    }
 	
 	//REDEFINE TIME (FORMATTED)
 	var time = today.getHours() + ":" + minutes + ":" + seconds;
 	var rawinput = document.getElementById('input').value;
-	
-	//Get command input
-	var commandinput = rawinput.toUpperCase();
 
 	//Text delivery!
 	switch (type) {
 		case 0:
 			//Unkown Command
-			if (commandinput == "" || commandinput == " ") {} else {
+			if (textinput != "" && textinput != " ") {
 				var para = document.createElement("P");
-				para.innerHTML = "[" + time + "] > '" + commandinput + "' is an unkown command. See help command.";
+				para.innerHTML = "'" + textinput + "' is not recognized as an internal or externam command.";
+				para.className = "responseText";
+				para.style.color = color;
 				document.getElementById("log").appendChild(para);
-				var element = document.getElementById("log");
-				element.scrollTop = element.scrollHeight;
 				document.getElementById("input").value = "";
 			}
 			break;
 		case 1:
-			// [TIME] (CommandInput)
+			// [TIME] (textinput)
 			var para = document.createElement("P");
-			para.innerHTML = "[" + time + "] > " + commandinput + "";
+			para.innerHTML = "[" + time + "] > " + textinput + "";
+			para.className = "responseText";
+			para.style.color = color;
 			document.getElementById("log").appendChild(para);
-			var element = document.getElementById("log");
-			element.scrollTop = element.scrollHeight;
 			document.getElementById("input").value = "";
 			break;
+		case 9:
+			//Used mainly for commandResponses
+			// (Custom text in var B)  -- Does not clear inputbox. Does not include the time.
+			var para = document.createElement("P");
+			para.innerHTML = textinput;
+			para.className = "responseText";
+			para.style.color = color;
+			document.getElementById("log").appendChild(para);
+			break;
 		case 10:
+			//Used mainly for userCommands
 			// [TIME] (Custom text in var B)
 			var para = document.createElement("P");
 			para.innerHTML = "[" + time + "] > " + textinput;
+			para.className = "userCommand";
+			para.style.color = color;
 			document.getElementById("log").appendChild(para);
-			var element = document.getElementById("log");
-			element.scrollTop = element.scrollHeight;
 			document.getElementById("input").value = "";
 			break;
 		case 11:
@@ -250,11 +323,16 @@ function delivery(type, textinput) {
 			document.getElementById("topdivtext").innerHTML = "" + textinput;
 			break;
 	}
+
+	//Scroll log to the bottom.
+	var element = document.getElementById("log");
+	element.scrollTop = element.scrollHeight;
+
 }
 //Call delivery() after a delay.
-function deliveryAfterDelay(type, input, delay) {
+function deliveryAfterDelay(type, input, delay, color) {
 	setTimeout(function() {
-		delivery(type, input);
+		delivery(type, input, color);
 	}, delay);
 }
 //Check for the keys like the enter key. Calls the inputCommand function. 
@@ -290,7 +368,7 @@ function printcommand(file) {
 			delivery(10, "[version.txt]<br>" + version + " - " + versionSUB)
 			break;
 		default:
-			delivery(10, "ERROR - File not found by name '" + file + "'. <br> This command is depricated, use the 'OPEN' command instead.");
+			delivery(10, "ERROR - File not found by name '" + file + "'. <span style='color:" + alertColor + "'><br> This command is depricated, use the 'OPEN' command instead.</span>");
 			break;
 		}
 }
@@ -323,11 +401,11 @@ function onLoad() {
 	//var COPYRIGHT2 = "SaER logo above, Websites, and other media are owned and claimed by Science and Entity Research"
 	document.getElementById("BtmTextBtm").innerHTML = COPYRIGHT2;
 
-	deliveryAfterDelay(10, "Connecting to SaER Servers...", 500);
-	deliveryAfterDelay(10, "Connection Established!", 1230);
-	deliveryAfterDelay(10, "_________________________________", 1430);
-	deliveryAfterDelay(10, "[Login Required] Use the LOGIN command. --- LOGIN (USERNAME) (PASSWORD)", 1450);
-	deliveryAfterDelay(10, "_________________________________", 1480);
+	deliveryAfterDelay(9, "Connecting to SaER Servers...", 500);
+	deliveryAfterDelay(9, "Connection Established!", 1230);
+	deliveryAfterDelay(9, "----------------------------------", 1550);
+	deliveryAfterDelay(9, "Alert - [Login Required] Use the LOGIN command. --- LOGIN (USERNAME) (PASSWORD)", 1550, alertColor);
+	deliveryAfterDelay(9, "----------------------------------", 1550);
 	//Set Command Number for command history.  
 	COMNUM = COMMANDHISTORY.length;
 	if (typeof COMNUM == 'undefined') {

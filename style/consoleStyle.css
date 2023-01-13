@@ -92,6 +92,15 @@ map {
   color: white;
   width: 100%;
 }
+.userCommand {
+  padding: 0;
+  margin: 0;
+  margin-top: 20px;
+}
+.responseText {
+  padding: 0;
+  margin: 0;
+}
 
 .container .btn {
   position: absolute;
