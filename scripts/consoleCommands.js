@@ -358,7 +358,9 @@ function logKey(e) {
 	}
 	//Enter Key
 	if (e.keyCode === 13) {
-		if(document.getElementById("input").value == "") return;
+		var inputval = document.getElementById("input").value;
+		//Return if input is only spaces or empty.
+		if(inputval == "" || !inputval.replace(/\s/g, '').length) return;
 		inputCommand(document.getElementById("input").value);
 	}
 }
