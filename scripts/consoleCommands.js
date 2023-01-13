@@ -69,7 +69,7 @@ function inputCommand(command) {
 	var commandfirstword = commandarray[0];
 	switch (commandfirstword.toUpperCase()) {
 		case "HELP":
-			if(commandfirstword != undefined && commandfirstword != "") {
+			if(commandarray[1] != undefined && commandarray[1] != "") {
 				switch (commandarray[1].toUpperCase()) {
 					case "CLEAR":
 						delivery(9, "CLEAR");
@@ -90,8 +90,9 @@ function inputCommand(command) {
 						delivery(9, "A guest login exists under username 'guest' with no password.");
 						break;
 					case "PRINT":
-						delivery(9, "THIS IS UNFINISHED!");
+						delivery(9, "PRINT [FILE]");
 						delivery(9, "[FILE] should include extensions (.txt, .exe, etc.) and no spaces.");
+                        delivery(9, "This command is deprecated.", alertColor);
 					break;
 						break;
 					case "OPEN":
@@ -99,11 +100,11 @@ function inputCommand(command) {
 						delivery(9, "[FILE] should include extensions (.txt, .exe, etc.) and no spaces.");
 						break;
 					case "VAR":
-						delivery(9, "THIS IS UNFINISHED!");
-						delivery(9, "[FILE] should include extensions (.txt, .exe, etc.) and no spaces.");
-						break;
+						delivery(9, "VAR [VARIABLE NAME] [TRUE/FALSE/READ/SET] (VALUE)");
+						delivery(9, "Sets a variable in the console state. Mainly used for debug.");
 						break;
 					default:
+                    	delivery(9, "" + commandarray[1] + " is not a recognized command.");
 						break;
 				}
 			} else {
