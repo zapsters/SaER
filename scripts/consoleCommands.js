@@ -85,14 +85,14 @@ function inputCommand(command) {
 						break;
 					case "LOGIN":
 						delivery(9, "LOGIN [USERNAME] [PASSWORD]");
-						delivery(9, "Attempts to login to the SaER console under a recognized user.");
+						delivery(9, "Attempts to login to the SaER console under a recognized user. Not inputting a password or username will return the current user.");
 						delivery(9, "Provides higher level access depending on your security ranking. See the tech department for help.");
 						delivery(9, "A guest login exists under username 'guest' with no password.");
 						break;
 					case "PRINT":
 						delivery(9, "PRINT [FILE]");
 						delivery(9, "[FILE] should include extensions (.txt, .exe, etc.) and no spaces.");
-                        delivery(9, "This command is deprecated.", alertColor);
+                        			delivery(9, "This command is deprecated.", alertColor);
 					break;
 						break;
 					case "OPEN":
@@ -131,7 +131,13 @@ function inputCommand(command) {
 			if(commandarray[1] != undefined) {
 				loginCommand(commandarray[1], commandarray[2]);
 			} else {
-				delivery(9, "A username is required to login!");
+				if(login != undefined) {
+					delivery(9, "Currently logged in as " + login[0].username + ".");	
+					delivery(9, "Password '" + login[0].password + "'.", alertColor);	
+					delivery(9, "Security Level " + login[0].level + ".", alertColor);	
+				} else {
+					delivery(9, "No user is logged in!");	
+				}
 			}
 			break;
 		case "VERSION":
