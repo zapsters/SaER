@@ -146,63 +146,63 @@ function inputCommand(command) {
 			var THIRD_TERM = commandarray[2];
 			var FORTH_TERM = commandarray[3];
 			if (typeof INPUT_VAR == 'undefined') {
-				delivery(10, "Error - blank variable. [ VAR (VARIABLE) (TRUE/FALSE/READ)]")
+				delivery(9, "Error - blank variable. [ VAR (VARIABLE) (TRUE/FALSE/READ)]")
 			} else if (typeof THIRD_TERM == 'undefined') {
-				delivery(10, "Error - no action input. [ VAR (VARIABLE) (TRUE/FALSE/READ)]")
+				delivery(9, "Error - no action input. [ VAR (VARIABLE) (TRUE/FALSE/READ)]")
 			} else if (THIRD_TERM == "READ") {
 				//READ VARIABLE
-				delivery(10, "Variable '" + INPUT_VAR.toString() + "' is " + window[INPUT_VAR.toString()] + ".")
+				delivery(9, "Variable '" + INPUT_VAR.toString() + "' is " + window[INPUT_VAR.toString()] + ".")
 			} else if (THIRD_TERM == "TRUE") {
 				if(DEV) {
 					//If dev is true, set the variable no matter what.
 					window[INPUT_VAR] = 1;
-					delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
+					delivery(9, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
 				} else {
 					//Check Unclockvars for the variable trying to be changed, if it is there, change it. 
 					if (Unlockedvars.includes(INPUT_VAR)) {
 						window[INPUT_VAR] = 1;
-						delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
+						delivery(9, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
 					} else {
-						delivery(10, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
+						delivery(9, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
 					}
 				}
 			} else if (THIRD_TERM == "FALSE") {
 				if(DEV) {
 					window[INPUT_VAR] = 0;
-					delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
+					delivery(9, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
 				} else {
 					if (Unlockedvars.includes(INPUT_VAR)) {
 						window[INPUT_VAR] = 0;
-						delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
+						delivery(9, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
 					} else {
-						delivery(10, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
+						delivery(9, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
 					}
 				}
 			} else if (THIRD_TERM == "SET") {
 				switch(FORTH_TERM) {
 					case "TRUE":
-						delivery(10, "USE THE COMMAND ' VAR " + INPUT_VAR.toString() + " TRUE'")
+						delivery(9, "USE THE COMMAND ' VAR " + INPUT_VAR.toString() + " TRUE'")
 						break;
 					case "FALSE":
-						delivery(10, "USE THE COMMAND ' VAR " + INPUT_VAR.toString() + " FALSE'")
+						delivery(9, "USE THE COMMAND ' VAR " + INPUT_VAR.toString() + " FALSE'")
 						break;
 					default:
 						if(DEV) {
 							window[INPUT_VAR] = FORTH_TERM;
-							delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
+							delivery(9, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
 							break;
 						} else {
 							if (Unlockedvars.includes(INPUT_VAR)) {
 								window[INPUT_VAR] = FORTH_TERM;
-								delivery(10, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
+								delivery(9, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
 							} else {
-								delivery(10, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
+								delivery(9, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
 							}
 							break;
 						}
 					}
 				} else if (THIRD_TERM !== "TRUE" || THIRD_TERM !== "FALSE" || THIRD_TERM !== "READ") {
-					delivery(10, "Error - " + "VAR" + " (VARIABLE) (TRUE/FALSE/READ) [VALUE]")
+					delivery(9, "Error - " + "VAR" + " (VARIABLE) (TRUE/FALSE/READ) [VALUE]")
 				}
 				break;
 				
@@ -369,10 +369,10 @@ function logKey(e) {
 function printcommand(file) {
 	switch (file) {
 		case "ERROR2":
-			delivery(10, "[version.txt]<br>" + version + " - " + versionSUB)
+			delivery(9, "[version.txt]<br>" + version + " - " + versionSUB)
 			break;
 		default:
-			delivery(10, "ERROR - File not found by name '" + file + "'. <span style='color:" + alertColor + "'><br> This command is depricated, use the 'OPEN' command instead.</span>");
+			delivery(9, "ERROR - File not found by name '" + file + "'. <span style='color:" + alertColor + "'><br> This command is depricated, use the 'OPEN' command instead.</span>");
 			break;
 		}
 }
@@ -381,16 +381,16 @@ function printcommand(file) {
 function opencommand(file) {
 	switch (file) {
 		case "ASTRO.EXE":
-			delivery(10, "KEYWORD DETECTED. Suspicious activity has been detected on your ip address. Your IP has been logged.");
+			delivery(9, "KEYWORD DETECTED. Suspicious activity has been detected on your ip address. Your IP has been logged.");
 			break;
 		case "VERSION.TXT":
-			delivery(10, "[version.txt]<br>" + version + " - " + versionSUB)
+			delivery(9, "[version.txt]<br>" + version + " - " + versionSUB)
 			break;
 		case "TEST.TXT":
-			delivery(10, "[test.txt]<br>" + " This is a test!")
+			delivery(9, "[test.txt]<br>" + " This is a test!")
 			break;
 		default:
-			delivery(10, "ERROR - File not found by name '" + file + "'.");
+			delivery(9, "ERROR - File not found by name '" + file + "'.");
 			break;
 	}	
 }
