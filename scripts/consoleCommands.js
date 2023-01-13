@@ -6,17 +6,14 @@ var versionSUB = "Project Astro";
 
 var COPYRIGHT1 = "SaER Copyright 2021";
 var COPYRIGHT2 = "SaER logo above, Websites, and other media are owned and claimed by Science and Entity Research";
-var ACCESSLEVEL = 0;
-var DEV = false;
-
 var alertColor = "#e30b25";
 
 //Variables used by Variable command
-var Unlockedvars = ["DEV", "ACCESSLEVEL"];
+var Unlockedvars = ["version", "versionSUB", "COPYRIGHT1", "COPYRIGHT2", "alertColor"];
 //Files that can be read by using Print command
 var Unlockedfiles = ["VERSION", "ASTRO", "FAIL"];
 var users = [{username:"guest", password:undefined, level:0}, {username:"admin", password:"admin", level:10}];
-var login = Object.values(users).filter(word => word.username == "guest");
+var login = undefined;
 
 function loginCommand(username, password) {
 	//Sort through the users array to find a username matching to password.
@@ -65,7 +62,13 @@ function inputCommand(command) {
 	var commandarray = commandinput.split(/(\s+)/).filter(function(e) {
 		return e.trim().length > 0;
 	});
-
+	
+	//Check if there is a current login. If there isn't, terminate the command.
+	if(login == undefined) {
+                delivery(9, "SECURITY ISSUE - User is not logged in! See the 'Help Login' command for information.", alertColor);
+		return;	
+	}
+	
 	var commandfirstword = commandarray[0];
 	switch (commandfirstword.toUpperCase()) {
 		case "HELP":
@@ -129,12 +132,14 @@ function inputCommand(command) {
 		case "LOGIN":
 			//commandarray = LOGIN [Username] [Password]
 			if(commandarray[1] != undefined) {
+				//If a username is given, call the LoginCommand function.
 				loginCommand(commandarray[1], commandarray[2]);
 			} else {
+				//If command is just "LOGIN" print the current user information.
 				if(login != undefined) {
 					delivery(9, "Currently logged in as " + login[0].username + ".");	
-					delivery(9, "Password '" + login[0].password + "'.", alertColor);	
-					delivery(9, "Security Level " + login[0].level + ".", alertColor);	
+					delivery(9, "DEBUG+Password '" + login[0].password + "'.", alertColor);	
+					delivery(9, "DEBUG+Security Level " + login[0].level + ".", alertColor);	
 				} else {
 					delivery(9, "No user is logged in!");	
 				}
@@ -159,30 +164,19 @@ function inputCommand(command) {
 				//READ VARIABLE
 				delivery(9, "Variable '" + INPUT_VAR.toString() + "' is " + window[INPUT_VAR.toString()] + ".")
 			} else if (THIRD_TERM == "TRUE") {
-				if(DEV) {
-					//If dev is true, set the variable no matter what.
+				//Check Unclockvars for the variable trying to be changed, if it is there, change it. 
+				if (Unlockedvars.includes(INPUT_VAR)) {
 					window[INPUT_VAR] = 1;
 					delivery(9, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
 				} else {
-					//Check Unclockvars for the variable trying to be changed, if it is there, change it. 
-					if (Unlockedvars.includes(INPUT_VAR)) {
-						window[INPUT_VAR] = 1;
-						delivery(9, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
-					} else {
-						delivery(9, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
-					}
+					delivery(9, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
 				}
 			} else if (THIRD_TERM == "FALSE") {
-				if(DEV) {
+				if (Unlockedvars.includes(INPUT_VAR)) {
 					window[INPUT_VAR] = 0;
 					delivery(9, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
 				} else {
-					if (Unlockedvars.includes(INPUT_VAR)) {
-						window[INPUT_VAR] = 0;
-						delivery(9, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
-					} else {
-						delivery(9, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
-					}
+					delivery(9, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
 				}
 			} else if (THIRD_TERM == "SET") {
 				switch(FORTH_TERM) {
@@ -193,19 +187,13 @@ function inputCommand(command) {
 						delivery(9, "USE THE COMMAND ' VAR " + INPUT_VAR.toString() + " FALSE'")
 						break;
 					default:
-						if(DEV) {
+						if (Unlockedvars.includes(INPUT_VAR)) {
 							window[INPUT_VAR] = FORTH_TERM;
 							delivery(9, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
-							break;
 						} else {
-							if (Unlockedvars.includes(INPUT_VAR)) {
-								window[INPUT_VAR] = FORTH_TERM;
-								delivery(9, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
-							} else {
-								delivery(9, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
-							}
-							break;
+							delivery(9, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
 						}
+						break;
 					}
 				} else if (THIRD_TERM !== "TRUE" || THIRD_TERM !== "FALSE" || THIRD_TERM !== "READ") {
 					delivery(9, "Error - " + "VAR" + " (VARIABLE) (TRUE/FALSE/READ) [VALUE]")
