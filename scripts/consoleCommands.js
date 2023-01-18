@@ -9,7 +9,7 @@ var COPYRIGHT2 = "SaER logo above, Websites, and other media are owned and claim
 var alertColor = "#e30b25";
 
 //Variables used by Variable command
-var Unlockedvars = ["version", "versionSUB", "COPYRIGHT1", "COPYRIGHT2", "alertColor"];
+var Unlockedvars = ["alertColor", "Unlockedvars", "version", "versionSUB", "COPYRIGHT1", "COPYRIGHT2", "alertColor"];
 //Files that can be read by using Print command
 var Unlockedfiles = ["VERSION", "ASTRO", "FAIL"];
 var users = [{username:"guest", password:undefined, level:0}, {username:"admin", password:"admin", level:10}];
@@ -160,10 +160,10 @@ function inputCommand(command) {
 				delivery(9, "Error - blank variable. [ VAR (VARIABLE) (TRUE/FALSE/READ)]")
 			} else if (typeof THIRD_TERM == 'undefined') {
 				delivery(9, "Error - no action input. [ VAR (VARIABLE) (TRUE/FALSE/READ)]")
-			} else if (THIRD_TERM == "READ") {
+			} else if (THIRD_TERM.toUpperCase() == "READ") {
 				//READ VARIABLE
 				delivery(9, "Variable '" + INPUT_VAR.toString() + "' is " + window[INPUT_VAR.toString()] + ".")
-			} else if (THIRD_TERM == "TRUE") {
+			} else if (THIRD_TERM.toUpperCase() == "TRUE") {
 				//Check Unclockvars for the variable trying to be changed, if it is there, change it. 
 				if (Unlockedvars.includes(INPUT_VAR)) {
 					window[INPUT_VAR] = 1;
@@ -171,15 +171,15 @@ function inputCommand(command) {
 				} else {
 					delivery(9, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
 				}
-			} else if (THIRD_TERM == "FALSE") {
+			} else if (THIRD_TERM.toUpperCase() == "FALSE") {
 				if (Unlockedvars.includes(INPUT_VAR)) {
 					window[INPUT_VAR] = 0;
 					delivery(9, "Variable '" + INPUT_VAR.toString() + "' has been set to " + window[INPUT_VAR.toString()] + ".")
 				} else {
 					delivery(9, "Variable '" + INPUT_VAR.toString() + "' can not be changed.")
 				}
-			} else if (THIRD_TERM == "SET") {
-				switch(FORTH_TERM) {
+			} else if (THIRD_TERM.toUpperCase() == "SET") {
+				switch(FORTH_TERM.toUpperCase()) {
 					case "TRUE":
 						delivery(9, "USE THE COMMAND ' VAR " + INPUT_VAR.toString() + " TRUE'")
 						break;
@@ -195,7 +195,7 @@ function inputCommand(command) {
 						}
 						break;
 					}
-				} else if (THIRD_TERM !== "TRUE" || THIRD_TERM !== "FALSE" || THIRD_TERM !== "READ") {
+				} else if (THIRD_TERM.toUpperCase() !== "TRUE" || THIRD_TERM.toUpperCase() !== "FALSE" || THIRD_TERM.toUpperCase() !== "READ") {
 					delivery(9, "Error - " + "VAR" + " (VARIABLE) (TRUE/FALSE/READ) [VALUE]")
 				}
 				break;
@@ -373,9 +373,9 @@ function printcommand(file) {
 
 //Function ran with the "Open [file]" command.
 function opencommand(file) {
-	switch (file) {
+	switch (file.toUpperCase()) {
 		case "ASTRO.EXE":
-			delivery(9, "KEYWORD DETECTED. Suspicious activity has been detected on your ip address. Your IP has been logged.");
+			delivery(9, "KEYWORD DETECTED. Suspicious activity has been detected on your ip address. Your IP has been logged.", alertColor);
 			break;
 		case "VERSION.TXT":
 			delivery(9, "[version.txt]<br>" + version + " - " + versionSUB)
