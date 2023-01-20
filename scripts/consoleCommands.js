@@ -276,7 +276,7 @@ function delivery(type, textinput, color) {
 			//Unkown Command
 			if (textinput != "" && textinput != " ") {
 				var para = document.createElement("P");
-				para.innerHTML = "'" + textinput + "' is not recognized as an internal or externam command.";
+				para.innerHTML = "'" + textinput + "' is not recognized as an internal or external command.";
 				para.className = "responseText";
 				para.style.color = color;
 				document.getElementById("log").appendChild(para);
