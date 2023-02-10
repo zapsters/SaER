@@ -19,15 +19,18 @@ function loginCommand(username, password) {
 	//Sort through the users array to find a username matching to password.
 	var usernameIdentity = Object.values(users).filter(word => word.username == username.toLowerCase());
 	var formattedUsername = username.toLowerCase().charAt(0).toUpperCase() + username.toLowerCase().slice(1);
-	console.log(usernameIdentity.password);
+	if(login != undefined && usernameIdentity[0] == login) {
+		delivery(9, "You are already logged in as " + usernameIdentity[0].username + ".", alertColor);
+		return;
+	}
 	if(usernameIdentity !== undefined && usernameIdentity.length != 0) {
 		//If a user exists by that username...
 		if(password == usernameIdentity[0].password) {
-			login = usernameIdentity;
+			login = usernameIdentity[0];
 			delivery(9, "> Logged in as " + usernameIdentity[0].username + "!", alertColor);
 			delivery(9, "----------------------------------");
 		} else if(usernameIdentity[0].username == "guest") {
-			login = usernameIdentity;
+			login = usernameIdentity[0];
 			delivery(9, "> Logged in as " + usernameIdentity[0].username + "!", alertColor);
 			delivery(9, "----------------------------------");
 		} else {
@@ -137,9 +140,9 @@ function inputCommand(command) {
 			} else {
 				//If command is just "LOGIN" print the current user information.
 				if(login != undefined) {
-					delivery(9, "Currently logged in as " + login[0].username + ".");	
-					delivery(9, "DEBUG+Password '" + login[0].password + "'.", alertColor);	
-					delivery(9, "DEBUG+Security Level " + login[0].level + ".", alertColor);	
+					delivery(9, "Currently logged in as " + login.username + ".");	
+					delivery(9, "DEBUG+Password '" + login.password + "'.", alertColor);	
+					delivery(9, "DEBUG+Security Level " + login.level + ".", alertColor);	
 				} else {
 					delivery(9, "No user is logged in!");	
 				}
@@ -404,6 +407,12 @@ function onLoad() {
 	deliveryAfterDelay(9, "----------------------------------", 1550);
 	deliveryAfterDelay(9, "Alert - [Login Required] Use the LOGIN command. --- LOGIN (USERNAME) (PASSWORD)", 1550, alertColor);
 	deliveryAfterDelay(9, "----------------------------------", 1550);
+	
+	//Login as g
+	setTimeout(() => {
+		loginCommand("guest", null);
+	}, 2000);
+	
 	//Set Command Number for command history.  
 	COMNUM = COMMANDHISTORY.length;
 	if (typeof COMNUM == 'undefined') {
