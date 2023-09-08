@@ -1,18 +1,21 @@
-html, body {
+html,
+body {
   margin: 0;
   height: 100%;
-  font-family: 'Bahnschrift';
+  font-family: "Bahnschrift";
 }
 
 @font-face {
-  font-family: 'Bahnschrift';
-  src: url('https://zapsters.github.io/Home/fonts/Bahnschrift.woff') format('woff');
+  font-family: "Bahnschrift";
+  src: url("https://zapsters.github.io/home/fonts/Bahnschrift.woff")
+    format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
-html, body {
+html,
+body {
   max-width: 100%;
   overflow: hidden;
 }
@@ -73,7 +76,7 @@ map {
   color: white;
   width: 99%;
   border: 3px solid #333;
-  font-family: 'Bahnschrift';
+  font-family: "Bahnschrift";
 }
 
 .bottomTextDiv {

@@ -1,35 +1,57 @@
 <!DOCTYPE html>
 <html>
-<script src="scripts/consoleCommands.js"></script>
-<head>
+  <script src="scripts/consoleCommands.js"></script>
+  <head>
+    <title>SaER Console</title>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="https://zapsters.github.io/SaER/images/SaERLogo.png"
+    />
+    <link rel="stylesheet" type="text/css" href="style/consoleStyle.css" />
+  </head>
 
-<title>SaER Console</title>
-    <link rel="shortcut icon" type="image/png" href="https://zapsters.github.io/SaER/images/SaERLogo.png" />
-    <link rel="stylesheet" type="text/css" href="style/consoleStyle.css">
-</head>
-
-<body onload="onLoad()">
-	<center>
-        <p id="sub" class="rt"><b>SAER ADMIN CONSOLE</b></p>
-        <img id="logo" src="images/SaERLogoGlitch.gif" width="400px" id="i1" usemap="#saer" cursor="default;" class="logo">
-        <div class=bottomTextDiv>
-            <p class="rt" style="bottom: -5px;" id="subtext">-----</p>						<!--Hidden top subtext-->
-            <p id="BtmTextTop" style="font-size:3; bottom: 0px;" class="rt"></p>					<!--TOP COPYRIGHT TEXT-->
-            <p id="BtmTextBtm" style="font-size:3; bottom: 5px;" class="rt">SCRIPT ERROR - CHECK CONSOLE</p>	<!--BOTTOM COPYRIGHT TEXT-->
-        </div>
-        <div id="oldtextdiv" class=poz3>							<!--Only used for the "HELP" command, but could be useful.-->
-            <p id="topdivtext" class="divtext" style="font-size:20;" class="rt"></p>
-            <p id="botdivtext" class="divtext" style="font-size:20;" class="rt"></p>
-        </div>
-        <div>
-            <input type="text" id="input" autocomplete="off" class="textInput" placeholder="Awaiting Command..." spellcheck="false">
-        </div>
+  <body onload="onLoad()">
+    <center>
+      <p id="sub" class="rt"><b>SAER ADMIN CONSOLE</b></p>
+      <img
+        id="logo"
+        src="images/SaERLogoGlitch.gif"
+        width="400px"
+        usemap="#saer"
+        cursor="default;"
+        class="logo"
+      />
+      <div class="bottomTextDiv">
+        <p class="rt" style="bottom: -5px" id="subtext">-----</p>
+        <!--Hidden top subtext-->
+        <p id="BtmTextTop" style="font-size: 3; bottom: 0px" class="rt"></p>
+        <!--TOP COPYRIGHT TEXT-->
+        <p id="BtmTextBtm" style="font-size: 3; bottom: 5px" class="rt">
+          SCRIPT ERROR - CHECK CONSOLE
+        </p>
+        <!--BOTTOM COPYRIGHT TEXT-->
+      </div>
+      <div id="oldtextdiv" class="poz3">
+        <!--Only used for the "HELP" command, but could be useful.-->
+        <p id="topdivtext" class="divtext rt" style="font-size: 20"></p>
+        <p id="botdivtext" class="divtext rt" style="font-size: 20"></p>
+      </div>
+      <div>
+        <input
+          type="text"
+          id="input"
+          autocomplete="off"
+          class="textInput"
+          placeholder="Awaiting Command..."
+          spellcheck="false"
+        />
+      </div>
     </center>
     <div id="log" class="log"></div>
-</body>
-<script>
-//function onLoad() {} ///See commands.js 
-console.log("SaER Console Version " + version);
-</script>
+  </body>
+  <script>
+    //function onLoad() {} ///See commands.js
+    console.log("SaER Console Version " + version);
+  </script>
 </html>
-
