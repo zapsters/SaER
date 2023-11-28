@@ -1,0 +1,88 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  height: 100%;
+  font-family: "Bahnschrift", "GontserratFont", sans-serif;
+
+  max-width: 100%;
+  overflow: hidden;
+
+  color: black;
+}
+body {
+  /* background-image: url(../images/SaERv2Spin.gif); */
+  /* background-size: 300px; */
+  background-size: 25%;
+  background-position: 50% 44%;
+  background-repeat: no-repeat;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-bottom: 16px;
+}
+
+/* End of Reset */
+
+/* == Variable Colors == */
+:root {
+  --SaERGray: #373738;
+  --SaERTan: #ede0ce;
+}
+
+nav {
+  border-bottom: 2px solid var(--SaERGray);
+  min-height: 100px;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  background-color: var(--SaERTan);
+}
+
+.logo {
+  width: 305px;
+  background-image: url(../images/SaERv2IconAbr.png);
+  /* background-image: url(../images/SaERv2IconCompact.png); */
+  background-size: auto 80%;
+  background-origin: content-box;
+  background-position: 7px;
+  background-repeat: no-repeat;
+  position: relative;
+  /* border-right: 2px solid black; */
+}
+.logo a {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.links {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 25px;
+  padding: 10px 30px;
+  font-size: 17px;
+}
+.links a {
+  text-decoration: none;
+  color: black;
+  padding: 8px 10px 6px 10px;
+}
+.links a:hover {
+  background-color: hsla(0, 0%, 0%, 0.175);
+}
+.active {
+  border-bottom: solid 3px black;
+}

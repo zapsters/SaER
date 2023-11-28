@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SaER - Enter Password...</title>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="images/SaERv2Outline.png" />
+    <link rel="stylesheet" href="css/lock.css" />
+    <link rel="stylesheet" type="text/css" href="css/fonts.css" />
+  </head>
+  <body>
+    <div class="lockContainer">
+      <div class="logo"></div>
+      <div class="words"></div>
+      <div class="inputSection">
+        <hr />
+        <h1>Enter Access Password</h1>
+        <input id="accessPswInput" class="passwordBox" type="password" />
+        <input
+          id="submitBtn"
+          onclick="pswSubmit()"
+          type="button"
+          class="submitBtn"
+          value="Submit" />
+      </div>
+    </div>
+  </body>
+  <script>
+    var accessPswInput = document.getElementById("accessPswInput");
+
+    accessPswInput.addEventListener("keypress", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        // Trigger the button element with a click
+        document.getElementById("submitBtn").click();
+      }
+    });
+
+    function pswSubmit() {
+      var pswInput = accessPswInput.value;
+      if (pswInput == "Cawthorn") {
+        window.location.href = "home.html";
+      } else {
+        accessPswInput.value = "";
+      }
+      // alert(accessPswInput.value);
+    }
+  </script>
+</html>

@@ -1,0 +1,112 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  height: 100%;
+  font-family: "Bahnschrift", "GontserratFont", sans-serif;
+  max-width: 100%;
+  overflow: hidden;
+
+  color: black;
+}
+
+@media (max-width: 1000px) {
+  body {
+    background-size: 250px;
+  }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-bottom: 16px;
+}
+
+/* End of Reset */
+
+/* == Variable Colors == */
+:root {
+  --SaERGray: #373738;
+  --SaERTan: #ede0ce;
+}
+
+body {
+  background-color: var(--SaERTan);
+}
+
+.lockContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+}
+.logo {
+  height: 270px;
+  width: 100%;
+  background-image: url(../images/SaERv2Spin.gif);
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.words {
+  background-image: url(../images/SaERv2LogoWords.png);
+  height: 60px;
+  width: 100%;
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.inputSection {
+  flex: 0.3;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+hr {
+  width: 90%;
+  margin: 10px auto;
+  border: 1px solid var(--SaERGray);
+  max-width: 730px;
+}
+h1 {
+  font-size: 33px;
+  margin: 7px;
+  color: #373738;
+}
+input {
+  background-color: white;
+  border: 2px inset var(--SaERGray);
+  font-family: monospace, "Bahnschrift", "GontserratFont", sans-serif;
+  font-size: 20px;
+  outline: none;
+}
+.passwordBox {
+  padding: 2px 2px;
+}
+.submitBtn {
+  padding: 2px 10px;
+  cursor: pointer;
+}
+.submitBtn:hover {
+  background-color: rgb(225, 225, 225);
+}
+.submitBtn:active {
+  border: 2px outset #373738;
+  background-color: rgb(161, 161, 161);
+}
+
+@media (max-width: 685px) {
+  .words {
+    background-image: url(../images/SaERv2LogoWordsAbr.png);
+  }
+}

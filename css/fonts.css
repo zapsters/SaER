@@ -1,0 +1,113 @@
+/* == Gontserrat == */
+@font-face {
+  font-family: GontserratFont;
+  src: url(fonts/Gontserrat-Regular.ttf);
+  font-weight: normal; /*400*/
+  font-style: normal;
+}
+@font-face {
+  font-family: GontserratFont;
+  src: url(fonts/Gontserrat-Italic.ttf);
+  font-weight: normal; /*400*/
+  font-style: italic;
+}
+@font-face {
+  font-family: GontserratFont;
+  src: url(fonts/Gontserrat-Black.ttf);
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: GontserratFont;
+  src: url(fonts/Gontserrat-BlackItalic.ttf);
+  font-weight: 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: GontserratFont;
+  src: url(fonts/Gontserrat-ExtraBold.ttf);
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: GontserratFont;
+  src: url(fonts/Gontserrat-ExtraBoldItalic.ttf);
+  font-weight: 800;
+  font-style: italic;
+}
+@font-face {
+  font-family: GontserratFont;
+  src: url(fonts/Gontserrat-Bold.ttf);
+  font-weight: bold; /*700*/
+  font-style: normal;
+}
+@font-face {
+  font-family: GontserratFont;
+  src: url(fonts/Gontserrat-BoldItalic.ttf);
+  font-weight: bold; /*700*/
+  font-style: italic;
+}
+@font-face {
+  font-family: GontserratFont;
+  src: url(fonts/Gontserrat-SemiBold.ttf);
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: GontserratFont;
+  src: url(fonts/Gontserrat-SemiBoldItalic.ttf);
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: GontserratFont;
+  src: url(fonts/Gontserrat-Medium.ttf);
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: GontserratFont;
+  src: url(fonts/Gontserrat-MediumItalic.ttf);
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: GontserratFont;
+  src: url(fonts/Gontserrat-Light.ttf);
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: GontserratFont;
+  src: url(fonts/Gontserrat-LightItalic.ttf);
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: GontserratFont;
+  src: url(fonts/Gontserrat-ExtraLight.ttf);
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: GontserratFont;
+  src: url(fonts/Gontserrat-ExtraLightItalic.ttf);
+  font-weight: 200;
+  font-style: italic;
+}
+@font-face {
+  font-family: GontserratFont;
+  src: url(fonts/Gontserrat-Thin.ttf);
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: GontserratFont;
+  src: url(fonts/Gontserrat-ThinItalic.ttf);
+  font-weight: 100;
+  font-style: italic;
+}
+
+.gont {
+  font-family: "GontserratFont", "Century Gothic", "Arial";
+}

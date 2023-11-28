@@ -1,0 +1,227 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  height: 100%;
+  font-family: "Bahnschrift", "GontserratFont", sans-serif;
+
+  max-width: 100%;
+  overflow: hidden;
+
+  color: black;
+}
+body {
+  background-image: url(../images/SaERv2Spin.gif);
+  /* background-size: 300px; */
+  background-size: 25%;
+  background-position: 50% 44%;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 1000px) {
+  body {
+    background-size: 250px;
+  }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-bottom: 16px;
+}
+
+/* End of Reset */
+
+@font-face {
+  font-family: "Bahnschrift";
+  src: url("https://zapsters.github.io/home/fonts/Bahnschrift.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  /* Remove scrollbar space */
+  background: transparent;
+  /* Optional: just make scrollbar invisible */
+}
+
+.header {
+  font-family: "GontserratFont", "Century Gothic", "Arial";
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 13px 0 0 0;
+  padding: 0;
+  font-size: x-large;
+  width: 100%;
+}
+.header p {
+  padding: 0;
+  margin: 0;
+  text-wrap: nowrap;
+}
+.header p:nth-child(2) {
+  font-size: medium;
+  letter-spacing: normal;
+}
+.header hr {
+  outline: none;
+  border: 1px solid black;
+  width: 100%;
+  margin: 4px 0 0 0;
+  padding: 0;
+  max-width: 390px;
+}
+
+map {
+  display: block;
+  cursor: pointer;
+}
+
+.sub {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  line-height: 0;
+  position: relative;
+  bottom: -5px;
+}
+
+.rat {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  line-height: 1;
+  position: relative;
+}
+
+.floatingDiv {
+  font-size: 50px;
+  position: absolute;
+  bottom: 100px;
+  left: 5px;
+  z-index: 9;
+  width: 100%;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.floatingDiv p {
+  padding: 0;
+  margin: 0;
+}
+
+.bottomTextDiv {
+  position: absolute;
+  bottom: 35px;
+  left: 5px;
+  width: 100%;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+.bottomTextDiv p {
+  padding: 0;
+  margin: 2px 0 0px 0;
+}
+
+.userCommand {
+  padding: 0;
+  margin: 0;
+  margin-top: 10px;
+}
+.responseText {
+  padding: 0;
+  margin: 0 0 0 15px;
+}
+.serverText {
+  padding: 0;
+  margin: 0 0 0 0;
+}
+
+.container .btn {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  transform: translate(-50%, 30%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #000;
+  font-size: 5px;
+  padding: 5px 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.log {
+  position: absolute;
+  top: 70px;
+  left: 10px;
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0px;
+  padding: 0px;
+
+  letter-spacing: 0px;
+  text-shadow: 1px 1px 2px #fff;
+  font-size: 16px;
+
+  height: 70%;
+  overflow: scroll;
+  z-index: 9;
+
+  font-family: "Consolas", monospace, sans-serif;
+  font-weight: 100;
+}
+
+.textInput {
+  font-size: 30px;
+  position: absolute;
+  background-color: #222;
+  bottom: 5px;
+  left: 5px;
+  color: white;
+  width: 99%;
+  border: 3px solid #333;
+  font-family: "Consolas", monospace, sans-serif;
+}
+
+.textInputAlt {
+  font-size: 30px;
+  position: absolute;
+  background-color: #222;
+  bottom: 0;
+  left: 0;
+  color: white;
+
+  width: calc(100% - 10px);
+
+  padding: 5px 8px;
+  margin: 5px;
+
+  /* border: 3px solid #333; */
+  border: none;
+  font-family: "Bahnschrift";
+  font-family: "Consolas", monospace, sans-serif;
+}
+
+.textInputAlt:focus {
+  border: none;
+  outline: none;
+}
